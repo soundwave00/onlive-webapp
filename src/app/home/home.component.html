@@ -1,46 +1,55 @@
 <section class="hero is-primary is-bold is-fullheight">
-    
-        <div class="block">
-            <h1 class="title is-1 has-text-white">Ascolta la musica che ami </h1>
-            <h1 class="title is-2 has-text-white">dal vivo dove vuoi!</h1>
-        </div>
+    <div class="block">
+        <h1 class="title is-1 has-text-white">Ascolta la musica che ami,</h1>
+        <h1 class="title is-2 has-text-white">dove vuoi, <span class="has-text-weight-bold">dal vivo!</span></h1>
+    </div>
 </section>
 <section class="section is-bold is-fullheight">
     <div class="box">
         <h1 class="title is-3">Prossimi eventi  </h1>
-        <h1 class="title is-3">min 1H max 1 week</h1>
+        <h1 class="title is-4">min 1H - max 1 week</h1>
     </div>
 </section>
 <section class="section is-bold is-fullheight">
     <div class="box">
         <h1 class="title is-size-3">Eventi di questo mese</h1>
-        <table class="table">
+        <table class="table is-fullwidth is-size-4">
             <tbody>
-              <tr>
-                <td class="is-size-1">24</td>
-                <td class="is-size-2">Apr</td> 
-                <td class="is-size-3">Open Mouth Blues Orchestra</td>
-                <td><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
-              </tr>
-              <tr>
-                <td class="is-size-1">03</td>
-                <td class="is-size-2">Mag</td> 
-                <td class="is-size-3">Thirty second to mars</td>
-                <td><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
-              </tr>
-              <tr>
-                <td class="is-size-1">11</td>
-                <td class="is-size-2">Mag</td> 
-                <td class="is-size-3">Queen</td>
-                <td><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
-              </tr>
-              <tr>
-                <td class="is-size-1">26</td>
-                <td class="is-size-2">Mag</td> 
-                <td class="is-size-3">Blink182</td>
-                <td><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
-              </tr>
+                <tr>
+                  <td class="is-vcentered">24</td>
+                  <td class="is-vcentered">Apr</td>
+                  <td class="is-vcentered">{{ this.testLiveResponse }}</td>
+                  <td class="is-vcentered has-text-right">
+                    <button class="button is-rounded is-dark is-right"
+                      (click)="testLive()">
+                      Test Live!
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="is-vcentered">03</td>
+                  <td class="is-vcentered">Mag</td>
+                  <td class="is-vcentered">{{ this.stopAllLiveResponse }}</td>
+                  <td class="is-vcentered has-text-right">
+                    <button class="button is-rounded is-dark is-right"
+                    (click)="stopAllLive()">
+                    Stop All Live!
+                  </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="is-vcentered">11</td>
+                  <td class="is-vcentered">Mag</td>
+                  <td class="is-vcentered">Queen</td>
+                  <td class="is-vcentered has-text-right"><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
+                </tr>
+                <tr>
+                  <td class="is-vcentered">26</td>
+                  <td class="is-vcentered">Mag</td>
+                  <td class="is-vcentered">Blink182</td>
+                  <td class="is-vcentered has-text-right"><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
+                </tr>
             </tbody>
-          </table>
+        </table>
     </div>
 </section>

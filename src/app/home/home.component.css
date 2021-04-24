@@ -1,12 +1,15 @@
 .hero{
     background-image: url('/assets/img/homeimg.jpg') !important;
     background-size: cover;
-    background-position: center center; 
+    background-position: center center;
+    margin-bottom: 1em;
+}
+.section {
+  padding: 1rem 1.5rem;
 }
 .block {
-    margin-top:5%;
-    margin-left: 1%;
-  }
+    margin: 5em;
+}
 .box{
     background-color: #7ea2aa;
 }
