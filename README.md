@@ -13,3 +13,4 @@ Jamulus Server
 ##### Avvio
 - ng serve
   - --open
+  - --liveReload=false

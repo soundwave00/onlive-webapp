@@ -20,7 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NextEventsComponent } from './next-events/next-events.component'
 
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatCardModule} from '@angular/material/card'; 
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule,    
+    HttpClientModule,
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,

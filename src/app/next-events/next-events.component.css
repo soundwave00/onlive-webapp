@@ -1,0 +1,10 @@
+.card-event {
+  max-width: 400px;
+}
+.card-header-image {
+  background-image: url('../../assets/img/pexels-burst-374777.jpg');
+  background-size: cover;
+}
+.mat-card-img {
+  min-width: calc(100% + 32px);;
+}
