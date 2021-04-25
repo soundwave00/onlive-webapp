@@ -12,6 +12,14 @@ import { EventComponent } from './event/event.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatInputModule } from '@angular/material/input'
+import { MatNativeDateModule } from '@angular/material/core';
+import { NextEventsComponent } from './next-events/next-events.component'
+
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -20,7 +28,9 @@ import { HomeComponent } from './home/home.component';
     EventComponent,
     ContactusComponent,
     FaqComponent,
-    HomeComponent
+    HomeComponent,
+    CalendarComponent,
+    NextEventsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +39,11 @@ import { HomeComponent } from './home/home.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,    
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

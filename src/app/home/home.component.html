@@ -8,13 +8,20 @@
     <div class="box">
         <h1 class="title is-3">Prossimi eventi  </h1>
         <h1 class="title is-4">min 1H - max 1 week</h1>
+        <app-next-events></app-next-events>
     </div>
 </section>
 <section class="section is-bold is-fullheight">
     <div class="box">
-        <h1 class="title is-size-3">Eventi di questo mese</h1>
-        <table class="table is-fullwidth is-size-4">
+        <div class="table-container">
+          <table class="table is-fullwidth is-size-4">
             <tbody>
+                <tr>
+                  <td class="is-vcentered"><h1 class="title is-size-3">Eventi di questo mese</h1></td>
+                  <td class="is-vcentered"></td>
+                  <td class="is-vcentered"></td>
+                  <td class="is-vcentered has-text-right"><app-calendar></app-calendar></td>
+                </tr>
                 <tr>
                   <td class="is-vcentered">24</td>
                   <td class="is-vcentered">Apr</td>
@@ -51,5 +58,6 @@
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
 </section>
