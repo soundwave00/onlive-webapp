@@ -15,17 +15,20 @@
   <div class="navbar-brand">
     <a class="navbar-item" routerLink="home">
       <mat-icon>album</mat-icon>
-      <span>OnLive</span>
+      <span style="font-size: 25px;">nLive</span>
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic"
+      (click)="openMenu()"
+      [class.is-active]="isMenuOpen">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasic" class="navbar-menu">
+  <div id="navbarBasic" class="navbar-menu"
+    [class.is-active]="isMenuOpen">
     <div class="navbar-start">
       <a class="navbar-item" routerLink="home">
         HOME

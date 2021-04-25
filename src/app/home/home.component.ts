@@ -28,7 +28,9 @@ export class HomeComponent implements OnInit {
   testLive(): void {
     //console.log('testLive');
 
-    this.http.post<string>(this.testLiveUrl, this.httpOptions)
+    let live: string = '{ "Name" : "vlc" }';
+
+    this.http.post<string>(this.testLiveUrl, live, this.httpOptions)
       .pipe(
         tap(_ => console.log('testLive')),
         catchError(this.handleError<string>('error testLive', ''))
