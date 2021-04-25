@@ -7,10 +7,11 @@ import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: 'event', component: EventComponent},
-  { path: 'contactus', component: ContactusComponent},
-  { path: 'faq', component: FaqComponent},
-  { path: 'home', component: HomeComponent}
+  { path: '', component: HomeComponent },
+  { path: 'event', component: EventComponent },
+  { path: 'contactus', component: ContactusComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ]
 
 @NgModule({

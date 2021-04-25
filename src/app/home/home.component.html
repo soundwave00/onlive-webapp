@@ -25,30 +25,35 @@
                 <tr>
                   <td class="is-vcentered">24</td>
                   <td class="is-vcentered">Apr</td>
-                  <td class="is-vcentered">{{ this.testLiveResponse }}</td>
+                  <td class="is-vcentered">{{ this.startLiveResponse.rMessage }}</td>
                   <td class="is-vcentered has-text-right">
                     <button class="button is-rounded is-dark is-right"
-                      (click)="testLive()">
-                      Test Live!
+                      (click)="startLive()">
+                      Start Live!
                     </button>
                   </td>
                 </tr>
                 <tr>
                   <td class="is-vcentered">03</td>
                   <td class="is-vcentered">Mag</td>
-                  <td class="is-vcentered">{{ this.stopAllLiveResponse }}</td>
+                  <td class="is-vcentered">{{ this.stopAllLiveResponse.rMessage }}</td>
                   <td class="is-vcentered has-text-right">
                     <button class="button is-rounded is-dark is-right"
                     (click)="stopAllLive()">
                     Stop All Live!
-                  </button>
+                    </button>
                   </td>
                 </tr>
                 <tr>
                   <td class="is-vcentered">11</td>
                   <td class="is-vcentered">Mag</td>
-                  <td class="is-vcentered">Queen</td>
-                  <td class="is-vcentered has-text-right"><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
+                  <td class="is-vcentered">{{ this.stopLiveResponse.rMessage }}</td>
+                  <td class="is-vcentered has-text-right">
+                    <button class="button is-rounded is-dark is-right"
+                    (click)="stopLive()">
+                    Stop Live!
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td class="is-vcentered">26</td>
