@@ -1,10 +1,24 @@
-<div class="box">
-    <mat-grid-list cols="2" rowHeight="4:1">
-        <mat-grid-tile>primo evento</mat-grid-tile>
-        <mat-grid-tile>secondo evento</mat-grid-tile>
-        <mat-grid-tile>terzo evento</mat-grid-tile>
-        <mat-grid-tile>quarto evento</mat-grid-tile>
-    </mat-grid-list>
-</div>
-  
-  
+<mat-card class="event-card">
+    <mat-card-header>
+      <mat-card-title>Nome Gruppo</mat-card-title>
+      <mat-card-subtitle>Live at 15:30pm</mat-card-subtitle>
+    </mat-card-header>
+    <img src="./assets/img/pexels-snapwire-6966.jpg" alt="Photo of group">
+    <mat-card-content>
+      <p>
+        se vogliamo mettere una descrizione 
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>
+            <span class="material-icons">
+                thumb_up_alt
+            </span>
+        </button>
+        <button mat-button>
+            <span class="material-icons">
+                share
+            </span>
+        </button>
+    </mat-card-actions>
+</mat-card>   
