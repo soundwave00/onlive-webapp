@@ -3,10 +3,12 @@ export interface Response {
   rCode?: number;
 }
 
-export interface Live {
+export interface Events {
   Id?: number;
   Name?: string;
   Description?: string;
   Running?: boolean;
   DateSet?: Date;
+  
+  GroupName?: string;
 }

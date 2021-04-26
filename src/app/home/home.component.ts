@@ -3,7 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
+
 import { Response, Events } from '../entities'
+
+const ELEMENT_DATA: Events[] = [
+  {DateSet: new Date, GroupName: 'Open Mouth Blues Orchestra'},
+  {DateSet: new Date, GroupName: 'Thirty Seconds to Mars'},
+  {DateSet: new Date, GroupName: 'Queen'},
+  {DateSet: new Date, GroupName: 'Taxi Ride Stories'},
+];
 
 @Component({
   selector: 'app-home',
@@ -11,6 +19,9 @@ import { Response, Events } from '../entities'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  displayedColumns: string[] = ['DateSet', 'DateSet', 'GroupName'];
+  dataSource = ELEMENT_DATA;
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

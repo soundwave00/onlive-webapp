@@ -24,22 +24,25 @@
 </section>
 <section class="section is-bold is-fullheight">
     <div class="box">
+      <div class="columns">
+        <div class="column is-four-fifths">
+          <h1 class="title is-size-3">Eventi questo mese</h1>
+        </div>
+        <div class="column">
+          <app-calendar></app-calendar>
+        </div>
+      </div>
         <div class="table-container">
+          
           <table class="table is-fullwidth is-size-4">
             <tbody>
                 <tr>
-                  <td class="is-vcentered"><h1 class="title is-size-3">Eventi questo mese</h1></td>
-                  <td class="is-vcentered"></td>
-                  <td class="is-vcentered"></td>
-                  <td class="is-vcentered has-text-right"><app-calendar></app-calendar></td>
-                </tr>
-                <tr>
                   <td class="is-vcentered">24</td>
                   <td class="is-vcentered">Apr</td>
-                  <td class="is-vcentered">{{ this.startLiveResponse.rMessage }}</td>
+                  <td class="is-vcentered">{{ this.startEventResponse.rMessage }}</td>
                   <td class="is-vcentered has-text-right">
                     <button class="button is-rounded is-dark is-right"
-                      (click)="startLive()">
+                      (click)="startEvent()">
                       Start Live!
                     </button>
                   </td>
@@ -47,10 +50,10 @@
                 <tr>
                   <td class="is-vcentered">03</td>
                   <td class="is-vcentered">Mag</td>
-                  <td class="is-vcentered">{{ this.stopAllLiveResponse.rMessage }}</td>
+                  <td class="is-vcentered">{{ this.stopAllEventsResponse.rMessage }}</td>
                   <td class="is-vcentered has-text-right">
                     <button class="button is-rounded is-dark is-right"
-                    (click)="stopAllLive()">
+                    (click)="stopAllEvents()">
                     Stop All Live!
                     </button>
                   </td>
@@ -58,10 +61,10 @@
                 <tr>
                   <td class="is-vcentered">11</td>
                   <td class="is-vcentered">Mag</td>
-                  <td class="is-vcentered">{{ this.stopLiveResponse.rMessage }}</td>
+                  <td class="is-vcentered">{{ this.stopEventResponse.rMessage }}</td>
                   <td class="is-vcentered has-text-right">
                     <button class="button is-rounded is-dark is-right"
-                    (click)="stopLive()">
+                    (click)="stopEvent()">
                     Stop Live!
                     </button>
                   </td>
