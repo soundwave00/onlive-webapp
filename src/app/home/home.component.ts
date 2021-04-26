@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
-import { Response, Live } from '../entities'
+import { Response, Events } from '../entities'
 
 @Component({
   selector: 'app-home',
@@ -16,67 +16,65 @@ export class HomeComponent implements OnInit {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private startLiveUrl: string = 'https://localhost:5001/api/JamulusController/startLive';
-  private stopAllLiveUrl: string = 'https://localhost:5001/api/JamulusController/stopAllLive';
-  private stopLiveUrl: string = 'https://localhost:5001/api/JamulusController/stopLive';
+  private startEventUrl: string = 'https://localhost:5001/api/HomeController/startEvent';
+  private stopAllEventsUrl: string = 'https://localhost:5001/api/HomeController/stopAllEvents';
+  private stopEventUrl: string = 'https://localhost:5001/api/HomeController/stopEvent';
 
-  public startLiveResponse: Response = {};
-  public stopAllLiveResponse: Response = {};
-  public stopLiveResponse: Response = {};
+  public startEventResponse: Response = {};
+  public stopAllEventsResponse: Response = {};
+  public stopEventResponse: Response = {};
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.startLiveResponse.rMessage = 'Open Mouth Blues Orchestra';
-    this.stopAllLiveResponse.rMessage = 'Thirty Seconds to Mars';
-    this.stopLiveResponse.rMessage = 'Queen';
+    this.startEventResponse.rMessage = 'Open Mouth Blues Orchestra';
+    this.stopAllEventsResponse.rMessage = 'Thirty Seconds to Mars';
+    this.stopEventResponse.rMessage = 'Queen';
   }
 
-  startLive(): void {
-    let request: Live = {
+  startEvent(): void {
+    let request: Events = {
       Name:' Prova',
       Description: 'Descrizione di prova',
       DateSet: new Date()
     };
 
-    this.http.post<any>(this.startLiveUrl, request, this.httpOptions)
+    this.http.post<any>(this.startEventUrl, request, this.httpOptions)
       .pipe(
-        tap(_ => console.log('startLive')),
-        catchError(this.handleError<string>('error startLive', ''))
+        tap(_ => console.log('startEvent')),
+        catchError(this.handleError<string>('error startEvent', ''))
       )
       .subscribe(response => {
-        this.startLiveResponse = response;
+        this.startEventResponse = response;
       });
   }
 
-  stopLive(): void {
-    let strLiveId: string = String(prompt("LiveId"));
-    let liveId: number = Number(strLiveId);
+  stopEvent(): void {
+    let strEventId: string = String(prompt("EventId"));
+    let eventId: number = Number(strEventId);
 
-    let live: Live = {
-      Id: liveId
+    let request: Events = {
+      Id: eventId
     };
 
-    let request: string = JSON.stringify(live);
-
-    this.http.post<any>(this.stopLiveUrl, request, this.httpOptions)
+    this.http.post<any>(this.stopEventUrl, request, this.httpOptions)
       .pipe(
-        tap(_ => console.log('stopLive')),
-        catchError(this.handleError<string>('error stopLive', ''))
+        tap(_ => console.log('stopEvent')),
+        catchError(this.handleError<string>('error stopEvent', ''))
       )
       .subscribe(response => {
-        this.stopLiveResponse = response;
+        this.stopEventResponse = response;
       });
   }
 
-  stopAllLive(): void {
-    this.http.post<any>(this.stopAllLiveUrl, this.httpOptions)
+  stopAllEvents(): void {
+    this.http.post<any>(this.stopAllEventsUrl, this.httpOptions)
       .pipe(
-        tap(_ => console.log('stopAllLive')),
-        catchError(this.handleError<string>('error stopAllLive', ''))
+        tap(_ => console.log('stopAllEvents')),
+        catchError(this.handleError<string>('error stopAllEvents', ''))
       )
       .subscribe(response => {
-        this.stopAllLiveResponse = response;
+        this.stopAllEventsResponse = response;
       });
   }
 
