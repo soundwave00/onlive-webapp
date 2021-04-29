@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  min-width: 320px;
+  overflow: hidden;
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.sidenav{
+  width: 40px;
+}
+
+.footer {
+  height: 32px;
+}
+
+.footer span {
+  font-size: 15px;
+  width: 100%;
+  text-align: center;
+}

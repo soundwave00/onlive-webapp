@@ -90,8 +90,6 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
-
   private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {
       console.error(error);

@@ -1,51 +1,32 @@
-<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" routerLink="">
-      <mat-icon>album</mat-icon>
-      <span style="font-size: 25px;">nStage</span>
-    </a>
+<mat-toolbar class="header">
+  <button mat-icon-button
+      aria-label="Home"
+      routerLink="" >
+    <mat-icon>album</mat-icon>
+  </button>
+  <span class="titleApp">nStage</span>
+  <button mat-button
+    routerLink="" >
+    HOME
+  </button>
+  <button mat-button
+    routerLink="event" >
+    EVENTI
+  </button>
+  <button mat-button
+    routerLink="faq" >
+    FAQ
+  </button>
+  <button mat-button
+    routerLink="contactus" >
+    CONTATTACI
+  </button>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic"
-      (click)="openMenu()"
-      [class.is-active]="isMenuOpen">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
+  <span class="toolbar-spacer"></span>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="primary">Sign up</button>
+    <button mat-raised-button color="accent">Log in</button>
   </div>
 
-  <div id="navbarBasic" class="navbar-menu"
-    [class.is-active]="isMenuOpen">
-    <div class="navbar-start">
-      <a class="navbar-item" routerLink="">
-        HOME
-      </a>
-
-      <a class="navbar-item" routerLink="event">
-        EVENTI
-      </a>
-
-      <a class="navbar-item" routerLink="faq">
-        FAQ
-      </a>
-
-      <a class="navbar-item" routerLink="contactus">
-        CONTATTACI
-      </a>
-
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-info is-dark is-rounded">
-            Sign up
-          </a>
-          <a class="button is-ghost is-dark is-rounded">
-            Log in
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
+</mat-toolbar>

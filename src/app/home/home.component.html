@@ -1,16 +1,100 @@
 <div *ngIf="!this.isLogged">
-<section class="hero is-primary is-bold is-fullheight">
+  <section class="hero is-primary is-bold is-fullheight">
+    <div class="block">
+        <h1 class="title is-1 has-text-white">Ascolta la musica che ami,</h1>
+        <h1 class="title is-2 has-text-white">dove vuoi, <span class="has-text-weight-bold">dal vivo!</span></h1>
+    </div>
+  </section>
+  <section class="section is-bold is-fullheight">
+      <div class="box">
+        <div class="table-container">
+          <h1 class="title is-3">Prossimi eventi  </h1>
+          <h1 class="title is-4">min 1H - max 1 week</h1>
+          <table class="table is-fullwidth is-size-4">
+            <tbody>
+                <tr>
+                  <td class="is-vcentered"><app-next-events></app-next-events></td>
+                  <td class="is-vcentered"><app-next-events></app-next-events></td>
+                  <td class="is-vcentered"><app-next-events></app-next-events></td>
+                  <td class="is-vcentered"><app-next-events></app-next-events></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+      </div>
+  </section>
+  <section class="section is-bold is-fullheight">
+      <div class="box">
+        <div class="columns">
+          <div class="column is-four-fifths">
+            <h1 class="title is-size-3">Eventi questo mese</h1>
+          </div>
+          <div class="column">
+            <app-calendar></app-calendar>
+          </div>
+        </div>
+          <div class="table-container">
+
+            <table class="table is-fullwidth is-size-4">
+              <tbody>
+                  <tr>
+                    <td class="is-vcentered">24</td>
+                    <td class="is-vcentered">Apr</td>
+                    <td class="is-vcentered">{{ this.startEventResponse.rMessage }}</td>
+                    <td class="is-vcentered has-text-right">
+                      <button class="button is-rounded is-dark is-right"
+                        (click)="startEvent()">
+                        Start Live!
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="is-vcentered">03</td>
+                    <td class="is-vcentered">Mag</td>
+                    <td class="is-vcentered">{{ this.stopAllEventsResponse.rMessage }}</td>
+                    <td class="is-vcentered has-text-right">
+                      <button class="button is-rounded is-dark is-right"
+                      (click)="stopAllEvents()">
+                      Stop All Live!
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="is-vcentered">11</td>
+                    <td class="is-vcentered">Mag</td>
+                    <td class="is-vcentered">{{ this.stopEventResponse.rMessage }}</td>
+                    <td class="is-vcentered has-text-right">
+                      <button class="button is-rounded is-dark is-right"
+                      (click)="stopEvent()">
+                      Stop Live!
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="is-vcentered">26</td>
+                    <td class="is-vcentered">Mag</td>
+                    <td class="is-vcentered">Blink182</td>
+                    <td class="is-vcentered has-text-right"><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+      </div>
+  </section>
+</div>
+
+<section class="is-primary is-bold">
   <div class="block">
-      <h1 class="title is-1 has-text-white">Ascolta la musica che ami,</h1>
-      <h1 class="title is-2 has-text-white">dove vuoi, <span class="has-text-weight-bold">dal vivo!</span></h1>
+      <h1 class="title is-1 has-text-white">Open mouth blues Orchestra</h1>
+      <h1 class="title is-2 has-text-white"><span class="has-text-weight-bold">dal vivo!</span></h1>
   </div>
 </section>
-<section class="section is-bold is-fullheight">
+<section class="section is-bold">
     <div class="box">
       <div class="table-container">
         <h1 class="title is-3">Prossimi eventi  </h1>
         <h1 class="title is-4">min 1H - max 1 week</h1>
-        <table class="table is-fullwidth is-size-4">
+        <table class="table is-size-4">
           <tbody>
               <tr>
                 <td class="is-vcentered"><app-next-events></app-next-events></td>
@@ -25,16 +109,16 @@
 </section>
 <section class="section is-bold is-fullheight">
     <div class="box">
-      <div class="columns">
+      <!--<div class="columns">
         <div class="column is-four-fifths">
           <h1 class="title is-size-3">Eventi questo mese</h1>
         </div>
         <div class="column">
           <app-calendar></app-calendar>
         </div>
-      </div>
+      </div>-->
         <div class="table-container">
-          
+
           <table class="table is-fullwidth is-size-4">
             <tbody>
                 <tr>
@@ -81,122 +165,3 @@
         </div>
     </div>
 </section>
-</div>
-
-<mat-grid-list cols="1" rowHeight="1:1">
-  <mat-grid-tile>  
-    <mat-sidenav-container class="sidenav-container" >
-      <mat-sidenav mode="side" opened class="sidenav">
-        <mat-grid-list cols="1" rowHeight="1:1">
-          <mat-grid-tile>
-            <button mat-icon-button style="color:white" aria-label="Eventi vicini a te">
-              <mat-icon>place</mat-icon>
-            </button>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <button mat-icon-button style="color:white" aria-label="Eventi in programma">
-              <mat-icon>event_available</mat-icon>
-            </button>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <button mat-icon-button style="color:white" aria-label="Notifiche">
-              <mat-icon>mark_chat_unread</mat-icon>
-            </button>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <button mat-icon-button color="warn" aria-label="Artisti preferiti">
-              <mat-icon>favorite</mat-icon>
-            </button>
-          </mat-grid-tile>
-        </mat-grid-list>
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <section class="is-primary is-bold">
-          <div class="block">
-              <h1 class="title is-1 has-text-white">Open mouth blues Orchestra</h1>
-              <h1 class="title is-2 has-text-white"><span class="has-text-weight-bold">dal vivo!</span></h1>
-          </div>
-        </section>
-        <section class="section is-bold">
-            <div class="box">
-              <div class="table-container">
-                <h1 class="title is-3">Prossimi eventi  </h1>
-                <h1 class="title is-4">min 1H - max 1 week</h1>
-                <table class="table is-size-4">
-                  <tbody>
-                      <tr>
-                        <td class="is-vcentered"><app-next-events></app-next-events></td>
-                        <td class="is-vcentered"><app-next-events></app-next-events></td>
-                        <td class="is-vcentered"><app-next-events></app-next-events></td>
-                        <td class="is-vcentered"><app-next-events></app-next-events></td>
-                      </tr>
-                  </tbody>
-              </table>
-              </div>
-            </div>
-        </section>
-        <section class="section is-bold is-fullheight">
-            <div class="box">
-              <div class="columns">
-                <div class="column is-four-fifths">
-                  <h1 class="title is-size-3">Eventi questo mese</h1>
-                </div>
-                <div class="column">
-                  <app-calendar></app-calendar>
-                </div>
-              </div>
-                <div class="table-container">
-                  
-                  <table class="table is-fullwidth is-size-4">
-                    <tbody>
-                        <tr>
-                          <td class="is-vcentered">24</td>
-                          <td class="is-vcentered">Apr</td>
-                          <td class="is-vcentered">{{ this.startEventResponse.rMessage }}</td>
-                          <td class="is-vcentered has-text-right">
-                            <button class="button is-rounded is-dark is-right"
-                              (click)="startEvent()">
-                              Start Live!
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="is-vcentered">03</td>
-                          <td class="is-vcentered">Mag</td>
-                          <td class="is-vcentered">{{ this.stopAllEventsResponse.rMessage }}</td>
-                          <td class="is-vcentered has-text-right">
-                            <button class="button is-rounded is-dark is-right"
-                            (click)="stopAllEvents()">
-                            Stop All Live!
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="is-vcentered">11</td>
-                          <td class="is-vcentered">Mag</td>
-                          <td class="is-vcentered">{{ this.stopEventResponse.rMessage }}</td>
-                          <td class="is-vcentered has-text-right">
-                            <button class="button is-rounded is-dark is-right"
-                            (click)="stopEvent()">
-                            Stop Live!
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="is-vcentered">26</td>
-                          <td class="is-vcentered">Mag</td>
-                          <td class="is-vcentered">Blink182</td>
-                          <td class="is-vcentered has-text-right"><button class="button is-rounded is-dark is-right">Buy Ticket!</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </section>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  </mat-grid-tile>
-</mat-grid-list>
-
-
-

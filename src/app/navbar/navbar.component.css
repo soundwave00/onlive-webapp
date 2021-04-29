@@ -1,6 +1,11 @@
-.mat-toolbar{
-    background-color:#303633;
+.toolbar-spacer {
+  flex: 1;
 }
-.spacer{
-    flex: 1 1 auto;
+
+.titleApp {
+  margin-left: -8px;
+}
+
+.example-button-row {
+  margin: 8px 8px 8px 0;
 }

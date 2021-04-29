@@ -1,0 +1,48 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$castle-fe-light-primary: mat-palette($mat-blue-gray, 900);
+$castle-fe-light-accent: mat-palette($mat-amber, A100);
+
+$castle-fe-dark-primary: mat-palette($mat-purple, 800);
+$castle-fe-dark-accent: mat-palette($mat-deep-purple, 100);
+
+// The warn palette is optional (defaults to red).
+$castle-fe-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$castle-fe-light-theme: mat-light-theme((
+  color: (
+    primary: $castle-fe-light-primary,
+    accent: $castle-fe-light-accent,
+    warn: $castle-fe-warn,
+  )
+));
+
+$castle-fe-dark-theme: mat-dark-theme((
+  color: (
+    primary: $castle-fe-dark-primary,
+    accent: $castle-fe-dark-accent,
+    warn: $castle-fe-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($castle-fe-light-theme);
+
+.darkmode {
+  @include angular-material-color($castle-fe-dark-theme);
+}

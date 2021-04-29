@@ -1,6 +1,34 @@
 
-<!-- se non si è loggati -->
-<app-navbar></app-navbar>
-<router-outlet *ngIf="this.isLogged"></router-outlet>
-<router-outlet *ngIf="!this.isLogged" name="logout"></router-outlet>
-<!-- se si è loggati -->
+
+<div class="main">
+  <!-- se non si è loggati -->
+  <app-navbar></app-navbar>
+
+  <mat-sidenav-container class="sidenav-container" >
+    <mat-sidenav
+      mode="side"
+      opened
+      class="sidenav" >
+      <button mat-icon-button aria-label="Eventi vicini a te">
+        <mat-icon>place</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Eventi in programma">
+        <mat-icon>event_available</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Notifiche">
+        <mat-icon>mark_chat_unread</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Artisti preferiti">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet *ngIf="this.isLogged"></router-outlet>
+      <!--<router-outlet *ngIf="!this.isLogged" name="logout"></router-outlet>-->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mat-toolbar class="footer">
+    <span>OnStage by <a href="https://github.com/soundwave00">Soundwave</a> & <a href="https://github.com/Riddorck">Riddorck</a></span>
+  </mat-toolbar>
+</div>

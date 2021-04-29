@@ -5,7 +5,6 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { EventComponent } from './event/event.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
-import { LoginHomeComponent } from './login-home/login-home.component'
 import { NextEventsComponent } from './next-events/next-events.component';
 
 const routes: Routes = [

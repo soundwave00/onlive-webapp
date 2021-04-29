@@ -21,7 +21,6 @@ import { NextEventsComponent } from './next-events/next-events.component'
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
-import { LoginHomeComponent } from './login-home/login-home.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
@@ -34,8 +33,7 @@ import { MatListModule } from '@angular/material/list';
     FaqComponent,
     HomeComponent,
     CalendarComponent,
-    NextEventsComponent,
-    LoginHomeComponent
+    NextEventsComponent
   ],
   imports: [
     BrowserModule,
