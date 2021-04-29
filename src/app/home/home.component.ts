@@ -20,8 +20,9 @@ const ELEMENT_DATA: Events[] = [
 })
 export class HomeComponent implements OnInit {
 
-  displayedColumns: string[] = ['DateSet', 'DateSet', 'GroupName'];
-  dataSource = ELEMENT_DATA;
+  public isLogged: boolean = true;
+  public displayedColumns: string[] = ['DateSet', 'DateSet', 'GroupName'];
+  public dataSource = ELEMENT_DATA;
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -88,6 +89,8 @@ export class HomeComponent implements OnInit {
         this.stopAllEventsResponse = response;
       });
   }
+
+  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
   private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {

@@ -1,2 +1,6 @@
+
+<!-- se non si è loggati -->
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="this.isLogged"></router-outlet>
+<router-outlet *ngIf="!this.isLogged" name="logout"></router-outlet>
+<!-- se si è loggati -->
