@@ -24,17 +24,17 @@ export class HomeComponent implements OnInit {
   public displayedColumns: string[] = ['DateSet', 'DateSet', 'GroupName'];
   public dataSource = ELEMENT_DATA;
 
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  public startEventResponse: Response = {};
+  public stopAllEventsResponse: Response = {};
+  public stopEventResponse: Response = {};
 
   private startEventUrl: string = 'https://localhost:5001/api/HomeController/startEvent';
   private stopAllEventsUrl: string = 'https://localhost:5001/api/HomeController/stopAllEvents';
   private stopEventUrl: string = 'https://localhost:5001/api/HomeController/stopEvent';
 
-  public startEventResponse: Response = {};
-  public stopAllEventsResponse: Response = {};
-  public stopEventResponse: Response = {};
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
     this.http.post<any>(this.startEventUrl, request, this.httpOptions)
       .pipe(
         tap(_ => console.log('startEvent')),
-        catchError(this.handleError<string>('error startEvent', ''))
+        catchError(this.handleError<any>('error startEvent', null))
       )
       .subscribe(response => {
         this.startEventResponse = response;
@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     this.http.post<any>(this.stopEventUrl, request, this.httpOptions)
       .pipe(
         tap(_ => console.log('stopEvent')),
-        catchError(this.handleError<string>('error stopEvent', ''))
+        catchError(this.handleError<any>('error stopEvent', null))
       )
       .subscribe(response => {
         this.stopEventResponse = response;
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
     this.http.post<any>(this.stopAllEventsUrl, this.httpOptions)
       .pipe(
         tap(_ => console.log('stopAllEvents')),
-        catchError(this.handleError<string>('error stopAllEvents', ''))
+        catchError(this.handleError<any>('error stopAllEvents', null))
       )
       .subscribe(response => {
         this.stopAllEventsResponse = response;

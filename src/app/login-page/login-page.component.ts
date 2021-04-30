@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ){
+    if(this.userService.getIsLogged())
+      this.router.navigateByUrl('');
+  }
 
   ngOnInit(): void {
   }
