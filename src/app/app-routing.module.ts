@@ -6,17 +6,20 @@ import { EventComponent } from './event/event.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { NextEventsComponent } from './next-events/next-events.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes = [
+  /*
   { path: '', component: NextEventsComponent, outlet:'logout' },
-  { path: 'login', component: FaqComponent, outlet:'logout' },
+  { path: 'login', component: LoginPageComponent, outlet:'logout' },
   { path: 'contactus', component: ContactusComponent, outlet:'logout' },
-  { path: 'faq', component: FaqComponent, outlet:'logout' },
+  { path: 'faq', component: FaqComponent, outlet:'logout' }, */
 
   { path: '', component: HomeComponent },
   { path: 'event', component: EventComponent},
   { path: 'contactus', component: ContactusComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'login', component: LoginPageComponent },
   //{ path: 'login', redirectTo: '', pathMatch: 'full' },
   //{ path: '**', redirectTo: '', pathMatch: 'full' },
 ]

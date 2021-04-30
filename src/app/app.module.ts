@@ -23,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatListModule } from '@angular/material/list';
     FaqComponent,
     HomeComponent,
     CalendarComponent,
-    NextEventsComponent
+    NextEventsComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,12 @@
     background-position: center center;
     margin-bottom: 1em;
 }
+.hero-body{
+    background-image: url('/assets/img/pexels-snapwire-6966.jpg') !important;
+    background-size:cover;
+    background-position:center bottom;
+    margin-bottom: 0em;
+}
 .section {
   padding: 1rem 1.5rem;
 }
