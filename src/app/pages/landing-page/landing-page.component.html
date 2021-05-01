@@ -24,7 +24,11 @@
 
 <mat-card class="section" color="primary">
   <mat-card-content>
-    <h1 class="titleSec">Eventi questo mese</h1>
+    <div class="headerSecContainer">
+      <span class="titleSec">Eventi questo mese</span>
+      <div class="flex-spacer"></div>
+      <app-calendar></app-calendar>
+    </div>
 
     <mat-table [dataSource]="monthEvents" class="mat-elevation-z8">
 

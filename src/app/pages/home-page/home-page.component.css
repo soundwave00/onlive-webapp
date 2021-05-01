@@ -35,6 +35,18 @@
   padding: 10px 10px 10px 5px;
 }
 
+.headerSecContainer {
+  display: flex;
+}
+
+.headerSecContainer span {
+  margin-top: 5px;
+}
+
+.flex-spacer {
+  flex: 1;
+}
+
 table {
   width: 100%;
 }

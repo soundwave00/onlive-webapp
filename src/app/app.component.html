@@ -1,5 +1,5 @@
 <div class="main">
-  <!-- se non si è loggati -->
+
   <app-navbar></app-navbar>
 
   <mat-sidenav-container
@@ -26,7 +26,9 @@
           </button>
         </mat-grid-tile>
         <mat-grid-tile>
-          <button mat-icon-button aria-label="Artisti preferiti">
+          <button mat-icon-button
+            color="warn"
+            aria-label="Artisti preferiti">
             <mat-icon>favorite</mat-icon>
           </button>
         </mat-grid-tile>
@@ -34,10 +36,11 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>
-
-      <mat-toolbar class="footer" color="primary">
-        <span>OnStage by <a href="https://github.com/soundwave00">Soundwave</a> & <a href="https://github.com/Riddorck">Riddorck</a></span>
-      </mat-toolbar>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+  <mat-toolbar class="footer" color="primary">
+    <span>OnStage by <a href="https://github.com/soundwave00">Soundwave</a> & <a href="https://github.com/Riddorck">Riddorck</a></span>
+  </mat-toolbar>
+
 </div>
