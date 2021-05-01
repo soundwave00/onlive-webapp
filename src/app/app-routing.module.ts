@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ContactusComponent } from './contactus/contactus.component';
-import { EventComponent } from './event/event.component';
-import { FaqComponent } from './faq/faq.component';
-import { HomeComponent } from './home/home.component';
-import { NextEventsComponent } from './next-events/next-events.component';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { EventPageComponent } from './pages/event-page/event-page.component';
+import { FaqPageComponent } from './pages/faq-page/faq-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 const routes: Routes = [
-  // { path: '', component: NextEventsComponent, outlet:'logout' },
-
-  { path: '', component: HomeComponent },
-  { path: 'event', component: EventComponent},
-  { path: 'contactus', component: ContactusComponent },
-  { path: 'faq', component: FaqComponent },
+  { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'contact-page', component: ContactPageComponent },
+  { path: 'faq', component: FaqPageComponent },
+  { path: 'event', component: EventPageComponent},
 
-  // { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: 'home', component: HomePageComponent },
+
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ]
 
 @NgModule({

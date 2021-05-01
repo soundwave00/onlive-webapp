@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { UserService } from './services/user.service';
 import { AppService } from './services/app.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +18,8 @@ export class AppComponent {
 
   constructor(
     private title: Title,
-    private userService: UserService,
-    private appService: AppService
+    private appService: AppService,
+    private userService: UserService
   ){
     this.title.setTitle('OnStage');
 

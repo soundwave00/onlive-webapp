@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import {Router} from '@angular/router';
+
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +11,10 @@ export class AppService {
   public isMobile: boolean;
   public sizeMode: string;
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ){
     this.isMobile = false;
     this.sizeMode = 'xl';
 
@@ -16,6 +22,17 @@ export class AppService {
   }
 
   // Methods
+
+  public checkPermission(route?: string, check?: boolean): void {
+    if(route == null)
+      route = 'login';
+
+    if(check == null)
+      check = false;
+
+    if(this.userService.getIsLogged() == check)
+      this.router.navigateByUrl(route);
+  }
 
   public getIsMobileResolution(): boolean {
     return this.isMobile;

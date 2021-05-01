@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
 
-import { UserService } from '../services/user.service';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-login-page',
@@ -11,11 +10,9 @@ import { UserService } from '../services/user.service';
 export class LoginPageComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private userService: UserService
-  ){
-    if(this.userService.getIsLogged())
-      this.router.navigateByUrl('');
+    private appService: AppService
+  ) {
+    this.appService.checkPermission('home', true);
   }
 
   ngOnInit(): void {

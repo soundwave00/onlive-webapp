@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
-
-import { Response, Events } from '../entities'
+import { AppService } from '../../services/app.service';
+import { Response, Events } from '../../entities'
 
 const ELEMENT_DATA: Events[] = [
   {DateSet: new Date, GroupName: 'Open Mouth Blues Orchestra'},
@@ -14,11 +14,11 @@ const ELEMENT_DATA: Events[] = [
 ];
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomePageComponent implements OnInit {
 
   public isLogged: boolean = true;
   public displayedColumns: string[] = ['DateSet', 'DateSet', 'GroupName'];
@@ -36,7 +36,12 @@ export class HomeComponent implements OnInit {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private appService: AppService
+  ) {
+    this.appService.checkPermission('');
+  }
 
   ngOnInit(): void {
     this.startEventResponse.rMessage = 'Open Mouth Blues Orchestra';

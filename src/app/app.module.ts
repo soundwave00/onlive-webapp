@@ -8,25 +8,27 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { EventComponent } from './event/event.component';
-import { ContactusComponent } from './contactus/contactus.component';
-import { FaqComponent } from './faq/faq.component';
-import { HomeComponent } from './home/home.component';
+import { EventPageComponent } from './pages/event-page/event-page.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { FaqPageComponent } from './pages/faq-page/faq-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NextEventsComponent } from './next-events/next-events.component'
-import { LoginPageComponent } from './login-page/login-page.component'
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    EventComponent,
-    ContactusComponent,
-    FaqComponent,
-    HomeComponent,
+    EventPageComponent,
+    ContactPageComponent,
+    FaqPageComponent,
+    HomePageComponent,
     CalendarComponent,
     NextEventsComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

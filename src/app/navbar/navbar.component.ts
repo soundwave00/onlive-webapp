@@ -14,8 +14,4 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-
 }
