@@ -3,7 +3,7 @@
   background-size: cover;
   background-position: center center;
   margin-bottom: 10px;
-  height: calc(100vh - 290px);
+  height: calc(100vh - 285px);
   padding: 100px;
 }
 
@@ -33,6 +33,7 @@
 
 .next-events div {
   padding: 10px 10px 10px 5px;
+  max-width: 380px;
 }
 
 .headerSecContainer {
