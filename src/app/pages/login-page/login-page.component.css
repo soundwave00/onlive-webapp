@@ -5,5 +5,16 @@ mat-card {
   }
   
   mat-form-field {
-    display: block;
+    /*display: block;*/
+    width: 100%;
+  }
+
+  .login, .register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    height: auto;
   }
