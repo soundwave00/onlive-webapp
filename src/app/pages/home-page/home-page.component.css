@@ -1,24 +1,53 @@
 .hero{
-    background-image: url('/assets/img/homeimg.jpg') !important;
-    background-size: cover;
-    background-position: center center;
-    margin-bottom: 1em;
+  background-image: url('/assets/img/pexels-snapwire-6966.jpg') !important;
+  background-size: cover;
+  background-position: center bottom;
+  height: 300px;
+  margin: 30px;
+  padding: 30px;
 }
-.hero-body{
-    background-image: url('/assets/img/pexels-snapwire-6966.jpg') !important;
-    background-size:cover;
-    background-position:center bottom;
-    margin-bottom: 0em;
+
+.hero h1 {
+  font-size: 45px;
+  margin-bottom: 20px;
 }
+
+.hero span {
+  font-weight: bold;
+}
+
 .section {
-  padding: 1rem 1.5rem;
+  margin: 30px;
+  padding: 20px;
+  background-color: #535353;
 }
-.block {
-    margin: 5em;
+
+.section .titleSec {
+  font-size: 30px;
 }
-.box{
-    background-color: #7ea2aa;
+
+.section span {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
-.table{
-    background-color: #7ea2aa;
+
+.next-events div {
+  padding: 10px 10px 10px 5px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-day {
+  flex: 0 0 15%;
+}
+
+.mat-column-month {
+  flex: 0 0 15%;
+}
+
+.mat-column-button {
+  flex: 0 0 15%;
+  flex-direction: row-reverse;
 }

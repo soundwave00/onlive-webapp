@@ -9,25 +9,35 @@
       opened
       class="sidenav"
       *ngIf="this.isLogged" >
-      <button mat-icon-button aria-label="Eventi vicini a te">
-        <mat-icon>place</mat-icon>
-      </button>
-      <button mat-icon-button aria-label="Eventi in programma">
-        <mat-icon>event_available</mat-icon>
-      </button>
-      <button mat-icon-button aria-label="Notifiche">
-        <mat-icon>mark_chat_unread</mat-icon>
-      </button>
-      <button mat-icon-button color="warn" aria-label="Artisti preferiti">
-        <mat-icon>favorite</mat-icon>
-      </button>
+      <mat-grid-list cols="1" rowHeight="45px">
+        <mat-grid-tile>
+          <button mat-icon-button aria-label="Eventi vicini a te">
+            <mat-icon>place</mat-icon>
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-icon-button aria-label="Eventi in programma">
+            <mat-icon>event_available</mat-icon>
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-icon-button aria-label="Notifiche">
+            <mat-icon>mark_chat_unread</mat-icon>
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-icon-button aria-label="Artisti preferiti">
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>
+
+      <mat-toolbar class="footer" color="primary">
+        <span>OnStage by <a href="https://github.com/soundwave00">Soundwave</a> & <a href="https://github.com/Riddorck">Riddorck</a></span>
+      </mat-toolbar>
     </mat-sidenav-content>
   </mat-sidenav-container>
-
-  <mat-toolbar class="footer">
-    <span>OnStage by <a href="https://github.com/soundwave00">Soundwave</a> & <a href="https://github.com/Riddorck">Riddorck</a></span>
-  </mat-toolbar>
 </div>

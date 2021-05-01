@@ -9,16 +9,25 @@
   flex: 1;
 }
 
+.sidenav-container mat-sidenav {
+  width: 45px;
+}
+
 .sidenav{
   width: 40px;
 }
 
 .footer {
-  height: 32px;
+  height: 27px;
 }
 
 .footer span {
   font-size: 15px;
   width: 100%;
   text-align: center;
+}
+
+.footer a {
+  color: inherit;
+  font-weight: bold;
 }

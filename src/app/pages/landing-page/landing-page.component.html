@@ -1,1 +1,61 @@
-<p>landing-page works!</p>
+<mat-card class="hero">
+  <mat-card-content>
+    <h1>Ascolta la musica che ami,</h1>
+    <h1>dove vuoi, <span>dal vivo!</span></h1>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="section" color="primary">
+  <mat-card-content>
+    <h1 class="titleSec">Prossimi eventi</h1>
+    <span>min 1H - max 1 week</span>
+
+    <mat-grid-list
+      cols="4"
+      rowHeight="450px"
+      class="next-events">
+      <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>
+      <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>
+      <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>
+      <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="section" color="primary">
+  <mat-card-content>
+    <h1 class="titleSec">Eventi questo mese</h1>
+
+    <mat-table [dataSource]="monthEvents" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="day">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.day}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="month">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.month}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="groupName">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.groupName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="button">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-raised-button
+            color="primary"
+            (click)="element.event()">
+            {{element.button}}
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-row *matRowDef="let row; columns: monthEventsColumns;"></mat-row>
+
+    </mat-table>
+  </mat-card-content>
+</mat-card>

@@ -4,14 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 import { AppService } from '../../services/app.service';
-import { Response, Events } from '../../entities'
-
-const ELEMENT_DATA: Events[] = [
-  {DateSet: new Date, GroupName: 'Open Mouth Blues Orchestra'},
-  {DateSet: new Date, GroupName: 'Thirty Seconds to Mars'},
-  {DateSet: new Date, GroupName: 'Queen'},
-  {DateSet: new Date, GroupName: 'Taxi Ride Stories'},
-];
+import { Response, Events, monthEvents } from '../../entities'
 
 @Component({
   selector: 'app-home-page',
@@ -20,9 +13,8 @@ const ELEMENT_DATA: Events[] = [
 })
 export class HomePageComponent implements OnInit {
 
-  public isLogged: boolean = true;
-  public displayedColumns: string[] = ['DateSet', 'DateSet', 'GroupName'];
-  public dataSource = ELEMENT_DATA;
+  public monthEventsColumns: string[] = ['day', 'month', 'groupName', 'button'];
+  public monthEvents: monthEvents[] = [];
 
   public startEventResponse: Response = {};
   public stopAllEventsResponse: Response = {};
@@ -47,6 +39,13 @@ export class HomePageComponent implements OnInit {
     this.startEventResponse.rMessage = 'Open Mouth Blues Orchestra';
     this.stopAllEventsResponse.rMessage = 'Thirty Seconds to Mars';
     this.stopEventResponse.rMessage = 'Queen';
+
+    this.monthEvents = [
+      { day: 24, month: 'Apr', groupName: this.startEventResponse.rMessage, button: 'StartLive!', event: this.startEvent },
+      { day: 3, month: 'Mag', groupName: 'Thirty Seconds to Mars', button: 'Stop All Live!', event: this.stopAllEvents },
+      { day: 11, month: 'Mag', groupName: 'Queen', button: 'Stop Live!', event: this.stopEvent },
+      { day: 23, month: 'Mag', groupName: 'Taxi Ride Stories', button: 'Buy Ticket!' }
+    ];
   }
 
   startEvent(): void {

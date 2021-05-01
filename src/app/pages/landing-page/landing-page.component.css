@@ -1,0 +1,53 @@
+.hero{
+  background-image: url('/assets/img/homeimg.jpg') !important;
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 10px;
+  height: calc(100vh - 64px);
+  padding: 100px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  margin-bottom: 25px;
+}
+
+.hero span {
+  font-weight: bold;
+}
+
+.section {
+  margin: 30px;
+  padding: 20px;
+  background-color: #535353;
+}
+
+.section .titleSec {
+  font-size: 30px;
+}
+
+.section span {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.next-events div {
+  padding: 10px 10px 10px 5px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-day {
+  flex: 0 0 15%;
+}
+
+.mat-column-month {
+  flex: 0 0 15%;
+}
+
+.mat-column-button {
+  flex: 0 0 15%;
+  flex-direction: row-reverse;
+}

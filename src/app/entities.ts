@@ -1,3 +1,5 @@
+/* Db Interfaces */
+
 export interface Response {
   rMessage?: string;
   rCode?: number;
@@ -21,4 +23,14 @@ export interface User {
   Surname?: string;
   Email: string;
   CodiceToken?: string;
+}
+
+/* Component Interfaces */
+
+export interface monthEvents {
+  day?: number;
+  month?: string;
+  groupName?: string;
+  button?: string;
+  event?: any;
 }
