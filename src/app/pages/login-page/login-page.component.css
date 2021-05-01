@@ -1,20 +1,41 @@
-mat-card {
-    max-width: 400px;
-    margin: 2em auto;
-    text-align: center;
-  }
-  
-  mat-form-field {
-    /*display: block;*/
-    width: 100%;
-  }
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: calc(100vh - 196px);
+  margin-top: 50px;
+}
 
-  .login, .register {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 16px;
-    padding: 16px;
-    border-radius: 8px;
-    height: auto;
-  }
+.loginContainerMobile {
+  margin-top: 0;
+}
+
+mat-card {
+  width: 500px;
+  text-align: right;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.matCardMobile {
+  height: calc(100vh - 96px);
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.tabContainer {
+  margin: 25px auto 10px auto;
+  width: 75%;
+}
+
+.tabContainer mat-form-field {
+  margin-bottom: 5px;
+}
+
+button {
+  margin-right: 15px;
+}

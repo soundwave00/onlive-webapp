@@ -8,16 +8,13 @@ import { UserService } from '../services/user.service';
 })
 export class AppService {
 
-  public isMobile: boolean;
-  public sizeMode: string;
+  public isMobile: boolean = false;
+  public sizeMode: string = 'xl';
 
   constructor(
     private router: Router,
     private userService: UserService
   ){
-    this.isMobile = false;
-    this.sizeMode = 'xl';
-
     this.setMobileResolution(window.innerWidth);
   }
 

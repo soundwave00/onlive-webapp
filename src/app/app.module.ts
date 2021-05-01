@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,14 +29,16 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     CalendarComponent,
     NextEventsComponent,
     LoginPageComponent,
-    LandingPageComponent
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-	MaterialModule
+	  MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

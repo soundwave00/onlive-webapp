@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { AppService } from './services/app.service';
@@ -11,7 +11,7 @@ import { UserService } from './services/user.service';
   providers: [Title]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   public isLogged: boolean;
   public isMobile: boolean;
@@ -25,5 +25,14 @@ export class AppComponent {
 
     this.isMobile = this.appService.getIsMobileResolution();
     this.isLogged = this.userService.getIsLogged();
+  }
+
+  ngOnInit(): void {
+  }
+
+  @HostListener('window:resize', ['$event'])
+  public onResize(event: any): void {
+    this.appService.setMobileResolution(event.target.innerWidth);
+    this.isMobile = this.appService.getIsMobileResolution();
   }
 }
