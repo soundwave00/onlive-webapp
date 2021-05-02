@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { EventPageComponent } from './pages/event-page/event-page.component';
 import { FaqPageComponent } from './pages/faq-page/faq-page.component';

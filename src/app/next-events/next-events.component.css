@@ -1,10 +1,52 @@
-.card-event {
-  max-width: 400px;
+.headerContainer {
+  display: flex;
+  flex-flow: wrap;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
+
+.titleContainer {
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-left: 1px;
+}
+
+.flex-spacer {
+  flex: 1;
+}
+
+.next-events {
+  display: flex;
+  overflow-x: auto;
+}
+
+.next-events.grid {
+  flex-flow: wrap;
+}
+
+.card-event-container {
+  padding: 15px 0;
+  min-width: 300px;
+  width: 300px;
+  margin: 0 10px;
+}
+
+.grid > .card-event-container {
+  margin: 0 auto;
+}
+
 .card-header-image {
   background-image: url('../../assets/img/pexels-burst-374777.jpg');
   background-size: cover;
 }
+
 .mat-card-img {
-  min-width: calc(100% + 32px);;
+  min-width: calc(100% + 32px);
 }

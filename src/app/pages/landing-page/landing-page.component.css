@@ -31,17 +31,6 @@
   margin-bottom: 10px;
 }
 
-.next-events {
-  display: flex;
-  flex-flow: wrap;
-}
-
-.next-events div {
-  padding: 15px 0;
-  max-width: 350px;
-  margin: 0 auto;
-}
-
 .headerSecContainer {
   display: flex;
   flex-flow: wrap;

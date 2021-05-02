@@ -12,8 +12,6 @@ export interface Events {
   Description?: string;
   Running?: boolean;
   DateSet?: Date;
-
-  GroupName?: string;
 }
 
 export interface User {

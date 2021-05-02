@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -33,7 +32,7 @@ export class UserService {
       Email: 'riddorck@gmail.com',
       CodiceToken: 'CodiceToken'
     };
-    this.isLogged = true;
+    this.isLogged = false;
   }
 
   // Methods
