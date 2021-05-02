@@ -1,7 +1,13 @@
-<mat-form-field class="example-full-width" appearance="fill">
+<mat-form-field class="example-full-width" appearance="fill" *ngIf="!getHiddenCalendar()">
     <mat-label>Scegli un mese</mat-label>
     <input matInput [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker touchUi #picker startView="year" [startAt]="startDate"></mat-datepicker>
+    
 </mat-form-field>
+
+<mat-datepicker touchUi #picker startView="year" [startAt]="startDate"></mat-datepicker>
+<button mat-raised-button *ngIf="getHiddenCalendar()" (click)="picker.open()">
+    <mat-icon>event</mat-icon>
+</button>
 

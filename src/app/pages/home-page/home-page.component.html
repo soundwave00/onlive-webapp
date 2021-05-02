@@ -15,7 +15,7 @@
     <span>min 1H - max 1 week</span>
 
     <mat-grid-list
-      cols="4"
+      [cols]="getColumnsNr()"
       rowHeight="450px"
       class="next-events">
       <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>

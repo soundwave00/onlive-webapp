@@ -27,7 +27,15 @@
 
         </div>
 
-        <button mat-raised-button color="primary">Login</button>
+        <mat-grid-list cols="1" rowHeight="40px">
+          <mat-grid-tile>
+            <span>Hai dimenticato la password? <a mat-button target="_blank" routerLink="../contact-page">Reset password</a></span>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button color="primary">Login</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+         
       </mat-tab>
 
       <mat-tab label="Sign up">

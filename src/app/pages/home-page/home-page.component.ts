@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -15,6 +15,7 @@ export class HomePageComponent implements OnInit {
 
   public monthEventsColumns: string[] = ['day', 'month', 'groupName', 'button'];
   public monthEvents: monthEvents[] = [];
+  public sizeMode: string = 'xl';
 
   public startEventResponse: Response = {};
   public stopAllEventsResponse: Response = {};
@@ -33,6 +34,7 @@ export class HomePageComponent implements OnInit {
     private appService: AppService
   ) {
     this.appService.checkPermission('');
+    this.sizeMode = this.appService.getSizeModeResolution();
   }
 
   ngOnInit(): void {
@@ -46,6 +48,32 @@ export class HomePageComponent implements OnInit {
       { day: 11, month: 'Mag', groupName: 'Queen', button: 'Stop Live!', event: this.stopEvent },
       { day: 23, month: 'Mag', groupName: 'Taxi Ride Stories', button: 'Buy Ticket!' }
     ];
+  }
+
+  @HostListener('window:resize', ['$event'])
+  public onResize(event: any): void {
+    this.sizeMode = this.appService.getSizeModeResolution();
+  }
+
+  getColumnsNr(): number {
+    let columns: number = 4;
+
+    switch (this.sizeMode) {
+      case 'sm':
+        columns = 1;
+        break;
+      case 'md':
+        columns = 1;
+        break;
+      case 'lg':
+        columns = 4;
+        break;
+      case 'xl':
+        columns = 4;
+        break;
+    }
+    
+    return columns;
   }
 
   startEvent(): void {
