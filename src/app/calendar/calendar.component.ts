@@ -1,51 +1,66 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 import { AppService } from '../services/app.service';
+
+import { Moment } from 'moment';
+import * as _moment from 'moment';
+
+const moment = _moment;
+
+const MY_FORMATS: any = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: MY_FORMATS
+    },
+  ],
 })
 export class CalendarComponent implements OnInit {
 
-  startDate = new Date(2021, 0, 1)
-  public sizeMode: string = 'xl';
+  public isMobile: boolean;
+  date = new FormControl(moment());
 
   constructor(
     private appService: AppService
   ) {
-    this.sizeMode = this.appService.getSizeModeResolution();
+    this.isMobile = this.appService.getIsMobileResolution();
   }
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
-    this.sizeMode = this.appService.getSizeModeResolution();
+    this.isMobile = this.appService.getIsMobileResolution();
   }
 
-  getHiddenCalendar(): boolean {
-    let hide: boolean = true;
-
-    switch (this.sizeMode) {
-      case 'sm':
-        hide = true;
-        break;
-      case 'md':
-        hide = true;
-        break;
-      case 'lg':
-        hide = false;
-        break;
-      case 'xl':
-        hide = false;
-        break;
-    }
-    
-    return hide;
-  }
-
-  
   ngOnInit(): void {
+  }
+
+  chosenMonth(date: Moment, datepicker: MatDatepicker<Moment>) {
+    this.date.setValue(date);
+    datepicker.close();
   }
 
 }
