@@ -14,7 +14,6 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
 
   public isLogged: boolean;
-  public isMobile: boolean;
 
   constructor(
     private title: Title,
@@ -23,7 +22,6 @@ export class AppComponent implements OnInit {
   ){
     this.title.setTitle('OnStage');
 
-    this.isMobile = this.appService.getIsMobileResolution();
     this.isLogged = this.userService.getIsLogged();
   }
 
@@ -33,6 +31,5 @@ export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.appService.setMobileResolution(event.target.innerWidth);
-    this.isMobile = this.appService.getIsMobileResolution();
   }
 }

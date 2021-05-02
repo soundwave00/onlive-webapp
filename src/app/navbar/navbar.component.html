@@ -7,7 +7,7 @@
   </button>
 
   <div class="navigate-buttons"
-    *ngIf="!this.isLogged">
+    *ngIf="!isLogged">
     <button mat-button
       routerLink="event" >
       EVENTI
@@ -25,7 +25,7 @@
   <span class="toolbar-spacer"></span>
 
   <div class="login-buttons"
-    *ngIf="!this.isLogged">
+    *ngIf="!isLogged">
     <button mat-stroked-button routerLink="login">Log in</button>
     <button mat-raised-button color="accent">Sign up</button>
   </div>

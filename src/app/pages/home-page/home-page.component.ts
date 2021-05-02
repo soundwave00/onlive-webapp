@@ -72,7 +72,7 @@ export class HomePageComponent implements OnInit {
         columns = 4;
         break;
     }
-    
+
     return columns;
   }
 
@@ -86,7 +86,7 @@ export class HomePageComponent implements OnInit {
     this.http.post<any>(this.startEventUrl, request, this.httpOptions)
       .pipe(
         tap(_ => console.log('startEvent')),
-        catchError(this.handleError<any>('error startEvent', null))
+        catchError(this.handleError<any>('error startEvent', undefined))
       )
       .subscribe(response => {
         this.startEventResponse = response;
@@ -104,7 +104,7 @@ export class HomePageComponent implements OnInit {
     this.http.post<any>(this.stopEventUrl, request, this.httpOptions)
       .pipe(
         tap(_ => console.log('stopEvent')),
-        catchError(this.handleError<any>('error stopEvent', null))
+        catchError(this.handleError<any>('error stopEvent', undefined))
       )
       .subscribe(response => {
         this.stopEventResponse = response;
@@ -115,7 +115,7 @@ export class HomePageComponent implements OnInit {
     this.http.post<any>(this.stopAllEventsUrl, this.httpOptions)
       .pipe(
         tap(_ => console.log('stopAllEvents')),
-        catchError(this.handleError<any>('error stopAllEvents', null))
+        catchError(this.handleError<any>('error stopAllEvents', undefined))
       )
       .subscribe(response => {
         this.stopAllEventsResponse = response;

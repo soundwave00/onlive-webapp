@@ -56,7 +56,7 @@ export class UserService {
     this.http.post<any>(this.loginUrl, request, this.httpOptions)
       .pipe(
         tap(_ => console.log('login')),
-        catchError(this.handleError<any>('error login', null))
+        catchError(this.handleError<any>('error login', undefined))
       )
       .subscribe(response => {
         this.loginResponse = response;
@@ -75,7 +75,7 @@ export class UserService {
     this.http.post<any>(this.signUpUrl, request, this.httpOptions)
       .pipe(
         tap(_ => console.log('signUp')),
-        catchError(this.handleError<any>('error signUp', null))
+        catchError(this.handleError<any>('error signUp', undefined))
       )
       .subscribe(response => {
         this.signUpResponse = response;

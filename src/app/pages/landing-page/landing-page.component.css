@@ -1,10 +1,10 @@
-.hero{
+.hero {
   background-image: url('/assets/img/homeimg.jpg') !important;
   background-size: cover;
   background-position: center center;
   margin-bottom: 10px;
-  height: calc(100vh - 285px);
-  padding: 100px;
+  height: calc(100vh - 185px);
+  padding: 100px 0 0 100px;
 }
 
 .hero h1 {
@@ -17,8 +17,8 @@
 }
 
 .section {
-  margin: 30px;
-  padding: 20px;
+  margin: 20px;
+  padding: 15px;
   background-color: #535353;
 }
 
@@ -31,13 +31,20 @@
   margin-bottom: 10px;
 }
 
+.next-events {
+  display: flex;
+  flex-flow: wrap;
+}
+
 .next-events div {
-  padding: 10px 10px 10px 5px;
-  max-width: 380px;
+  padding: 15px 0;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
 .headerSecContainer {
   display: flex;
+  flex-flow: wrap;
 }
 
 .headerSecContainer span {
@@ -63,4 +70,9 @@ table {
 .mat-column-button {
   flex: 0 0 15%;
   flex-direction: row-reverse;
+}
+
+.mat-column-button button.isMobile {
+  font-size: 12px;
+  padding: 0 2px;
 }

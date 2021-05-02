@@ -32,5 +32,6 @@ export interface monthEvents {
   month?: string;
   groupName?: string;
   button?: string;
+  buttonIcon?: string;
   event?: any;
 }

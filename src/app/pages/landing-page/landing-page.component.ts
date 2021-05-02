@@ -15,7 +15,7 @@ export class LandingPageComponent implements OnInit {
 
   public monthEventsColumns: string[] = ['day', 'month', 'groupName', 'button'];
   public monthEvents: monthEvents[] = [];
-  public sizeMode: string = 'xl';
+  public isMobile: boolean;
 
   public startEventResponse: Response = {};
   public stopAllEventsResponse: Response = {};
@@ -34,66 +34,53 @@ export class LandingPageComponent implements OnInit {
     private appService: AppService
   ) {
     this.appService.checkPermission('home', true);
-    this.sizeMode = this.appService.getSizeModeResolution();
-  }
 
-  ngOnInit(): void {
+    this.isMobile = this.appService.getIsMobileResolution();
+
     this.startEventResponse.rMessage = 'Open Mouth Blues Orchestra';
     this.stopAllEventsResponse.rMessage = 'Thirty Seconds to Mars';
     this.stopEventResponse.rMessage = 'Queen';
 
     this.monthEvents = [
-      { day: 24, month: 'Apr', groupName: this.startEventResponse.rMessage, button: 'StartLive!', event: this.startEvent },
-      { day: 3, month: 'Mag', groupName: 'Thirty Seconds to Mars', button: 'Stop All Live!', event: this.stopAllEvents },
-      { day: 11, month: 'Mag', groupName: 'Queen', button: 'Stop Live!', event: this.stopEvent },
-      { day: 23, month: 'Mag', groupName: 'Taxi Ride Stories', button: 'Buy Ticket!' }
+      { day: 24, month: 'Apr', groupName: 'Open Mouth Blues Orchestra', button: 'StartLive!', buttonIcon: 'play_arrow', event: this.startEvent },
+      { day: 3, month: 'Mag', groupName: 'Thirty Seconds to Mars', button: 'Stop All Live!', buttonIcon: 'stop', event: this.stopAllEvents },
+      { day: 11, month: 'Mag', groupName: 'Queen', button: 'Stop Live!', buttonIcon: 'pause', event: this.stopEvent },
+      { day: 23, month: 'Mag', groupName: 'Taxi Ride Stories', button: 'Buy Ticket!', buttonIcon: 'bug_report' }
     ];
+  }
+
+  ngOnInit(): void {
   }
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
-    this.sizeMode = this.appService.getSizeModeResolution();
+    this.isMobile = this.appService.getIsMobileResolution();
   }
 
-  getColumnsNr(): number {
-    let columns: number = 4;
-
-    switch (this.sizeMode) {
-      case 'sm':
-        columns = 1;
-        break;
-      case 'md':
-        columns = 1;
-        break;
-      case 'lg':
-        columns = 3;
-        break;
-      case 'xl':
-        columns = 4;
-        break;
+  startFunction(functionName?: any): void {
+    if(functionName != undefined) {
+      functionName(this);
     }
-
-    return columns;
   }
 
-  startEvent(): void {
+  startEvent(ctx: LandingPageComponent): void {
     let request: Events = {
       Name:' Prova',
       Description: 'Descrizione di prova',
       DateSet: new Date()
     };
 
-    this.http.post<any>(this.startEventUrl, request, this.httpOptions)
+    ctx.http.post<any>(ctx.startEventUrl, request, ctx.httpOptions)
       .pipe(
         tap(_ => console.log('startEvent')),
-        catchError(this.handleError<any>('error startEvent', null))
+        catchError(ctx.handleError<any>('error startEvent', undefined))
       )
       .subscribe(response => {
-        this.startEventResponse = response;
+        ctx.startEventResponse = response;
       });
   }
 
-  stopEvent(): void {
+  stopEvent(ctx: LandingPageComponent): void {
     let strEventId: string = String(prompt("EventId"));
     let eventId: number = Number(strEventId);
 
@@ -101,24 +88,24 @@ export class LandingPageComponent implements OnInit {
       Id: eventId
     };
 
-    this.http.post<any>(this.stopEventUrl, request, this.httpOptions)
+    ctx.http.post<any>(ctx.stopEventUrl, request, ctx.httpOptions)
       .pipe(
         tap(_ => console.log('stopEvent')),
-        catchError(this.handleError<any>('error stopEvent', null))
+        catchError(ctx.handleError<any>('error stopEvent', undefined))
       )
       .subscribe(response => {
-        this.stopEventResponse = response;
+        ctx.stopEventResponse = response;
       });
   }
 
-  stopAllEvents(): void {
-    this.http.post<any>(this.stopAllEventsUrl, this.httpOptions)
+  stopAllEvents(ctx: LandingPageComponent): void {
+    ctx.http.post<any>(ctx.stopAllEventsUrl, ctx.httpOptions)
       .pipe(
         tap(_ => console.log('stopAllEvents')),
-        catchError(this.handleError<any>('error stopAllEvents', null))
+        catchError(ctx.handleError<any>('error stopAllEvents', undefined))
       )
       .subscribe(response => {
-        this.stopAllEventsResponse = response;
+        ctx.stopAllEventsResponse = response;
       });
   }
 

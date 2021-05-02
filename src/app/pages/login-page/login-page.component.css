@@ -6,24 +6,20 @@
   margin-top: 50px;
 }
 
-.loginContainerMobile {
+.loginContainer.isMobile {
   margin-top: 0;
 }
 
 mat-card {
   width: 500px;
-  text-align: right;
+  text-align: center;
   padding-top: 0px;
   padding-left: 0px;
   padding-right: 0px;
 }
 
-.matCardMobile {
+mat-card.isMobile {
   height: calc(100vh - 96px);
-  width: 100%;
-}
-
-mat-form-field {
   width: 100%;
 }
 
@@ -32,6 +28,25 @@ mat-form-field {
   width: 75%;
 }
 
-.tabContainer mat-form-field {
+.tabContainer > mat-form-field {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.buttons {
+  width: 75%;
+  margin: 5px auto 10px auto;
+}
+
+.buttons > button:first-child {
+  width: 100%;
   margin-bottom: 5px;
+}
+
+.buttons > span {
+  margin-right: 5px;
+}
+
+.buttons > .pwdButton {
+  padding: 0 5px;
 }

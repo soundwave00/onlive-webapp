@@ -10,15 +10,12 @@
     <h1 class="titleSec">Prossimi eventi</h1>
     <span>min 1H - max 1 week</span>
 
-    <mat-grid-list
-      [cols]="getColumnsNr()"
-      rowHeight="450px"
-      class="next-events">
-      <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>
-      <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>
-      <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>
-      <mat-grid-tile><div><app-next-events></app-next-events></div></mat-grid-tile>
-    </mat-grid-list>
+    <div class="next-events">
+      <div><app-next-events></app-next-events></div>
+      <div><app-next-events></app-next-events></div>
+      <div><app-next-events></app-next-events></div>
+      <div><app-next-events></app-next-events></div>
+    </div>
   </mat-card-content>
 </mat-card>
 
@@ -34,17 +31,17 @@
 
       <ng-container matColumnDef="day">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.day}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.day }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="month">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.month}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.month }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="groupName">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.groupName}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.groupName }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="button">
@@ -52,8 +49,16 @@
         <mat-cell *matCellDef="let element">
           <button mat-raised-button
             color="primary"
-            (click)="element.event()">
-            {{element.button}}
+            (click)="startFunction(element.event)"
+            [class.isMobile]="isMobile"
+            *ngIf="!(isMobile && element.buttonIcon != undefined)">
+            {{ element.button }}
+          </button>
+          <button mat-mini-fab
+            color="primary"
+            (click)="startFunction(element.event)"
+            *ngIf="isMobile && element.buttonIcon != undefined">
+            <mat-icon> {{ element.buttonIcon }} </mat-icon>
           </button>
         </mat-cell>
       </ng-container>

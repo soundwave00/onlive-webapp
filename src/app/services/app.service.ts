@@ -21,10 +21,10 @@ export class AppService {
   // Methods
 
   public checkPermission(route?: string, check?: boolean): void {
-    if(route == null)
+    if(route == undefined)
       route = 'login';
 
-    if(check == null)
+    if(check == undefined)
       check = false;
 
     if(this.userService.getIsLogged() == check)
