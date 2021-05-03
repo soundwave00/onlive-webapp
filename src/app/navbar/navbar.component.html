@@ -7,38 +7,12 @@
     <span class="titleApp">nStage</span>
   </button>
 
-  <div
-    *ngIf="!isMobile" >
-    <button mat-button
-      routerLink="event" >
-      EVENTI
-    </button>
-    <button mat-button
-      routerLink="faq" >
-      FAQ
-    </button>
-    <button mat-button
-      routerLink="contact" >
-      CONTATTACI
-    </button>
-  </div>
+  <app-menu
+    style="width: 100%;"
+    *ngIf="!isMobile"
+    [navbar]="true"></app-menu>
 
   <span class="flex-spacer"></span>
-
-  <div
-    *ngIf="!isLogged && !isMobile" >
-    <button mat-stroked-button
-      routerLink="login"
-      *ngIf="!isLogged">
-      Log in
-    </button>
-    <button mat-raised-button
-      color="accent"
-      routerLink="login"
-      *ngIf="!isLogged">
-      Sign up
-    </button>
-  </div>
 
   <button mat-icon-button
       aria-label="Menu"

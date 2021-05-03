@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { UserService } from '../services/user.service';
 
@@ -10,6 +10,8 @@ import { UserService } from '../services/user.service';
 export class MenuComponent implements OnInit {
 
   public isLogged: boolean;
+
+  @Input() navbar!: boolean;
 
   constructor(
     private userService: UserService

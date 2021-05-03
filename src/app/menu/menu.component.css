@@ -12,3 +12,13 @@ button {
   width: calc(100% - 10px);
   margin: 5px;
 }
+
+.menu.navbar {
+  flex-flow: row;
+  height: inherit;
+  width: 100%;
+}
+
+.navbar button {
+  width: auto;
+}

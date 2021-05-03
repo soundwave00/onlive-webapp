@@ -32,7 +32,7 @@ export class UserService {
       Email: 'riddorck@gmail.com',
       CodiceToken: 'CodiceToken'
     };
-    this.isLogged = false;
+    this.isLogged = true;
   }
 
   // Methods
