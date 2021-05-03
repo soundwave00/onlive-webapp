@@ -11,7 +11,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: 'contact-page', component: ContactPageComponent },
+  { path: 'contact', component: ContactPageComponent },
   { path: 'faq', component: FaqPageComponent },
   { path: 'event', component: EventPageComponent},
 

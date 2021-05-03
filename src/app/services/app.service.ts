@@ -9,9 +9,9 @@ import { UserService } from '../services/user.service';
 })
 export class AppService {
 
-  private menu?: MatSidenav;
-  private isMobile: boolean = false;
-  private sizeMode: string = 'xl';
+  private menu!: MatSidenav;
+  private isMobile!: boolean;
+  private sizeMode!: string;
 
   constructor(
     private router: Router,
@@ -69,7 +69,7 @@ export class AppService {
       this.menu.close();
   }
 
-  public setMenu(menu?: MatSidenav): void {
+  public setMenu(menu: MatSidenav): void {
     this.menu = menu;
   }
 }

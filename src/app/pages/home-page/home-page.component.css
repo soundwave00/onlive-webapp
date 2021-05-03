@@ -16,6 +16,11 @@
   font-weight: bold;
 }
 
+.hero.isMobile h1 {
+  font-size: 35px;
+  margin-bottom: 5px;
+}
+
 .section {
   margin: 20px;
   padding: 15px;

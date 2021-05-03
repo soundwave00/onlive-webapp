@@ -13,8 +13,8 @@ export class UserService {
   private user: User;
   private isLogged: boolean;
 
-  private loginResponse: Response = {};
-  private signUpResponse: Response = {};
+  private loginResponse!: Response;
+  private signUpResponse!: Response;
 
   private loginUrl = 'https://localhost:5001/api/UserController/login';
   private signUpUrl = 'https://localhost:5001/api/UserController/signUp';
