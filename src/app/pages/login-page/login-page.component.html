@@ -2,7 +2,8 @@
   [class.isMobile]="isMobile">
   <mat-card
     [class.isMobile]="isMobile">
-    <mat-tab-group mat-stretch-tabs>
+    <mat-tab-group mat-stretch-tabs
+      [selectedIndex]="mode == 'signup' ? 1 : 0">
 
       <mat-tab label="Log In">
         <div class="tabContainer">

@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 
 import { AppService } from '../../services/app.service';
 
@@ -20,13 +21,16 @@ export class LoginPageComponent implements OnInit {
 
   public toppingList: string[] = ['Rap', 'Rock', 'Jazz', 'Blues', 'R&B', 'Funk'];
   public isMobile: boolean;
+  public mode: string | null;
 
   constructor(
+    private route: ActivatedRoute,
     private appService: AppService
   ) {
     this.appService.checkPermission('home', true);
 
     this.isMobile = this.appService.getIsMobileResolution();
+    this.mode = this.route.snapshot.paramMap.get('mode');
   }
 
   ngOnInit(): void {
@@ -52,7 +56,6 @@ export class LoginPageComponent implements OnInit {
 
         case 'minLength':
         case 'maxLength':
-          console.log((field.value?.length || 0) + '/8');
           return (field.value?.length || 0) + '/8';
 
         default:
