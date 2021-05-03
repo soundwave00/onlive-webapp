@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
+import { AppService } from '../services/app.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,16 +10,30 @@ import { UserService } from '../services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  public isMobile: boolean;
   public isLogged: boolean;
-  public isMenuOpen: boolean = false;
 
   constructor(
+    private appService: AppService,
     private userService: UserService
   ){
+    this.isMobile = this.appService.getIsMobileResolution();
     this.isLogged = this.userService.getIsLogged();
   }
 
   ngOnInit(): void {
+  }
+
+  @HostListener('window:resize', ['$event'])
+  public onResize(event: any): void {
+    this.isMobile = this.appService.getIsMobileResolution();
+
+    if(!this.isMobile)
+      this.appService.closeMenu();
+  }
+
+  openMenu(): void {
+    this.appService.toggleMenu();
   }
 
 }

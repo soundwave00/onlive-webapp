@@ -1,42 +1,27 @@
 <div class="main">
-
   <app-navbar></app-navbar>
 
-  <mat-sidenav-container
-    class="sidenav-container">
-    <mat-sidenav
+  <mat-sidenav-container>
+
+    <mat-sidenav #tools
       mode="side"
+      class="tools"
       opened
-      class="sidenav"
       *ngIf="isLogged" >
-      <mat-grid-list cols="1" rowHeight="45px">
-        <mat-grid-tile>
-          <button mat-icon-button aria-label="Eventi vicini a te">
-            <mat-icon>place</mat-icon>
-          </button>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <button mat-icon-button aria-label="Eventi in programma">
-            <mat-icon>event_available</mat-icon>
-          </button>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <button mat-icon-button aria-label="Notifiche">
-            <mat-icon>mark_chat_unread</mat-icon>
-          </button>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <button mat-icon-button
-            color="warn"
-            aria-label="Artisti preferiti">
-            <mat-icon>favorite</mat-icon>
-          </button>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <app-tools></app-tools>
     </mat-sidenav>
+
+    <mat-sidenav #menu
+      mode="over"
+      class="menu"
+      position="end" >
+      <app-menu></app-menu>
+    </mat-sidenav>
+
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
+
   </mat-sidenav-container>
 
   <mat-toolbar class="footer" color="primary">

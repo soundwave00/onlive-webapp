@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Title } from '@angular/platform-browser';
 
 import { AppService } from './services/app.service';
@@ -11,9 +12,12 @@ import { UserService } from './services/user.service';
   providers: [Title]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   public isLogged: boolean;
+  public isMobile: boolean;
+
+  @ViewChild('menu') public menu!: MatSidenav;
 
   constructor(
     private title: Title,
@@ -22,14 +26,21 @@ export class AppComponent implements OnInit {
   ){
     this.title.setTitle('OnStage');
 
+    this.isMobile = this.appService.getIsMobileResolution();
     this.isLogged = this.userService.getIsLogged();
   }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+    this.appService.setMenu(this.menu);
+  }
+
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.appService.setMobileResolution(event.target.innerWidth);
+    this.isMobile = this.appService.getIsMobileResolution();
   }
+
 }

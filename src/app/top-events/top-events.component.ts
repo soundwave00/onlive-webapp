@@ -33,7 +33,6 @@ export class TopEventsComponent implements OnInit {
     private http: HttpClient,
     private appService: AppService
   ) {
-
     this.isMobile = this.appService.getIsMobileResolution();
 
     this.startEventResponse.rMessage = 'Open Mouth Blues Orchestra';

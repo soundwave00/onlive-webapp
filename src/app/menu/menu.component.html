@@ -1,0 +1,33 @@
+<div class="menu">
+  <button mat-button
+    routerLink="event" >
+    EVENTI
+    </button>
+
+  <button mat-button
+    routerLink="event" >
+    EVENTI
+  </button>
+  <button mat-button
+    routerLink="faq" >
+    FAQ
+  </button>
+  <button mat-button
+    routerLink="contact-page" >
+    CONTATTACI
+  </button>
+
+  <span class="flex-spacer"></span>
+
+  <button mat-stroked-button
+    routerLink="login"
+    *ngIf="!isLogged">
+    Log in
+  </button>
+  <button mat-raised-button
+    color="accent"
+    routerLink="login"
+    *ngIf="!isLogged">
+    Sign up
+  </button>
+</div>

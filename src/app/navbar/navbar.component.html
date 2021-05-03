@@ -1,4 +1,5 @@
 <mat-toolbar class="header" color="primary">
+
   <button mat-button
       aria-label="Home"
       routerLink="" >
@@ -6,8 +7,8 @@
     <span class="titleApp">nStage</span>
   </button>
 
-  <div class="navigate-buttons"
-    *ngIf="!isLogged">
+  <div
+    *ngIf="!isMobile" >
     <button mat-button
       routerLink="event" >
       EVENTI
@@ -22,12 +23,28 @@
     </button>
   </div>
 
-  <span class="toolbar-spacer"></span>
+  <span class="flex-spacer"></span>
 
-  <div class="login-buttons"
-    *ngIf="!isLogged">
-    <button mat-stroked-button routerLink="login">Log in</button>
-    <button mat-raised-button color="accent">Sign up</button>
+  <div
+    *ngIf="!isLogged && !isMobile" >
+    <button mat-stroked-button
+      routerLink="login"
+      *ngIf="!isLogged">
+      Log in
+    </button>
+    <button mat-raised-button
+      color="accent"
+      routerLink="login"
+      *ngIf="!isLogged">
+      Sign up
+    </button>
   </div>
+
+  <button mat-icon-button
+      aria-label="Menu"
+      *ngIf="isMobile"
+      (click)="openMenu()" >
+    <mat-icon>menu</mat-icon>
+  </button>
 
 </mat-toolbar>

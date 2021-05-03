@@ -1,0 +1,13 @@
+.tools {
+  display: flex;
+  flex-flow: column;
+  height: calc(100vh - 96px);
+}
+
+.flex-spacer {
+  flex: 1;
+}
+
+button {
+  margin: 0 auto;
+}

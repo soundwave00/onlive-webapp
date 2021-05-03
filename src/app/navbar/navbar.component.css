@@ -1,4 +1,9 @@
-.toolbar-spacer {
+.buttons-container {
+  display: flex;
+  width: 100%;
+}
+
+.flex-spacer {
   flex: 1;
 }
 
@@ -6,10 +11,6 @@
   font-size: 24px;
 }
 
-.login-buttons button {
-  margin-left: 8px;
-}
-
-.navigate-buttons {
+button {
   margin-left: 8px;
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
+import {MatSidenav} from '@angular/material/sidenav';
 
 import { UserService } from '../services/user.service';
 
@@ -8,8 +9,9 @@ import { UserService } from '../services/user.service';
 })
 export class AppService {
 
-  public isMobile: boolean = false;
-  public sizeMode: string = 'xl';
+  private menu?: MatSidenav;
+  private isMobile: boolean = false;
+  private sizeMode: string = 'xl';
 
   constructor(
     private router: Router,
@@ -55,5 +57,19 @@ export class AppService {
     } else {
       this.isMobile = false;
     }
+  }
+
+  public toggleMenu(): void {
+    if(this.menu != undefined)
+      this.menu.toggle();
+  }
+
+  public closeMenu(): void {
+    if(this.menu != undefined)
+      this.menu.close();
+  }
+
+  public setMenu(menu?: MatSidenav): void {
+    this.menu = menu;
   }
 }

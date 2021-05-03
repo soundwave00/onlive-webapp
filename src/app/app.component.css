@@ -5,16 +5,16 @@
   min-width: 320px;
 }
 
-.sidenav-container {
+mat-sidenav-container {
   flex: 1;
 }
 
-.sidenav-container mat-sidenav {
+.tools {
   width: 45px;
 }
 
-.sidenav{
-  width: 40px;
+.menu {
+  width: 250px;
 }
 
 .footer {

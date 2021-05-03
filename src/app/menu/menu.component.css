@@ -1,0 +1,14 @@
+.menu {
+  display: flex;
+  flex-flow: column;
+  height: calc(100vh - 96px);
+}
+
+.flex-spacer {
+  flex: 1;
+}
+
+button {
+  width: calc(100% - 10px);
+  margin: 5px;
+}
