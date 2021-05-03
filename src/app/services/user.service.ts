@@ -17,7 +17,7 @@ export class UserService {
   private signUpResponse!: Response;
 
   private loginUrl = 'https://localhost:5001/api/UserController/login';
-  private signUpUrl = 'https://localhost:5001/api/UserController/signUp';
+  private signUpUrl = 'https://localhost:5001/api/UserController/signup';
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -32,7 +32,7 @@ export class UserService {
       Email: 'riddorck@gmail.com',
       CodiceToken: 'CodiceToken'
     };
-    this.isLogged = true;
+    this.isLogged = false;
   }
 
   // Methods
@@ -45,12 +45,8 @@ export class UserService {
     return this.user;
   }
 
-  public login(): void {
-    let request: User = {
-      Username: 'riddorck',
-      Email: 'riddorck@gmail.com',
-      Password: 'password'
-    };
+  public login(user: User): void {
+    let request: User = user;
 
     this.http.post<any>(this.loginUrl, request, this.httpOptions)
       .pipe(
@@ -62,13 +58,9 @@ export class UserService {
       });
   }
 
-  public signUp(): void {
-    let request: User = {
-      Username: 'riddorck',
-      Name: 'Salvatore',
-      Surname: 'Anchora',
-      Email: 'riddorck@gmail.com',
-      Password: 'password'
+  public signUp(user: User): void {
+    let request = {
+      user: user
     };
 
     this.http.post<any>(this.signUpUrl, request, this.httpOptions)

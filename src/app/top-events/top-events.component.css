@@ -35,6 +35,7 @@ table {
 }
 
 .mat-column-button {
+  overflow: inherit;
   flex: 0 0 15%;
   flex-direction: row-reverse;
 }

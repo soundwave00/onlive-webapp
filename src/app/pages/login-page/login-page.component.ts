@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 
 import { AppService } from '../../services/app.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from '../../entities'
 
 @Component({
   selector: 'app-login-page',
@@ -25,7 +27,8 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private appService: AppService
+    private appService: AppService,
+    private userService: UserService
   ) {
     this.appService.checkPermission('home', true);
 
@@ -39,6 +42,18 @@ export class LoginPageComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.isMobile = this.appService.getIsMobileResolution();
+  }
+
+  public signUp() {
+    let user: User = {
+      Username: 'riddorck',
+      Name: 'Salvatore',
+      Surname: 'Anchora',
+      Email: 'riddorck@gmail.com',
+      Password: 'password'
+    };
+
+    this.userService.signUp(user);
   }
 
   public getErrorMessage(field: FormControl, errorType?: string, required?: boolean) {
