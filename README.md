@@ -4,7 +4,7 @@ Tesi, creazione di una WebApp per la fruizione online di concerti a distanza.
 
 ---
 
-Jamulus Server
+Angular
 --------------
 ##### Dipendenze
 - npm install
