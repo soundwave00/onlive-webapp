@@ -1,0 +1,45 @@
+.headerContainer {
+  display: flex;
+  flex-flow: wrap;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.titleContainer {
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-left: 1px;
+}
+
+.flex-spacer {
+  flex: 1;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-day {
+  flex: 0 0 15%;
+}
+
+.mat-column-month {
+  flex: 0 0 15%;
+}
+
+.mat-column-button {
+  flex: 0 0 15%;
+  flex-direction: row-reverse;
+}
+
+.mat-column-button button.isMobile {
+  font-size: 12px;
+  padding: 0 2px;
+}

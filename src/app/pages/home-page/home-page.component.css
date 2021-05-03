@@ -17,50 +17,7 @@
 }
 
 .section {
-  margin: 30px;
-  padding: 20px;
+  margin: 20px;
+  padding: 15px;
   background-color: #535353;
-}
-
-.section .titleSec {
-  font-size: 30px;
-}
-
-.section span {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.next-events div {
-  padding: 10px 10px 10px 5px;
-  max-width: 380px;
-}
-
-.headerSecContainer {
-  display: flex;
-}
-
-.headerSecContainer span {
-  margin-top: 5px;
-}
-
-.flex-spacer {
-  flex: 1;
-}
-
-table {
-  width: 100%;
-}
-
-.mat-column-day {
-  flex: 0 0 15%;
-}
-
-.mat-column-month {
-  flex: 0 0 15%;
-}
-
-.mat-column-button {
-  flex: 0 0 15%;
-  flex-direction: row-reverse;
 }

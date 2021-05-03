@@ -16,7 +16,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NextEventsComponent } from './next-events/next-events.component'
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { LandingPageComponent } from './pages/landing-page/landing-page.component'
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { TopEventsComponent } from './top-events/top-events.component'
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     NextEventsComponent,
     LoginPageComponent,
     LandingPageComponent,
+    TopEventsComponent,
   ],
   imports: [
     BrowserModule,
