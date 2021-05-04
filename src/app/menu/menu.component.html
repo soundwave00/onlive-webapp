@@ -1,28 +1,28 @@
 <div class="menu"
   [class.navbar]="navbar">
   <button mat-button
-    routerLink="event" >
+    routerLink="/event" >
     EVENTI
   </button>
   <button mat-button
-    routerLink="faq" >
+    routerLink="/faq" >
     FAQ
   </button>
   <button mat-button
-    routerLink="contact" >
+    routerLink="/contact" >
     CONTATTACI
   </button>
 
   <span class="flex-spacer"></span>
 
   <button mat-stroked-button
-    routerLink="login"
+    routerLink="/login"
     *ngIf="!isLogged">
     Log in
   </button>
   <button mat-raised-button
     color="accent"
-    routerLink="login/signup"
+    routerLink="/signup"
     *ngIf="!isLogged">
     Sign up
   </button>

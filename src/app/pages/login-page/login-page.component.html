@@ -3,14 +3,15 @@
   <mat-card
     [class.isMobile]="isMobile">
     <mat-tab-group mat-stretch-tabs
-      [selectedIndex]="mode == 'signup' ? 1 : 0">
+      [selectedIndex]="getType()"
+      (selectedIndexChange)="changeTab($event)">
 
-      <mat-tab label="Log In">
+      <mat-tab label="Log In" *ngIf="getType() == 0 || getType() == 1">
         <form [formGroup]="loginForm" >
           <div class="tabContainer">
 
             <mat-form-field appearance="fill">
-              <mat-label>Enter username</mat-label>
+              <mat-label>Username</mat-label>
               <input matInput
                 [formControl]="usernameLogin"
                 required>
@@ -37,13 +38,17 @@
               Login
             </button>
             <span>Hai dimenticato la password?</span>
-            <button class="pwdButton" mat-button>Clicca qui.</button>
+            <button mat-button
+              routerLink="/recovery"
+              class="pwdButton">
+              Clicca qui.
+            </button>
 
           </div>
         </form>
       </mat-tab>
 
-      <mat-tab label="Sign up">
+      <mat-tab label="Sign up" *ngIf="getType() == 0 || getType() == 1">
         <form [formGroup]="signUpForm" >
           <div class="tabContainer">
 
@@ -90,6 +95,16 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
+              <mat-label>Conferma password</mat-label>
+              <input matInput
+                type="password"
+                [formControl]="password"
+                required>
+              <mat-hint> {{ getErrorMessage(password, 'minLength', false) }} </mat-hint>
+              <mat-error> {{ getErrorMessage(password, 'minLength') }} </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
               <mat-label>Generi preferiti</mat-label>
               <mat-select multiple>
                 <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
@@ -103,6 +118,68 @@
               color="primary"
               (click)="signUp()">
               Sign up
+            </button>
+
+          </div>
+        </form>
+      </mat-tab>
+
+      <mat-tab label="Recupero password" *ngIf="getType() == 2">
+        <form [formGroup]="loginForm" >
+          <div class="tabContainer">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Username</mat-label>
+              <input matInput
+                [formControl]="usernameLogin"
+                required>
+              <mat-error> {{ getErrorMessage(usernameLogin) }} </mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <div class="buttons">
+
+            <button mat-raised-button
+              color="primary">
+              Recupera
+            </button>
+
+          </div>
+        </form>
+      </mat-tab>
+
+      <mat-tab label="Recupero password" *ngIf="getType() == 3">
+        <form [formGroup]="loginForm" >
+          <div class="tabContainer">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Password vecchia</mat-label>
+              <input matInput
+                type="password"
+                [formControl]="password"
+                required>
+              <mat-hint> {{ getErrorMessage(password, 'minLength', false) }} </mat-hint>
+              <mat-error> {{ getErrorMessage(password, 'minLength') }} </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Password nuova</mat-label>
+              <input matInput
+                type="password"
+                [formControl]="password"
+                required>
+              <mat-hint> {{ getErrorMessage(password, 'minLength', false) }} </mat-hint>
+              <mat-error> {{ getErrorMessage(password, 'minLength') }} </mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <div class="buttons">
+
+            <button mat-raised-button
+              color="primary">
+              Cambia password
             </button>
 
           </div>

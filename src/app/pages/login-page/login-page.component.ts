@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 import { AppService } from '../../services/app.service';
@@ -37,9 +37,12 @@ export class LoginPageComponent implements OnInit {
 
   public toppingList: string[] = ['Rap', 'Rock', 'Jazz', 'Blues', 'R&B', 'Funk'];
   public isMobile: boolean;
-  public mode: string | null;
+  public mode: string;
+  public token: string | null;
+  public isChecked: boolean = true;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private appService: AppService,
     private userService: UserService,
@@ -48,7 +51,8 @@ export class LoginPageComponent implements OnInit {
     this.appService.checkPermission('home', true);
 
     this.isMobile = this.appService.getIsMobileResolution();
-    this.mode = this.route.snapshot.paramMap.get('mode');
+    this.token = this.route.snapshot.paramMap.get('token');
+    this.mode = this.route.snapshot.url[0].path;
   }
 
   ngOnInit(): void {
@@ -60,7 +64,7 @@ export class LoginPageComponent implements OnInit {
     this.isMobile = this.appService.getIsMobileResolution();
   }
 
-  public signUp() {
+  public signUp(): void {
     if(this.signUpForm.valid){
       let user: User = {
         Username: this.username.value,
@@ -74,7 +78,7 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
-  public login() {
+  public login(): void {
     if(this.loginForm.valid){
       let user: User = {
         Username: this.usernameLogin.value,
@@ -82,6 +86,32 @@ export class LoginPageComponent implements OnInit {
       };
 
       this.userService.login(user);
+    }
+  }
+
+  public changeTab(index: number): void {
+    switch(index){
+      case 1:
+        this.router.navigateByUrl('signup');
+        break;
+      case 0:
+        this.router.navigateByUrl('login');
+        break;
+    }
+  }
+
+  public getType(): number {
+    if(this.token != null)
+      return 3;
+
+    switch(this.mode){
+      case 'recovery':
+        return 2;
+      case 'signup':
+        return 1;
+      case 'login':
+      default:
+        return 0;
     }
   }
 
