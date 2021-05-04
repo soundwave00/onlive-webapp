@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -23,7 +24,10 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private router: Router,
+    private http: HttpClient
+  ) {
     //if logged
     this.user = {
       Username: 'riddorck',
@@ -46,7 +50,9 @@ export class UserService {
   }
 
   public login(user: User): void {
-    let request: User = user;
+    let request = {
+      user: user
+    };
 
     this.http.post<any>(this.loginUrl, request, this.httpOptions)
       .pipe(
@@ -55,6 +61,23 @@ export class UserService {
       )
       .subscribe(response => {
         this.loginResponse = response;
+
+        if(this.loginResponse.rCode == 0){
+          this.isLogged = true;
+
+          this.user = {
+            Username: this.loginResponse.body.user.Username,
+            Name: this.loginResponse.body.user.Name,
+            Surname: this.loginResponse.body.user.Surname,
+            Email: this.loginResponse.body.user.Email,
+            CodiceToken: this.loginResponse.body.session.CodiceToken,
+            CodiceTokenExpiration: this.loginResponse.body.session.DateExp
+          };
+
+          //SET COOKIE
+
+          window.location.reload();
+        }
       });
   }
 
@@ -70,8 +93,48 @@ export class UserService {
       )
       .subscribe(response => {
         this.signUpResponse = response;
+
+        if(this.signUpResponse.rCode == 0){
+          this.router.navigateByUrl('login');
+        }
       });
   }
+
+  /*
+  private setCookie(cname, cvalue, exdays): void {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function checkCookie() {
+    var user = getCookie("username");
+    if (user != "") {
+      alert("Welcome again " + user);
+    } else {
+      user = prompt("Please enter your name:", "");
+      if (user != "" && user != null) {
+        setCookie("username", user, 365);
+      }
+    }
+  }
+  */
 
   private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {

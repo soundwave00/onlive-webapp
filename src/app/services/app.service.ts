@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Router} from '@angular/router';
-import {MatSidenav} from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 
 import { UserService } from '../services/user.service';
 

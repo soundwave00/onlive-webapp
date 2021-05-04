@@ -6,101 +6,107 @@
       [selectedIndex]="mode == 'signup' ? 1 : 0">
 
       <mat-tab label="Log In">
-        <div class="tabContainer">
+        <form [formGroup]="loginForm" >
+          <div class="tabContainer">
 
-          <mat-form-field appearance="fill">
-            <mat-label>Enter email or username</mat-label>
-            <input matInput
-              [formControl]="emailLogin"
-              required>
-            <mat-error> {{ getErrorMessage(emailLogin,'email') }} </mat-error>
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Enter username</mat-label>
+              <input matInput
+                [formControl]="usernameLogin"
+                required>
+              <mat-error> {{ getErrorMessage(usernameLogin) }} </mat-error>
+            </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput
-              [formControl]="passwordLogin"
-              type="password"
-              required>
-            <mat-hint> {{ getErrorMessage(passwordLogin,'minLength',false) }} </mat-hint>
-            <mat-error> {{ getErrorMessage(passwordLogin,'minLength') }} </mat-error>
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput
+                [formControl]="passwordLogin"
+                type="password"
+                required>
+              <mat-hint> {{ getErrorMessage(passwordLogin, 'minLength', false) }} </mat-hint>
+              <mat-error> {{ getErrorMessage(passwordLogin, 'minLength') }} </mat-error>
+            </mat-form-field>
 
-        </div>
+          </div>
 
-        <div class="buttons">
+          <div class="buttons">
 
-          <button mat-raised-button color="primary">Login</button>
-          <span>Hai dimenticato la password?</span>
-          <button class="pwdButton" mat-button>Clicca qui.</button>
+            <button mat-raised-button
+              color="primary"
+              (click)="login()">
+              Login
+            </button>
+            <span>Hai dimenticato la password?</span>
+            <button class="pwdButton" mat-button>Clicca qui.</button>
 
-        </div>
+          </div>
+        </form>
       </mat-tab>
 
       <mat-tab label="Sign up">
-        <div class="tabContainer">
+        <form [formGroup]="signUpForm" >
+          <div class="tabContainer">
 
-          <mat-form-field appearance="fill">
-            <mat-label>Nome</mat-label>
-            <input matInput
-              [formControl]="nome"
-              required>
-            <mat-error> {{ getErrorMessage(nome) }} </mat-error>
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Nome</mat-label>
+              <input matInput
+                [formControl]="nome"
+                required>
+              <mat-error> {{ getErrorMessage(nome) }} </mat-error>
+            </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Cognome</mat-label>
-            <input matInput
-              [formControl]="cognome"
-              required>
-            <mat-error> {{ getErrorMessage(cognome) }} </mat-error>
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Cognome</mat-label>
+              <input matInput
+                [formControl]="cognome"
+                required>
+              <mat-error> {{ getErrorMessage(cognome) }} </mat-error>
+            </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Username</mat-label>
-            <input matInput
-              [formControl]="username"
-              required>
-            <mat-hint> {{ getErrorMessage(username,'minLength',false) }} </mat-hint>
-            <mat-error> {{ getErrorMessage(username,'minLength') }} </mat-error>
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Username</mat-label>
+              <input matInput
+                [formControl]="username"
+                required>
+              <mat-error> {{ getErrorMessage(username) }} </mat-error>
+            </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput
-              [formControl]="email"
-              required>
-            <mat-error> {{ getErrorMessage(email,'email') }} </mat-error>
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput
+                [formControl]="email"
+                required>
+              <mat-error> {{ getErrorMessage(email, 'email') }} </mat-error>
+            </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput
-              type="password"
-              [formControl]="password"
-              required>
-            <mat-hint> {{ getErrorMessage(password,'minLength',false) }} </mat-hint>
-            <mat-error> {{ getErrorMessage(password,'minLength') }} </mat-error>
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput
+                type="password"
+                [formControl]="password"
+                required>
+              <mat-hint> {{ getErrorMessage(password, 'minLength', false) }} </mat-hint>
+              <mat-error> {{ getErrorMessage(password, 'minLength') }} </mat-error>
+            </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Generi preferiti</mat-label>
-            <mat-select multiple>
-              <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Generi preferiti</mat-label>
+              <mat-select multiple>
+                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-        </div>
-        <div class="buttons">
+          </div>
+          <div class="buttons">
 
-          <button mat-raised-button 
-            color="primary" 
-            (click)="signUp()">
-            Sign up
-          </button>
+            <button mat-raised-button
+              color="primary"
+              (click)="signUp()">
+              Sign up
+            </button>
 
-        </div>
-
+          </div>
+        </form>
       </mat-tab>
 
     </mat-tab-group>
