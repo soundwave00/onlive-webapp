@@ -14,7 +14,7 @@ import { UserService } from './services/user.service';
 
 export class AppComponent implements OnInit, AfterViewInit {
 
-  public isLogged: boolean;
+  public isLogged!: boolean;
   public isMobile: boolean;
 
   @ViewChild('menu') public menu!: MatSidenav;
@@ -27,10 +27,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.title.setTitle('OnStage');
 
     this.isMobile = this.appService.getIsMobileResolution();
-    this.isLogged = this.userService.getIsLogged();
   }
 
   ngOnInit(): void {
+    this.isLogged = this.userService.getIsLogged();
   }
 
   ngAfterViewInit(): void {

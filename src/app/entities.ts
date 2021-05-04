@@ -1,11 +1,5 @@
 /* Db Interfaces */
 
-export interface Response {
-  rMessage?: string;
-  rCode?: number;
-  body?: any;
-}
-
 export interface Events {
   Id?: number;
   Name?: string;

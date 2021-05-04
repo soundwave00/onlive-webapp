@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from '../material/material.module';
 import { AppRoutingModule } from './app-routing.module';
+
+import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -46,7 +48,19 @@ import { ToolsComponent } from './tools/tools.component'
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: onAppInit,
+      deps: [UserService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function onAppInit(userService: UserService): () => Promise<any> {
+  return userService.initialize;
+}

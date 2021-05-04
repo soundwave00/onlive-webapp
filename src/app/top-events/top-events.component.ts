@@ -4,7 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 import { AppService } from '../services/app.service';
-import { Response, Events, monthEvents } from '../entities'
+import { Events, monthEvents } from '../entities'
 
 @Component({
   selector: 'app-top-events',
@@ -17,9 +17,9 @@ export class TopEventsComponent implements OnInit {
   public monthEvents: monthEvents[] = [];
   public isMobile: boolean;
 
-  public startEventResponse: Response = {};
-  public stopAllEventsResponse: Response = {};
-  public stopEventResponse: Response = {};
+  public startEventResponse: any = {};
+  public stopAllEventsResponse: any = {};
+  public stopEventResponse: any = {};
 
   private startEventUrl: string = 'https://localhost:5001/api/HomeController/startEvent';
   private stopAllEventsUrl: string = 'https://localhost:5001/api/HomeController/stopAllEvents';
