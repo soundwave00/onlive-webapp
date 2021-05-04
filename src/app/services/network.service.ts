@@ -21,7 +21,9 @@ export class NetworkService {
     private http: HttpClient
   ) { }
 
-  public callService(url: string, req?: any): Observable<any> {
+  public callService(service: string, method: string, req?: any): Observable<any> {
+    let url: string = 'https://localhost:5001/api/' + service + '/' + method;
+
     req = req == null ? {} : req;
 
     let user: User = { }

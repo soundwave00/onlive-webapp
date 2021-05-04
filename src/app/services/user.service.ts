@@ -25,7 +25,7 @@ export class UserService {
 
   public initialize = (): Promise<void> => {
     return new Promise( (resolve, reject) =>  {
-      this.networkService.callService(this.getUserUrl)
+      this.networkService.callService('UserController', 'getUser')
         .subscribe(response => {
 
           if(response.rCode < 0) {
@@ -56,7 +56,7 @@ export class UserService {
       user: user
     };
 
-    this.networkService.callService(this.loginUrl, request)
+    this.networkService.callService('UserController', 'login', request)
     .subscribe(response => {
       response.session.dateExp = new Date(response.session.dateExp);
 
@@ -76,7 +76,7 @@ export class UserService {
       user: user
     };
 
-    this.networkService.callService(this.signUpUrl, request)
+    this.networkService.callService('UserController', 'signup', request)
       .subscribe(response => {
         if(response.rCode == 0){
           this.router.navigateByUrl('login');
