@@ -27,13 +27,13 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.isMobile = this.appService.getIsMobileResolution();
-
-    if(!this.isMobile)
-      this.appService.closeMenu();
   }
 
-  openMenu(): void {
-    this.appService.toggleMenu();
+  openSidebar(): void {
+    if(this.isLogged)
+      this.appService.toggleTools();
+    else
+      this.appService.toggleMenu();
   }
 
 }

@@ -25,6 +25,8 @@ export class UserService {
 
   public initialize = (): Promise<void> => {
     return new Promise( (resolve, reject) =>  {
+
+      /*
       this.networkService.callService('UserController', 'getUser')
         .subscribe(response => {
 
@@ -37,6 +39,11 @@ export class UserService {
 
           resolve();
         });
+      */
+
+      this.isLogged = true;
+      resolve();
+
     });
   }
 

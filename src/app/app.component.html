@@ -1,14 +1,15 @@
-<div class="main">
+<div
+  class="main"
+  [class.isMobile]="isMobile" >
   <app-navbar></app-navbar>
 
   <mat-sidenav-container>
 
     <mat-sidenav #tools
       mode="side"
-      class="tools"
-      opened
-      *ngIf="isLogged" >
-      <app-tools></app-tools>
+      class="tools" >
+      <app-tools
+        *ngIf="isLogged"></app-tools>
     </mat-sidenav>
 
     <mat-sidenav #menu
@@ -16,6 +17,7 @@
       class="menu"
       position="end" >
       <app-menu
+        *ngIf="isMobile && !isLogged"
         [navbar]="false"></app-menu>
     </mat-sidenav>
 
@@ -25,7 +27,10 @@
 
   </mat-sidenav-container>
 
-  <mat-toolbar class="footer" color="primary">
+  <mat-toolbar
+    class="footer"
+    color="primary"
+    *ngIf="!isMobile" >
     <span>OnStage by <a href="https://github.com/soundwave00">Soundwave</a> & <a href="https://github.com/Riddorck">Riddorck</a></span>
   </mat-toolbar>
 

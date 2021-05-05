@@ -9,15 +9,15 @@
 
   <app-menu
     style="width: 100%;"
-    *ngIf="!isMobile"
-    [navbar]="true"></app-menu>
+    [navbar]="true"
+    *ngIf="!isMobile && !isLogged"></app-menu>
 
   <span class="flex-spacer"></span>
 
   <button mat-icon-button
       aria-label="Menu"
       *ngIf="isMobile"
-      (click)="openMenu()" >
+      (click)="openSidebar()" >
     <mat-icon>menu</mat-icon>
   </button>
 

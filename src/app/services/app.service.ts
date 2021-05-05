@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
 export class AppService {
 
   private menu!: MatSidenav;
+  private tools!: MatSidenav;
   private isMobile!: boolean;
   private sizeMode!: string;
 
@@ -59,17 +60,41 @@ export class AppService {
     }
   }
 
+  public setMenu(menu: MatSidenav): void {
+    this.menu = menu;
+  }
+
   public toggleMenu(): void {
     if(this.menu != undefined)
       this.menu.toggle();
   }
 
+  public openMenu(): void {
+    if(this.menu != undefined && !this.menu.opened)
+      this.menu.open();
+  }
+
   public closeMenu(): void {
-    if(this.menu != undefined)
+    if(this.menu != undefined && this.menu.opened)
       this.menu.close();
   }
 
-  public setMenu(menu: MatSidenav): void {
-    this.menu = menu;
+  public setTools(tools: MatSidenav): void {
+    this.tools = tools;
+  }
+
+  public toggleTools(): void {
+    if(this.tools != undefined)
+      this.tools.toggle();
+  }
+
+  public openTools(): void {
+    if(this.tools != undefined && !this.tools.opened)
+      this.tools.open();
+  }
+
+  public closeTools(): void {
+    if(this.tools != undefined && this.tools.opened)
+      this.tools.close();
   }
 }

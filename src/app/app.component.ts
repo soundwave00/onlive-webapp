@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public isMobile: boolean;
 
   @ViewChild('menu') public menu!: MatSidenav;
+  @ViewChild('tools') public tools!: MatSidenav;
 
   constructor(
     private title: Title,
@@ -35,12 +36,29 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.appService.setMenu(this.menu);
+    this.appService.setTools(this.tools);
+
+    setTimeout(() => {
+      if(this.isMobile) {
+        this.appService.closeTools();
+        this.appService.closeMenu();
+      } else {
+        if(this.isLogged) this.appService.openTools();
+      }
+    }, 0);
   }
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.appService.setMobileResolution(event.target.innerWidth);
     this.isMobile = this.appService.getIsMobileResolution();
+
+    if(this.isMobile) {
+      this.appService.closeTools();
+      this.appService.closeMenu();
+    } else {
+      if(this.isLogged) this.appService.openTools();
+    }
   }
 
 }

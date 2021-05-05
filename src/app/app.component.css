@@ -5,6 +5,10 @@
   min-width: 320px;
 }
 
+.main.isMobile {
+  flex-flow: column-reverse;
+}
+
 mat-sidenav-container {
   flex: 1;
 }
