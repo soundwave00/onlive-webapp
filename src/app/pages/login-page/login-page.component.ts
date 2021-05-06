@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import { AppService } from '../../services/app.service';
 import { UserService } from 'src/app/services/user.service';
@@ -42,7 +43,8 @@ export class LoginPageComponent implements OnInit {
   public isChecked: boolean = true;
 
   constructor(
-    private router: Router,
+
+    private location: Location,
     private route: ActivatedRoute,
     private appService: AppService,
     private userService: UserService,
@@ -92,10 +94,10 @@ export class LoginPageComponent implements OnInit {
   public changeTab(index: number): void {
     switch(index){
       case 1:
-        this.router.navigateByUrl('signup');
+        this.location.go('/signup');
         break;
       case 0:
-        this.router.navigateByUrl('login');
+        this.location.go('/login');
         break;
     }
   }

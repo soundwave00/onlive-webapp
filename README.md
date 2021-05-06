@@ -14,3 +14,4 @@ Angular
 - ng serve
   - --open
   - --liveReload=false
+  - --host 0.0.0.0
