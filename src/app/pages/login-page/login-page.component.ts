@@ -117,28 +117,83 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
-  public getErrorMessage(field: FormControl, errorType?: string, required?: boolean) {
-    if(required == undefined)
-      required = true;
+  public getHintMessage(field: FormControl, type: string): string {
+    // console.log(type);
 
-    if (field.hasError('required') && required) {
-      return 'Inserisci un valore';
-    }
+    let message: string = '';
 
-    if (errorType != undefined) {
-      switch(errorType){
-        case 'email':
-          return field.hasError('email') ? 'Email non valida' : '';
+    if(type == 'minLength' && field.value?.length < 8)
+      message = (field.value?.length || 0) + '/8';
 
-        case 'minLength':
-          return (field.value?.length || 0) + '/8';
+    // console.log(message);
 
-        default:
-          return '';
-      }
-    }
-
-    return '';
+    return message;
   }
+
+  /*
+  public getErrorMessage(field: FormControl, type?: string): string {
+    // console.log(type);
+
+    let message: string = '';
+
+    if (type == undefined)
+      type = [];
+
+    if (required == undefined && !type.includes("required"))
+      type.push('required');
+
+    for(let i = 0; i < type.length; i++){
+      if(type[i] == 'required' && field.hasError('required'))
+        message.push('Inserisci un valore');
+
+      if(type[i] == 'email' && field.hasError('email'))
+        message.push('Email non valida');
+
+      if(type[i] == 'minLength' && field.value?.length < 8)
+        message.push((field.value?.length || 0) + '/8');
+
+      if(type[i] == 'password')
+        message.push('La password deve contenere simboli, numeri, maiuscole e minuscole');
+    }
+
+    // console.log(message);
+
+    type = [];
+    return message.join('\n');
+  }
+  */
+
+  /*
+  public getMessage(field: FormControl, type?: string[], required?: boolean): string {
+    // console.log(type);
+
+    let message: string[] = [];
+
+    if (type == undefined)
+      type = [];
+
+    if (required == undefined && !type.includes("required"))
+      type.push('required');
+
+    for(let i = 0; i < type.length; i++){
+      if(type[i] == 'required' && field.hasError('required'))
+        message.push('Inserisci un valore');
+
+      if(type[i] == 'email' && field.hasError('email'))
+        message.push('Email non valida');
+
+      if(type[i] == 'minLength' && field.value?.length < 8)
+        message.push((field.value?.length || 0) + '/8');
+
+      if(type[i] == 'password')
+        message.push('La password deve contenere simboli, numeri, maiuscole e minuscole');
+    }
+
+    // console.log(message);
+
+    type = [];
+    return message.join('\n');
+  }
+  */
 
 }

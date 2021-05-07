@@ -1,21 +1,21 @@
-<div class="loginContainer"
-  [class.isMobile]="isMobile">
+<div class="login-container"
+  [class.is-mobile]="isMobile">
   <mat-card
-    [class.isMobile]="isMobile">
+    [class.is-mobile]="isMobile">
     <mat-tab-group mat-stretch-tabs
       [selectedIndex]="getType()"
       (selectedIndexChange)="changeTab($event)">
 
       <mat-tab label="Log In" *ngIf="getType() == 0 || getType() == 1">
         <form [formGroup]="loginForm" >
-          <div class="tabContainer">
+          <div class="tab-container">
 
             <mat-form-field appearance="fill">
               <mat-label>Username</mat-label>
               <input matInput
                 [formControl]="usernameLogin"
                 required>
-              <mat-error> {{ getErrorMessage(usernameLogin) }} </mat-error>
+              <!--<mat-error> {{ getErrorMessage(usernameLogin) }} </mat-error>-->
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -24,8 +24,10 @@
                 [formControl]="passwordLogin"
                 type="password"
                 required>
-              <mat-hint> {{ getErrorMessage(passwordLogin, 'minLength', false) }} </mat-hint>
-              <mat-error> {{ getErrorMessage(passwordLogin, 'minLength') }} </mat-error>
+              <!--<mat-hint> {{ getHintMessage(passwordLogin, ['minLength'], false) }} </mat-hint>
+              <mat-error> {{ getErrorMessage(passwordLogin, ['required']) }} </mat-error>
+              <mat-error> {{ getErrorMessage(passwordLogin, ['minLength'], false) }} </mat-error>
+              <mat-error> {{ getErrorMessage(passwordLogin, ['password'], false) }} </mat-error>-->
             </mat-form-field>
 
           </div>
@@ -40,7 +42,7 @@
             <span>Hai dimenticato la password?</span>
             <button mat-button
               routerLink="/recovery"
-              class="pwdButton">
+              class="pwd-button">
               Clicca qui.
             </button>
 
@@ -50,14 +52,14 @@
 
       <mat-tab label="Sign up" *ngIf="getType() == 0 || getType() == 1">
         <form [formGroup]="signUpForm" >
-          <div class="tabContainer">
+          <div class="tab-container">
 
             <mat-form-field appearance="fill">
               <mat-label>Nome</mat-label>
               <input matInput
                 [formControl]="nome"
                 required>
-              <mat-error> {{ getErrorMessage(nome) }} </mat-error>
+              <!--<mat-error> {{ getErrorMessage(nome) }} </mat-error>-->
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -65,7 +67,7 @@
               <input matInput
                 [formControl]="cognome"
                 required>
-              <mat-error> {{ getErrorMessage(cognome) }} </mat-error>
+              <!--<mat-error> {{ getErrorMessage(cognome) }} </mat-error>-->
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -73,7 +75,7 @@
               <input matInput
                 [formControl]="username"
                 required>
-              <mat-error> {{ getErrorMessage(username) }} </mat-error>
+              <!--<mat-error> {{ getErrorMessage(username) }} </mat-error>-->
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -81,7 +83,7 @@
               <input matInput
                 [formControl]="email"
                 required>
-              <mat-error> {{ getErrorMessage(email, 'email') }} </mat-error>
+              <!--<mat-error> {{ getErrorMessage(email, ['email']) }} </mat-error>-->
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -90,8 +92,8 @@
                 type="password"
                 [formControl]="password"
                 required>
-              <mat-hint> {{ getErrorMessage(password, 'minLength', false) }} </mat-hint>
-              <mat-error> {{ getErrorMessage(password, 'minLength') }} </mat-error>
+              <!--<mat-hint> {{ getErrorMessage(password, ['minLength'], false) }} </mat-hint>-->
+              <!--<mat-error> {{ getErrorMessage(password, ['minLength']) }} </mat-error>-->
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -100,8 +102,8 @@
                 type="password"
                 [formControl]="password"
                 required>
-              <mat-hint> {{ getErrorMessage(password, 'minLength', false) }} </mat-hint>
-              <mat-error> {{ getErrorMessage(password, 'minLength') }} </mat-error>
+              <!--<mat-hint> {{ getErrorMessage(password, ['minLength'], false) }} </mat-hint>-->
+              <!--<mat-error> {{ getErrorMessage(password, ['minLength']) }} </mat-error>-->
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -126,14 +128,14 @@
 
       <mat-tab label="Recupero password" *ngIf="getType() == 2">
         <form [formGroup]="loginForm" >
-          <div class="tabContainer">
+          <div class="tab-container">
 
             <mat-form-field appearance="fill">
               <mat-label>Username</mat-label>
               <input matInput
                 [formControl]="usernameLogin"
                 required>
-              <mat-error> {{ getErrorMessage(usernameLogin) }} </mat-error>
+              <!--<mat-error> {{ getErrorMessage(usernameLogin) }} </mat-error>-->
             </mat-form-field>
 
           </div>
@@ -151,7 +153,7 @@
 
       <mat-tab label="Recupero password" *ngIf="getType() == 3">
         <form [formGroup]="loginForm" >
-          <div class="tabContainer">
+          <div class="tab-container">
 
             <mat-form-field appearance="fill">
               <mat-label>Password vecchia</mat-label>
@@ -159,8 +161,8 @@
                 type="password"
                 [formControl]="password"
                 required>
-              <mat-hint> {{ getErrorMessage(password, 'minLength', false) }} </mat-hint>
-              <mat-error> {{ getErrorMessage(password, 'minLength') }} </mat-error>
+              <!--<mat-hint> {{ getErrorMessage(password, ['minLength'], false) }} </mat-hint>-->
+              <!--<mat-error> {{ getErrorMessage(password, ['minLength']) }} </mat-error>-->
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -169,8 +171,8 @@
                 type="password"
                 [formControl]="password"
                 required>
-              <mat-hint> {{ getErrorMessage(password, 'minLength', false) }} </mat-hint>
-              <mat-error> {{ getErrorMessage(password, 'minLength') }} </mat-error>
+              <!--<mat-hint> {{ getErrorMessage(password, ['minLength'], false) }} </mat-hint>-->
+              <!--<mat-error> {{ getErrorMessage(password, ['minLength']) }} </mat-error>-->
             </mat-form-field>
 
           </div>

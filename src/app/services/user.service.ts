@@ -19,23 +19,23 @@ export class UserService {
 
   public initialize = (): Promise<void> => {
     return new Promise( (resolve, reject) =>  {
-
       /*
       this.networkService.callService('UserController', 'getUser')
         .subscribe(response => {
-
-          if(response.rCode < 0) {
-            this.isLogged = false;
-          } else {
-            this.isLogged = true;
-            this.user = response.user;
+          if(response != null) {
+            if(response.rCode < 0) {
+              this.isLogged = false;
+            } else {
+              this.isLogged = true;
+              this.user = response.user;
+            }
           }
 
           resolve();
         });
       */
 
-      this.isLogged = false;
+      this.isLogged = true;
       resolve();
 
     });

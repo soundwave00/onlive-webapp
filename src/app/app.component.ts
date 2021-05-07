@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, HostListener } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Title } from '@angular/platform-browser';
 
@@ -16,9 +16,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public isLogged!: boolean;
   public isMobile: boolean;
+  public userHomeOpened: boolean = true;
 
   @ViewChild('menu') public menu!: MatSidenav;
   @ViewChild('tools') public tools!: MatSidenav;
+  @ViewChild('userHome') public userHome!: ElementRef;
+  @ViewChild('userHomeBackdrop') public userHomeBackdrop!: ElementRef;
 
   constructor(
     private title: Title,
@@ -37,6 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.appService.setMenu(this.menu);
     this.appService.setTools(this.tools);
+    this.appService.setUserHome(this.userHome, this.userHomeBackdrop);
 
     setTimeout(() => {
       if(this.isMobile) {
@@ -59,6 +63,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     } else {
       if(this.isLogged) this.appService.openTools();
     }
+  }
+
+  closeUserHome(): void {
+    this.appService.toggleUserHome();
   }
 
 }

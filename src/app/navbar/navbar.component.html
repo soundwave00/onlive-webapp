@@ -4,7 +4,7 @@
       aria-label="Home"
       routerLink="/" >
     <mat-icon>album</mat-icon>
-    <span class="titleApp">nStage</span>
+    <span class="title-app">nStage</span>
   </button>
 
   <app-menu
@@ -19,6 +19,12 @@
       *ngIf="isMobile"
       (click)="openSidebar()" >
     <mat-icon>menu</mat-icon>
+  </button>
+
+  <button mat-icon-button
+      aria-label="User"
+      (click)="openUserHome()" >
+    <mat-icon>account_circle</mat-icon>
   </button>
 
 </mat-toolbar>

@@ -1,11 +1,11 @@
-.headerContainer {
+.header-container {
   display: flex;
   flex-flow: wrap;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
-.titleContainer {
+.title-container {
   margin-bottom: 5px;
 }
 

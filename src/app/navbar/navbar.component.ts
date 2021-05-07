@@ -36,4 +36,8 @@ export class NavbarComponent implements OnInit {
       this.appService.toggleMenu();
   }
 
+  openUserHome(): void {
+    this.appService.toggleUserHome();
+  }
+
 }

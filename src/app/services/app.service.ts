@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -13,6 +13,9 @@ export class AppService {
   private tools!: MatSidenav;
   private isMobile!: boolean;
   private sizeMode!: string;
+  private userHome!: ElementRef;
+  private userHomeBackdrop!: ElementRef;
+  private userHomeOpened: boolean = false;
 
   constructor(
     private router: Router,
@@ -96,5 +99,24 @@ export class AppService {
   public closeTools(): void {
     if(this.tools != undefined && this.tools.opened)
       this.tools.close();
+  }
+
+  public setUserHome(userHome: any, userHomeBackdrop: any): void {
+    this.userHome = userHome;
+    this.userHomeBackdrop = userHomeBackdrop;
+  }
+
+  public toggleUserHome(): void {
+    if(this.userHome != undefined && this.userHomeBackdrop != undefined) {
+      if(this.userHomeOpened) {
+        this.userHome.nativeElement.style.display = "none";
+        this.userHomeBackdrop.nativeElement.style.display = "none";
+      } else {
+        this.userHome.nativeElement.style.display = "block";
+        this.userHomeBackdrop.nativeElement.style.display = "block";
+      }
+    }
+
+    this.userHomeOpened = !this.userHomeOpened;
   }
 }

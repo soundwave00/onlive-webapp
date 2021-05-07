@@ -1,4 +1,4 @@
-.loginContainer {
+.login-container {
   display: flex;
   justify-content: center;
   align-items: start;
@@ -6,7 +6,7 @@
   margin-top: 50px;
 }
 
-.loginContainer.isMobile {
+.login-container.is-mobile {
   margin-top: 0;
 }
 
@@ -18,17 +18,17 @@ mat-card {
   padding-right: 0px;
 }
 
-mat-card.isMobile {
+mat-card.is-mobile {
   height: calc(100vh - 96px);
   width: 100%;
 }
 
-.tabContainer {
+.tab-container {
   margin: 25px auto 10px auto;
   width: 75%;
 }
 
-.tabContainer > mat-form-field {
+.tab-container > mat-form-field {
   margin-bottom: 10px;
   width: 100%;
 }
@@ -47,6 +47,6 @@ mat-card.isMobile {
   margin-right: 5px;
 }
 
-.buttons > .pwdButton {
+.buttons > .pwd-button {
   padding: 0 5px;
 }

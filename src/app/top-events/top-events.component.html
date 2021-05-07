@@ -1,5 +1,5 @@
-<div class="headerContainer">
-  <div class="titleContainer">
+<div class="header-container">
+  <div class="title-container">
     <span class="title">Eventi questo mese</span><br>
     <span class="subtitle"></span>
   </div>
@@ -30,7 +30,7 @@
       <button mat-raised-button
         color="primary"
         (click)="startFunction(element.event)"
-        [class.isMobile]="isMobile"
+        [class.is-mobile]="isMobile"
         *ngIf="!(isMobile && element.buttonIcon != undefined)">
         {{ element.button }}
       </button>

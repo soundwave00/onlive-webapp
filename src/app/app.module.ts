@@ -21,7 +21,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { TopEventsComponent } from './top-events/top-events.component';
 import { MenuComponent } from './menu/menu.component';
-import { ToolsComponent } from './tools/tools.component'
+import { ToolsComponent } from './tools/tools.component';
+import { UserHomeComponent } from './user-home/user-home.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ToolsComponent } from './tools/tools.component'
     TopEventsComponent,
     MenuComponent,
     ToolsComponent,
+    UserHomeComponent,
   ],
   imports: [
     BrowserModule,
