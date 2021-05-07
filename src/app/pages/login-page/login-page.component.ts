@@ -1,11 +1,20 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, Validators, FormGroup, FormBuilder, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Location } from '@angular/common';
 
 import { AppService } from '../../services/app.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from '../../entities'
+
+export function passwordValidator(): ValidatorFn {
+  let regex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i;
+
+  return (control: AbstractControl): {[key: string]: any} | null => {
+    const forbidden = !regex.test(control.value);
+    return forbidden ? {forbiddenName: {value: control.value}} : null;
+  };
+}
 
 @Component({
   selector: 'app-login-page',
@@ -14,30 +23,46 @@ import { User } from '../../entities'
 })
 export class LoginPageComponent implements OnInit {
 
-  public usernameLogin = new FormControl('', [Validators.required, Validators.maxLength(16)]);
-  public passwordLogin = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]);
+  public loginUsername = new FormControl('', [ Validators.required, Validators.maxLength(16) ]);
+  public loginPassword = new FormControl('', [ Validators.required, Validators.minLength(8), Validators.maxLength(16), passwordValidator() ]);
 
   public loginForm: FormGroup = this.formBuilder.group({
-    username: this.usernameLogin,
-    password: this.passwordLogin
+    username: this.loginUsername,
+    password: this.loginPassword
   });
 
-  public nome = new FormControl('', [Validators.required, Validators.maxLength(32)]);
-  public cognome = new FormControl('', [Validators.required, Validators.maxLength(32)]);
-  public username = new FormControl('', [Validators.required, Validators.maxLength(16)]);
-  public email = new FormControl('', [Validators.required, Validators.email, Validators.maxLength(32)]);
-  public password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]);
+  public signupName = new FormControl('', [Validators.required, Validators.maxLength(32)]);
+  public signupSurname = new FormControl('', [Validators.required, Validators.maxLength(32)]);
+  public signupUsername = new FormControl('', [Validators.required, Validators.maxLength(16)]);
+  public signupEmail = new FormControl('', [Validators.required, Validators.maxLength(32), Validators.email]);
+  public signupPassword = new FormControl('', [ Validators.required, Validators.maxLength(16), Validators.minLength(8), passwordValidator() ]);
+  public signupPasswordConfirm = new FormControl('', [ Validators.required, Validators.maxLength(16), Validators.minLength(8), passwordValidator() ]);
 
-  public signUpForm: FormGroup = this.formBuilder.group({
-    nome: this.nome,
-    cognome: this.cognome,
-    username: this.username,
-    email: this.email,
-    password: this.password
+  public signupForm: FormGroup = this.formBuilder.group({
+    name: this.signupName,
+    surname: this.signupSurname,
+    username: this.signupUsername,
+    email: this.signupEmail,
+    password: this.signupPassword,
+    passwordConfirm: this.signupPasswordConfirm
+  });
+
+  public recoveryEmail = new FormControl('', [Validators.required, Validators.maxLength(32), Validators.email]);
+  public recoveryPassword = new FormControl('', [ Validators.required, Validators.maxLength(16), Validators.minLength(8), passwordValidator() ]);
+  public recoveryPasswordConfirm = new FormControl('', [ Validators.required, Validators.maxLength(16), Validators.minLength(8), passwordValidator() ]);
+
+  public recoveryForm: FormGroup = this.formBuilder.group({
+    email: this.recoveryEmail
+  });
+
+  public recoveryDueForm: FormGroup = this.formBuilder.group({
+    password: this.recoveryPassword,
+    passwordConfirm: this.recoveryPasswordConfirm
   });
 
   public toppingList: string[] = ['Rap', 'Rock', 'Jazz', 'Blues', 'R&B', 'Funk'];
   public isMobile: boolean;
+  public sizeMode: string;
   public mode: string;
   public token: string | null;
   public isChecked: boolean = true;
@@ -53,27 +78,27 @@ export class LoginPageComponent implements OnInit {
     this.appService.checkPermission('home', true);
 
     this.isMobile = this.appService.getIsMobileResolution();
+    this.sizeMode = this.appService.getSizeModeResolution();
     this.token = this.route.snapshot.paramMap.get('token');
     this.mode = this.route.snapshot.url[0].path;
   }
 
-  ngOnInit(): void {
-    this.isMobile = this.appService.getIsMobileResolution();
-  }
+  ngOnInit(): void { }
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.isMobile = this.appService.getIsMobileResolution();
+    this.sizeMode = this.appService.getSizeModeResolution();
   }
 
   public signUp(): void {
-    if(this.signUpForm.valid){
+    if(this.signupForm.valid){
       let user: User = {
-        Username: this.username.value,
-        Name: this.nome.value,
-        Surname: this.cognome.value,
-        Email: this.email.value,
-        Password: this.password.value
+        Username: this.signupUsername.value,
+        Name: this.signupName.value,
+        Surname: this.signupSurname.value,
+        Email: this.signupEmail.value,
+        Password: this.signupPassword.value
       };
 
       this.userService.signUp(user);
@@ -83,8 +108,8 @@ export class LoginPageComponent implements OnInit {
   public login(): void {
     if(this.loginForm.valid){
       let user: User = {
-        Username: this.usernameLogin.value,
-        Password: this.passwordLogin.value
+        Username: this.loginUsername.value,
+        Password: this.loginPassword.value
       };
 
       this.userService.login(user);
@@ -118,82 +143,47 @@ export class LoginPageComponent implements OnInit {
   }
 
   public getHintMessage(field: FormControl, type: string): string {
-    // console.log(type);
-
     let message: string = '';
 
-    if(type == 'minLength' && field.value?.length < 8)
+    if(type == 'minLength')
       message = (field.value?.length || 0) + '/8';
+
+    return message;
+  }
+
+  public getErrorMessage(field: FormControl, type?: string[], required?: boolean): string {
+    let message: string = "";
+    let setError: boolean = false;
+
+    // console.log(type);
+
+    if (type == undefined)
+      type = [];
+
+    if (required == undefined && !type.includes("required"))
+      type.unshift('required');
+
+    for(let i = 0; i < type.length; i++){
+      if(!setError) {
+        if(type[i] == 'required' && field.hasError('required')) {
+          message = 'Inserisci un valore';
+          setError = true;
+        } else if(type[i] == 'email' && field.hasError('email')) {
+          message = 'Email non valida';
+          setError = true;
+        } else if(type[i] == 'minLength' && field.value?.length < 8) {
+          message = (field.value?.length || 0) + '/8';
+          setError = true;
+        } else if(type[i] == 'password') {
+          message = 'La password deve contenere simboli, numeri, maiuscole e minuscole';
+          setError = true;
+        }
+      }
+    }
 
     // console.log(message);
 
     return message;
   }
-
-  /*
-  public getErrorMessage(field: FormControl, type?: string): string {
-    // console.log(type);
-
-    let message: string = '';
-
-    if (type == undefined)
-      type = [];
-
-    if (required == undefined && !type.includes("required"))
-      type.push('required');
-
-    for(let i = 0; i < type.length; i++){
-      if(type[i] == 'required' && field.hasError('required'))
-        message.push('Inserisci un valore');
-
-      if(type[i] == 'email' && field.hasError('email'))
-        message.push('Email non valida');
-
-      if(type[i] == 'minLength' && field.value?.length < 8)
-        message.push((field.value?.length || 0) + '/8');
-
-      if(type[i] == 'password')
-        message.push('La password deve contenere simboli, numeri, maiuscole e minuscole');
-    }
-
-    // console.log(message);
-
-    type = [];
-    return message.join('\n');
-  }
-  */
-
-  /*
-  public getMessage(field: FormControl, type?: string[], required?: boolean): string {
-    // console.log(type);
-
-    let message: string[] = [];
-
-    if (type == undefined)
-      type = [];
-
-    if (required == undefined && !type.includes("required"))
-      type.push('required');
-
-    for(let i = 0; i < type.length; i++){
-      if(type[i] == 'required' && field.hasError('required'))
-        message.push('Inserisci un valore');
-
-      if(type[i] == 'email' && field.hasError('email'))
-        message.push('Email non valida');
-
-      if(type[i] == 'minLength' && field.value?.length < 8)
-        message.push((field.value?.length || 0) + '/8');
-
-      if(type[i] == 'password')
-        message.push('La password deve contenere simboli, numeri, maiuscole e minuscole');
-    }
-
-    // console.log(message);
-
-    type = [];
-    return message.join('\n');
-  }
-  */
 
 }

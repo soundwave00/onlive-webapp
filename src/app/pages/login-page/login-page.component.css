@@ -2,12 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: start;
-  height: calc(100vh - 196px);
-  margin-top: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .login-container.is-mobile {
-  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 mat-card {
@@ -18,8 +19,12 @@ mat-card {
   padding-right: 0px;
 }
 
+mat-card.is-tablet {
+  height: calc(100vh - 80px) !important;
+}
+
 mat-card.is-mobile {
-  height: calc(100vh - 96px);
+  height: calc(100vh - 72px);
   width: 100%;
 }
 

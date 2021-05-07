@@ -46,7 +46,7 @@ export class AppService {
   }
 
   public setMobileResolution(width: number): void {
-    if (width <= 480) {
+    if (width <= 599) {
       this.sizeMode = 'sm';
     } else if (width <= 960) {
       this.sizeMode = 'md';
