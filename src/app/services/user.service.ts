@@ -20,24 +20,33 @@ export class UserService {
   public initialize = (): Promise<void> => {
     return new Promise( (resolve, reject) =>  {
       /*
-      this.networkService.callService('UserController', 'getUser')
-        .subscribe(response => {
-          if(response != null) {
-            if(response.rCode < 0) {
-              this.isLogged = false;
-            } else {
-              this.isLogged = true;
-              this.user = response.user;
-            }
-          }
+      let token: string = this.networkService.getCookie('_token-onstage-web');
+      let username: string = this.networkService.getCookie('_username-onstage-web');
 
-          resolve();
-        });
+      if(token != '' && username != ''){
+        this.networkService.callService('UserController', 'getUser')
+          .subscribe(response => {
+            if(response != null) {
+              if(response.rCode < 0) {
+                this.isLogged = false;
+                this.networkService.clearCookie('_username-onstage-web');
+                this.networkService.clearCookie('_token-onstage-web');
+              } else {
+                this.isLogged = true;
+                this.user = response.user;
+              }
+            }
+            console.log('call');
+            resolve();
+          });
+      } else {
+        console.log('not call');
+        resolve();
+      }
       */
 
       this.isLogged = false;
       resolve();
-
     });
   }
 
@@ -51,8 +60,27 @@ export class UserService {
     return this.user;
   }
 
-  public login(user: User): void {
+  public logout(): void {
+    /*
+    this.networkService.callService('UserController', 'logout')
+      .subscribe(response => {
+        if(response.rCode == 0){
+          this.networkService.clearCookie('_username-onstage-web');
+          this.networkService.clearCookie('_token-onstage-web');
+        }
 
+        window.location.reload();
+      });
+    */
+
+    this.networkService.clearCookie('_username-onstage-web');
+    this.networkService.clearCookie('_token-onstage-web');
+
+    window.location.reload();
+
+  }
+
+  public login(user: User): void {
     let request = {
       user: user
     };
@@ -68,11 +96,9 @@ export class UserService {
           window.location.reload();
         }
       });
-
   }
 
   public signUp(user: User): void {
-
     let request = {
       user: user
     };

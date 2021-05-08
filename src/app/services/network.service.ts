@@ -50,10 +50,8 @@ export class NetworkService {
   }
 
   public setCookie(name: string, value: string, dateExp: Date): void {
-
     let expires = "expires=" + dateExp.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=None;Secure";
-
   }
 
   public getCookie(name: string): string {
@@ -73,6 +71,10 @@ export class NetworkService {
     }
 
     return "";
+  }
+
+  public clearCookie(name: string): void {
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT";
   }
 
   private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
