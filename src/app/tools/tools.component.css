@@ -1,7 +1,11 @@
 .tools {
   display: flex;
   flex-flow: column;
-  height: calc(100vh - 96px);
+  height: calc(100vh - 64px);
+}
+
+.tools.is-mobile {
+  flex-flow: column-reverse;
 }
 
 .flex-spacer {

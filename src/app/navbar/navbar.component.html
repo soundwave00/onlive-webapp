@@ -1,5 +1,12 @@
 <mat-toolbar class="header" color="primary">
 
+  <button mat-icon-button
+      aria-label="Menu"
+      *ngIf="isMobile && isLogged"
+      (click)="openSidebar()" >
+    <mat-icon>menu</mat-icon>
+  </button>
+
   <button mat-button
       aria-label="Home"
       routerLink="/" >
@@ -16,13 +23,14 @@
 
   <button mat-icon-button
       aria-label="Menu"
-      *ngIf="isMobile"
+      *ngIf="isMobile && !isLogged"
       (click)="openSidebar()" >
     <mat-icon>menu</mat-icon>
   </button>
 
   <button mat-icon-button
       aria-label="User"
+      *ngIf="isLogged"
       (click)="openUserHome()" >
     <mat-icon>account_circle</mat-icon>
   </button>

@@ -1,27 +1,37 @@
 <div class="menu"
   [class.navbar]="navbar">
-  <button mat-button
-    routerLink="/event" >
-    EVENTI
+  <button mat-raised-button
+    color="accent"
+    (click)="closeMenu()"
+    routerLink="/signup" >
+    Sign up
   </button>
   <button mat-button
+    (click)="closeMenu()"
+    routerLink="/login" >
+    Log in
+  </button>
+
+  <mat-divider
+    *ngIf="isMobile" ></mat-divider>
+  <span
+    *ngIf="!isMobile"
+    class="flex-spacer"></span>
+
+  <button mat-button
+    (click)="closeMenu()"
+    routerLink="/contact" >
+    CONTATTACI
+  </button>
+  <button mat-button
+    (click)="closeMenu()"
     routerLink="/faq" >
     FAQ
   </button>
   <button mat-button
-    routerLink="/contact" >
-    CONTATTACI
+    (click)="closeMenu()"
+    routerLink="/event" >
+    EVENTI
   </button>
 
-  <span class="flex-spacer"></span>
-
-  <button mat-stroked-button
-    routerLink="/login" >
-    Log in
-  </button>
-  <button mat-raised-button
-    color="accent"
-    routerLink="/signup" >
-    Sign up
-  </button>
 </div>

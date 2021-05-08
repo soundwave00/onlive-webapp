@@ -40,7 +40,7 @@ table {
   flex-direction: row-reverse;
 }
 
-.mat-column-button button.isMobile {
+.mat-column-button button.is-mobile {
   font-size: 12px;
   padding: 0 2px;
 }

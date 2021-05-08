@@ -33,6 +33,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.isMobile = this.appService.getIsMobileResolution();
   }
 
+  @HostListener('window:resize', ['$event'])
+  public onResize(event: any): void {
+    this.appService.setMobileResolution(event.target.innerWidth);
+    this.isMobile = this.appService.getIsMobileResolution();
+
+    if(this.isMobile) {
+      this.appService.closeTools();
+      this.appService.closeMenu();
+    } else {
+      if(this.isLogged) this.appService.openTools();
+    }
+  }
+
   ngOnInit(): void {
     this.isLogged = this.userService.getIsLogged();
   }
@@ -50,19 +63,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         if(this.isLogged) this.appService.openTools();
       }
     }, 0);
-  }
-
-  @HostListener('window:resize', ['$event'])
-  public onResize(event: any): void {
-    this.appService.setMobileResolution(event.target.innerWidth);
-    this.isMobile = this.appService.getIsMobileResolution();
-
-    if(this.isMobile) {
-      this.appService.closeTools();
-      this.appService.closeMenu();
-    } else {
-      if(this.isLogged) this.appService.openTools();
-    }
   }
 
   closeUserHome(): void {

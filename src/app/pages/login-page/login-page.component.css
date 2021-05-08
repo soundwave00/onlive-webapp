@@ -19,13 +19,17 @@ mat-card {
   padding-right: 0px;
 }
 
-mat-card.is-tablet {
+mat-card.is-mobile {
+  height: 100%;
+  width: 100%;
+}
+
+.is-tablet > mat-tab-group {
   height: calc(100vh - 80px) !important;
 }
 
-mat-card.is-mobile {
+.is-mobile > mat-tab-group {
   height: calc(100vh - 72px);
-  width: 100%;
 }
 
 .tab-container {

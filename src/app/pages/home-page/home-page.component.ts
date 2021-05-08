@@ -19,12 +19,12 @@ export class HomePageComponent implements OnInit {
     this.isMobile = this.appService.getIsMobileResolution();
   }
 
-  ngOnInit(): void {
-  }
-
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.isMobile = this.appService.getIsMobileResolution();
+  }
+
+  ngOnInit(): void {
   }
 
 }

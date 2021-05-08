@@ -29,7 +29,8 @@
 
   <div class="user-home" #userHome
     [class.is-mobile]="isMobile"
-    style="display: none;" >
+    style="display: none;"
+    *ngIf="isLogged" >
     <app-user-home></app-user-home>
   </div>
 

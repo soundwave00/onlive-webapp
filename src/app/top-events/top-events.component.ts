@@ -47,12 +47,12 @@ export class TopEventsComponent implements OnInit {
     ];
   }
 
-  ngOnInit(): void {
-  }
-
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.isMobile = this.appService.getIsMobileResolution();
+  }
+
+  ngOnInit(): void {
   }
 
   startFunction(functionName?: any): void {

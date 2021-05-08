@@ -21,12 +21,12 @@ export class NavbarComponent implements OnInit {
     this.isLogged = this.userService.getIsLogged();
   }
 
-  ngOnInit(): void {
-  }
-
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.isMobile = this.appService.getIsMobileResolution();
+  }
+
+  ngOnInit(): void {
   }
 
   openSidebar(): void {

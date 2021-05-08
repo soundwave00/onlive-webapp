@@ -83,13 +83,13 @@ export class LoginPageComponent implements OnInit {
     this.mode = this.route.snapshot.url[0].path;
   }
 
-  ngOnInit(): void { }
-
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.isMobile = this.appService.getIsMobileResolution();
     this.sizeMode = this.appService.getSizeModeResolution();
   }
+
+  ngOnInit(): void { }
 
   public signUp(): void {
     if(this.signupForm.valid){

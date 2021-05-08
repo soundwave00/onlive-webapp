@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+
+import { AppService } from '../services/app.service';
 
 @Component({
   selector: 'app-tools',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolsComponent implements OnInit {
 
-  constructor() { }
+  public isMobile: boolean;
+
+  constructor(
+    private appService: AppService
+  ) {
+    this.isMobile = this.appService.getIsMobileResolution();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  public onResize(event: any): void {
+    this.isMobile = this.appService.getIsMobileResolution();
+  }
 
   ngOnInit(): void {
   }
