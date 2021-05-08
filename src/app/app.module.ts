@@ -22,7 +22,9 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { TopEventsComponent } from './top-events/top-events.component';
 import { MenuComponent } from './menu/menu.component';
 import { ToolsComponent } from './tools/tools.component';
-import { UserHomeComponent } from './user-home/user-home.component'
+import { UserHomeComponent } from './user-home/user-home.component';
+import { EventPlayerComponent } from './event-player/event-player.component'
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { UserHomeComponent } from './user-home/user-home.component'
     MenuComponent,
     ToolsComponent,
     UserHomeComponent,
+    EventPlayerComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { UserHomeComponent } from './user-home/user-home.component'
     HttpClientModule,
 	  MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxAudioPlayerModule
   ],
   providers: [
     UserService,

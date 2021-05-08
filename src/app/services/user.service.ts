@@ -19,7 +19,7 @@ export class UserService {
 
   public initialize = (): Promise<void> => {
     return new Promise( (resolve, reject) =>  {
-      /*
+
       let token: string = this.networkService.getCookie('_token-onstage-web');
       let username: string = this.networkService.getCookie('_username-onstage-web');
 
@@ -36,17 +36,16 @@ export class UserService {
                 this.user = response.user;
               }
             }
-            console.log('call');
             resolve();
           });
       } else {
-        console.log('not call');
         resolve();
       }
-      */
 
+      /*
       this.isLogged = false;
       resolve();
+      */
     });
   }
 
@@ -61,7 +60,7 @@ export class UserService {
   }
 
   public logout(): void {
-    /*
+
     this.networkService.callService('UserController', 'logout')
       .subscribe(response => {
         if(response.rCode == 0){
@@ -71,13 +70,12 @@ export class UserService {
 
         window.location.reload();
       });
-    */
-
+/*
     this.networkService.clearCookie('_username-onstage-web');
     this.networkService.clearCookie('_token-onstage-web');
 
     window.location.reload();
-
+*/
   }
 
   public login(user: User): void {

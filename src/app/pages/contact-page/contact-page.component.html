@@ -1,1 +1,50 @@
-<p>contact-page works!</p>
+<div class="contactContainer"
+  [class.isMobile]="isMobile">
+  <mat-card
+    [class.isMobile]="isMobile">
+    <mat-tab-group mat-stretch-tabs>
+
+      <mat-tab label="Contact us">
+        <form [formGroup]="contactForm" >
+          <div class="tabContainer">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Enter username</mat-label>
+              <input matInput
+                [formControl]="usernameContact"
+                required>
+              <mat-error> {{ getErrorMessage(usernameContact) }} </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput
+                [formControl]="email"
+                required>
+              <mat-error> {{ getErrorMessage(email, 'email') }} </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Textarea - max 64 characters</mat-label>
+              <textarea matInput
+                [formControl]="textArea"
+                required></textarea>
+              <mat-error> {{ getErrorMessage(textArea, 'textarea') }} </mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <div class="buttons">
+
+            <button mat-raised-button
+              color="primary">
+              Send message
+            </button>
+
+          </div>
+        </form>
+      </mat-tab>
+
+    </mat-tab-group>
+  </mat-card>
+</div>
