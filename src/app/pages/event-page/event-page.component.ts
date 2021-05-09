@@ -19,7 +19,7 @@ export class EventPageComponent implements OnInit, AfterViewInit {
   constructor(
     private appService: AppService
   ) {
-    this.appService.checkPermission('');
+    this.appService.checkPermission();
 
     this.isMobile = this.appService.getIsMobileResolution();
     this.sizeMode = this.appService.getSizeModeResolution();

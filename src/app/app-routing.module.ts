@@ -9,17 +9,22 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 const routes: Routes = [
+  // isLogged == false
   { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: LoginPageComponent },
   { path: 'recovery', component: LoginPageComponent },
   { path: 'recovery/:token', component: LoginPageComponent },
+
+  // TMP
   { path: 'contact', component: ContactPageComponent },
   { path: 'faq', component: FaqPageComponent },
-  { path: 'event', component: EventPageComponent},
 
+  // isLogged == true
   { path: 'home', component: HomePageComponent },
+  { path: 'event/:id', component: EventPageComponent},
 
+  // redirect error path
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ]
 

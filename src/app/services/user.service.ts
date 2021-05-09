@@ -39,6 +39,7 @@ export class UserService {
             resolve();
           });
       } else {
+        this.isLogged = false;
         resolve();
       }
 
