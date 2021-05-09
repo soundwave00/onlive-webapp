@@ -7,7 +7,6 @@ import { FaqPageComponent } from './pages/faq-page/faq-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { EventPlayerComponent } from './event-player/event-player.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },

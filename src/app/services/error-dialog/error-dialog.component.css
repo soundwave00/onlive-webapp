@@ -1,0 +1,10 @@
+.error-dialog {
+  min-width: 300px;
+  background-color: #f44336;
+  margin: -24px;
+  padding: 24px;
+}
+
+mat-dialog-content {
+  margin: 0 0 0 -24px;
+}

@@ -25,6 +25,7 @@ import { ToolsComponent } from './tools/tools.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { EventPlayerComponent } from './event-player/event-player.component'
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { ErrorDialogComponent } from './services/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
     ToolsComponent,
     UserHomeComponent,
     EventPlayerComponent,
+    ErrorDialogComponent,
   ],
   imports: [
     BrowserModule,

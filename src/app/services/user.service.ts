@@ -70,12 +70,13 @@ export class UserService {
 
         window.location.reload();
       });
-/*
+
+    /*
     this.networkService.clearCookie('_username-onstage-web');
     this.networkService.clearCookie('_token-onstage-web');
 
     window.location.reload();
-*/
+    */
   }
 
   public login(user: User): void {

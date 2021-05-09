@@ -1,0 +1,15 @@
+<div class="error-dialog">
+  <h1 mat-dialog-title
+    *ngIf="data.title != undefined">
+    {{ data.title }}
+  </h1>
+
+  <mat-dialog-content
+    *ngIf="data.description != undefined">
+    {{ data.description }}
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</div>

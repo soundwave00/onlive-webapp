@@ -1,40 +1,13 @@
-<!--
-<mat-table [dataSource]="liveDetails" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="groupName">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.Name }} </mat-cell>
-    </ng-container>
-
-    <mat-row *matRowDef="let row; columns: eventColumns;"></mat-row>
-
-</mat-table>
-
-<div class="event">
-  <div class="card-event-container">
-    <mat-card class="card-event">
-      <mat-card-header>
-        <div mat-card-avatar class="card-header-image"></div>
-        <mat-card-title>Nome Gruppo</mat-card-title>
-        <mat-card-subtitle>Live at 15:30pm</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="Photo of a Shiba Inu">
-    </mat-card>
-  </div>
-</div>-->
-
-<ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false"
-    muted="muted" [displayPlaylist]="msaapDisplayPlayList" 
-    [displayArtist]="msaapDisplayArtist" [displayDuration]="msaapDisplayDuration"
-    [expanded]="true" [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls" 
-    [disablePositionSlider]="msaapDisablePositionSlider">
-</ngx-audio-player>   
-<!--
-<mat-card class="card-event">
-    <mat-card-actions>
-        <button mat-button><mat-icon>thumb_up_alt</mat-icon></button>
-        <button mat-button><mat-icon>share</mat-icon></button>
-    </mat-card-actions>
-</mat-card>
-
--->
+<ngx-audio-player
+  muted="muted"
+  [autoPlay]="false"
+  [expanded]="true"
+  [displayVolumeControls]="msaapDisplayVolumeControls"
+  [displayRepeatControls]="msaapDisplayRepeatControls"
+  [disablePositionSlider]="msaapDisablePositionSlider"
+  [displayPlaylist]="msaapDisplayPlayList"
+  [displayArtist]="msaapDisplayArtist"
+  [displayDuration]="msaapDisplayDuration"
+  [playlist]="msaapPlaylist"
+  [displayTitle]="msaapDisplayTitle" >
+</ngx-audio-player>

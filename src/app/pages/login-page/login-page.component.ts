@@ -68,7 +68,6 @@ export class LoginPageComponent implements OnInit {
   public isChecked: boolean = true;
 
   constructor(
-
     private location: Location,
     private route: ActivatedRoute,
     private appService: AppService,
@@ -92,7 +91,9 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void { }
 
   public signUp(): void {
-    if(this.signupForm.valid){
+    if(this.signupPassword.value != this.signupPasswordConfirm.value) {
+      this.appService.showError('Le password non coincidono');
+    } else if(this.signupForm.valid){
       let user: User = {
         Username: this.signupUsername.value,
         Name: this.signupName.value,

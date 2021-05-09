@@ -1,8 +1,10 @@
 import { Injectable, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
 
 import { UserService } from '../services/user.service';
+import { ErrorDialogComponent } from '../services/error-dialog/error-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,8 @@ export class AppService {
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private dialog: MatDialog
   ){
     this.setMobileResolution(window.innerWidth);
   }
@@ -109,14 +112,23 @@ export class AppService {
   public toggleUserHome(): void {
     if(this.userHome != undefined && this.userHomeBackdrop != undefined) {
       if(this.userHomeOpened) {
-        this.userHome.nativeElement.style.display = "none";
-        this.userHomeBackdrop.nativeElement.style.display = "none";
+        this.userHome.nativeElement.classList.remove("user-home-opened");
+        this.userHomeBackdrop.nativeElement.classList.remove("user-home-backdrop-opened");
       } else {
-        this.userHome.nativeElement.style.display = "block";
-        this.userHomeBackdrop.nativeElement.style.display = "block";
+        this.userHome.nativeElement.classList.add("user-home-opened");
+        this.userHomeBackdrop.nativeElement.classList.add("user-home-backdrop-opened");
       }
     }
 
     this.userHomeOpened = !this.userHomeOpened;
+  }
+
+  public showError(message: string, title?: string): void {
+    this.dialog.open(ErrorDialogComponent, {
+      data: {
+        title: title,
+        description: message
+      }
+    });
   }
 }

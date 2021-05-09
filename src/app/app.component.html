@@ -6,7 +6,7 @@
   <mat-sidenav-container>
 
     <mat-sidenav #tools
-      mode="side"
+      [mode]="isMobile ? 'over' : 'side'"
       class="tools" >
       <app-tools
         *ngIf="isLogged"></app-tools>
@@ -23,13 +23,15 @@
 
     <mat-sidenav-content>
       <router-outlet></router-outlet>
+
+      <div class="user-home-backdrop" #userHomeBackdrop
+        (click)="closeUserHome()" ></div>
     </mat-sidenav-content>
 
   </mat-sidenav-container>
 
   <div class="user-home" #userHome
     [class.is-mobile]="isMobile"
-    style="display: none;"
     *ngIf="isLogged" >
     <app-user-home></app-user-home>
   </div>
@@ -44,7 +46,3 @@
   -->
 
 </div>
-
-<div class="user-home-backdrop" #userHomeBackdrop
-  style="display: none;"
-  (click)="closeUserHome()" ></div>

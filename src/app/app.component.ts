@@ -42,7 +42,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.appService.closeTools();
       this.appService.closeMenu();
     } else {
-      if(this.isLogged) this.appService.openTools();
+      if(this.isLogged)
+        this.appService.openTools();
     }
   }
 

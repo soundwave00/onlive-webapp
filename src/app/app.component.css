@@ -44,6 +44,12 @@ mat-sidenav-container {
   right: 30px;
   width: 350px;
   height: 500px;
+
+  display: none;
+}
+
+.user-home.user-home-opened {
+  display: block;
 }
 
 .user-home mat-card-content {
@@ -67,6 +73,14 @@ mat-sidenav-container {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: black;
-  opacity: 0.1;
+  visibility: hidden;
+
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-property: background-color,visibility;
+}
+
+.user-home-backdrop.user-home-backdrop-opened {
+  background-color: rgba(189,189,189,.6);
+  visibility: visible
 }
