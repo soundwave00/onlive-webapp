@@ -3,14 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 
 import { User } from '../entities';
+import { ErrorDialogComponent } from '../services/error-dialog/error-dialog.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NetworkService {
-
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,7 +19,8 @@ export class NetworkService {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private dialog: MatDialog
   ) { }
 
   public callService(service: string, method: string, req?: any): Observable<any> {
@@ -79,10 +81,19 @@ export class NetworkService {
 
   private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {
-      console.error(error);
+      this.showError(error);
 
       return of(result as T);
     };
+  }
+
+  public showError(message: string, title?: string): void {
+    this.dialog.open(ErrorDialogComponent, {
+      data: {
+        title: title,
+        description: message
+      }
+    });
   }
 
 }

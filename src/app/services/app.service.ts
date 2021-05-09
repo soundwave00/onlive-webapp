@@ -1,10 +1,8 @@
 import { Injectable, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
-import { MatDialog } from '@angular/material/dialog';
 
 import { UserService } from '../services/user.service';
-import { ErrorDialogComponent } from '../services/error-dialog/error-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +19,7 @@ export class AppService {
 
   constructor(
     private router: Router,
-    private userService: UserService,
-    private dialog: MatDialog
+    private userService: UserService
   ){
     this.setMobileResolution(window.innerWidth);
   }
@@ -121,14 +118,5 @@ export class AppService {
     }
 
     this.userHomeOpened = !this.userHomeOpened;
-  }
-
-  public showError(message: string, title?: string): void {
-    this.dialog.open(ErrorDialogComponent, {
-      data: {
-        title: title,
-        description: message
-      }
-    });
   }
 }

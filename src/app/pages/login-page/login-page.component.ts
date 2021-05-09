@@ -5,10 +5,11 @@ import { Location } from '@angular/common';
 
 import { AppService } from '../../services/app.service';
 import { UserService } from 'src/app/services/user.service';
+import { NetworkService } from 'src/app/services/network.service';
 import { User } from '../../entities'
 
 export function passwordValidator(): ValidatorFn {
-  let regex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i;
+  let regex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}/;
 
   return (control: AbstractControl): {[key: string]: any} | null => {
     const forbidden = !regex.test(control.value);
@@ -24,7 +25,7 @@ export function passwordValidator(): ValidatorFn {
 export class LoginPageComponent implements OnInit {
 
   public loginUsername = new FormControl('', [ Validators.required, Validators.maxLength(16) ]);
-  public loginPassword = new FormControl('', [ Validators.required, Validators.minLength(8), Validators.maxLength(16), passwordValidator() ]);
+  public loginPassword = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
 
   public loginForm: FormGroup = this.formBuilder.group({
     username: this.loginUsername,
@@ -35,8 +36,8 @@ export class LoginPageComponent implements OnInit {
   public signupSurname = new FormControl('', [Validators.required, Validators.maxLength(32)]);
   public signupUsername = new FormControl('', [Validators.required, Validators.maxLength(16)]);
   public signupEmail = new FormControl('', [Validators.required, Validators.maxLength(32), Validators.email]);
-  public signupPassword = new FormControl('', [ Validators.required, Validators.maxLength(16), Validators.minLength(8), passwordValidator() ]);
-  public signupPasswordConfirm = new FormControl('', [ Validators.required, Validators.maxLength(16), Validators.minLength(8), passwordValidator() ]);
+  public signupPassword = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
+  public signupPasswordConfirm = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
 
   public signupForm: FormGroup = this.formBuilder.group({
     name: this.signupName,
@@ -48,14 +49,16 @@ export class LoginPageComponent implements OnInit {
   });
 
   public recoveryEmail = new FormControl('', [Validators.required, Validators.maxLength(32), Validators.email]);
-  public recoveryPassword = new FormControl('', [ Validators.required, Validators.maxLength(16), Validators.minLength(8), passwordValidator() ]);
-  public recoveryPasswordConfirm = new FormControl('', [ Validators.required, Validators.maxLength(16), Validators.minLength(8), passwordValidator() ]);
+  public recoveryPasswordOld = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
+  public recoveryPassword = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
+  public recoveryPasswordConfirm = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
 
   public recoveryForm: FormGroup = this.formBuilder.group({
     email: this.recoveryEmail
   });
 
   public recoveryDueForm: FormGroup = this.formBuilder.group({
+    passwordOld: this.recoveryPasswordOld,
     password: this.recoveryPassword,
     passwordConfirm: this.recoveryPasswordConfirm
   });
@@ -72,6 +75,7 @@ export class LoginPageComponent implements OnInit {
     private route: ActivatedRoute,
     private appService: AppService,
     private userService: UserService,
+    private networkService: NetworkService,
     private formBuilder: FormBuilder
   ) {
     this.appService.checkPermission('home', true);
@@ -92,8 +96,8 @@ export class LoginPageComponent implements OnInit {
 
   public signUp(): void {
     if(this.signupPassword.value != this.signupPasswordConfirm.value) {
-      this.appService.showError('Le password non coincidono');
-    } else if(this.signupForm.valid){
+      this.networkService.showError('Le password non coincidono');
+    } else if(this.signupForm.valid) {
       let user: User = {
         Username: this.signupUsername.value,
         Name: this.signupName.value,
@@ -156,8 +160,6 @@ export class LoginPageComponent implements OnInit {
     let message: string = "";
     let setError: boolean = false;
 
-    // console.log(type);
-
     if (type == undefined)
       type = [];
 
@@ -181,8 +183,6 @@ export class LoginPageComponent implements OnInit {
         }
       }
     }
-
-    // console.log(message);
 
     return message;
   }

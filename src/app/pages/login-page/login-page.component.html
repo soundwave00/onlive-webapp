@@ -158,6 +158,16 @@
               <mat-label>Password vecchia</mat-label>
               <input matInput
                 type="password"
+                [formControl]="recoveryPasswordOld"
+                required>
+              <mat-hint> {{ getHintMessage(recoveryPasswordOld, 'minLength') }} </mat-hint>
+              <mat-error> {{ getErrorMessage(recoveryPasswordOld, ['minLength', 'password']) }} </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Password nuova</mat-label>
+              <input matInput
+                type="password"
                 [formControl]="recoveryPassword"
                 required>
               <mat-hint> {{ getHintMessage(recoveryPassword, 'minLength') }} </mat-hint>
@@ -165,7 +175,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-              <mat-label>Password nuova</mat-label>
+              <mat-label>Conferma password nuova</mat-label>
               <input matInput
                 type="password"
                 [formControl]="recoveryPasswordConfirm"
