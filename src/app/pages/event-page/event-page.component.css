@@ -27,15 +27,15 @@
   margin-right: -14px;
   margin-bottom: -6px;
 
-  max-height: calc(100vh - 64px - 168px);
+  max-height: calc(100vh - 64px - 128px);
 }
 
 .about.is-mobile {
-  max-height: calc(100vh - 56px - 209px);
+  max-height: calc(100vh - 56px - 169px);
 }
 
 .about.is-tablet {
-  max-height: calc(100vh - 64px - 209px);
+  max-height: calc(100vh - 64px - 169px);
 }
 
 .chat-container {
@@ -53,17 +53,49 @@
   margin-right: -14px;
   margin-bottom: -6px;
 
-  max-height: calc(100vh - 64px - 50px);
+  max-height: calc(100vh - 64px - 10px);
 }
 
 .chat.is-mobile {
-  max-height: calc(100vh - 56px - 209px);
+  max-height: calc(100vh - 56px - 169px);
 }
 
 .chat.is-tablet {
-  max-height: calc(100vh - 64px - 209px);
+  max-height: calc(100vh - 64px - 169px);
 }
 
+.about-container mat-expansion-panel-header {
+  align-items: end;
+}
+
+.avatar {
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.avatar-container {
+  height: 50px;
+  padding: 25px 10px;
+}
+
+.about-header {
+  height: 70px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+}
+
+.about-description {
+  height: 50px;
+  min-width: 230px;
+}
+
+.about-title {
+  margin: 0;
+}
 /**/
 
 mat-expansion-panel {
@@ -76,8 +108,4 @@ mat-panel-title {
 
 mat-expansion-panel-header {
   padding: 0 10px;
-}
-
-.about-container mat-expansion-panel-header {
-  align-items: end;
 }

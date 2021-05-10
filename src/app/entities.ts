@@ -8,6 +8,13 @@ export interface Events {
   DateSet?: Date;
 }
 
+export interface Group {
+  Id?: number;
+  Name?: string;
+  Description?: string;
+  Icon?: string;
+}
+
 export interface User {
   Username?: string;
   Password?: string;
