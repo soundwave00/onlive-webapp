@@ -23,19 +23,26 @@
 
 .about {
   overflow: auto;
+  margin-bottom: -6px;
+  padding-right: 10px;
+
+  /*
   margin-left: -14px;
   margin-right: -14px;
-  margin-bottom: -6px;
+  */
 
   max-height: calc(100vh - 64px - 128px);
+  min-height: calc(100vh - 64px - 128px);
 }
 
 .about.is-mobile {
   max-height: calc(100vh - 56px - 169px);
+  min-height: calc(100vh - 56px - 169px);
 }
 
 .about.is-tablet {
   max-height: calc(100vh - 64px - 169px);
+  min-height: calc(100vh - 64px - 169px);
 }
 
 .chat-container {
@@ -53,15 +60,18 @@
   margin-right: -14px;
   margin-bottom: -6px;
 
-  max-height: calc(100vh - 64px - 10px);
+  max-height: calc(100vh - 64px - 50px);
+  min-height: calc(100vh - 64px - 50px);
 }
 
 .chat.is-mobile {
   max-height: calc(100vh - 56px - 169px);
+  min-height: calc(100vh - 56px - 169px);
 }
 
 .chat.is-tablet {
   max-height: calc(100vh - 64px - 169px);
+  min-height: calc(100vh - 64px - 169px);
 }
 
 .about-container mat-expansion-panel-header {

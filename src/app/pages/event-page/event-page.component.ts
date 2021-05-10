@@ -38,7 +38,7 @@ export class EventPageComponent implements OnInit, AfterViewInit {
 
     if (idTmp == null)
       this.eventId = -1;
-    else  
+    else
       this.eventId = parseInt(idTmp);
   }
 
@@ -112,17 +112,15 @@ export class EventPageComponent implements OnInit, AfterViewInit {
 
     this.networkService.callService('EventController','getEvent',req)
       .subscribe(response => {
-        if(response != null) {
-          if(response.rCode == 0) {
-            this.event = {
-              Id: response.eventItem.id,
-              Name: response.eventItem.name,
-              Description: response.eventItem.description,
-              DateSet: response.eventItem.dateSet,
-              Running: response.eventItem.running
-            }
-            this.avatar.nativeElement.style.backgroundImage = 'url(' + this.group.Icon + ')'; 
+        if(response != null && response.rCode == 0) {
+          this.event = {
+            Id: response.eventItem.id,
+            Name: response.eventItem.name,
+            Description: response.eventItem.description,
+            DateSet: response.eventItem.dateSet,
+            Running: response.eventItem.running
           }
+          this.avatar.nativeElement.style.backgroundImage = 'url(' + this.group.Icon + ')';
         }
       });
   }

@@ -118,6 +118,8 @@ export class LoginPageComponent implements OnInit {
       };
 
       this.userService.login(user);
+    } else {
+      this.networkService.showError('Compilare correttamente tutti i campi');
     }
   }
 

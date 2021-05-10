@@ -43,9 +43,9 @@ export class NetworkService {
 
     return this.http.post<any>(url, req, this.httpOptions)
       .pipe(
-        tap(_ => {
-          if(_.rCode < 0)
-            console.error(_.rMessage)
+        tap(response => {
+          if(response.rCode < 0)
+            this.showError(response.rMessage)
         }),
         catchError(this.handleError<any>('error: ' + url, undefined))
       )
@@ -81,7 +81,7 @@ export class NetworkService {
 
   private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {
-      this.showError(error);
+      console.error(error, 'Error in network service');
 
       return of(result as T);
     };
