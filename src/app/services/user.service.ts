@@ -64,10 +64,8 @@ export class UserService {
 
     this.networkService.callService('UserController', 'logout')
       .subscribe(response => {
-        if(response.rCode == 0){
-          this.networkService.clearCookie('_username-onstage-web');
-          this.networkService.clearCookie('_token-onstage-web');
-        }
+        this.networkService.clearCookie('_username-onstage-web');
+        this.networkService.clearCookie('_token-onstage-web');
 
         window.location.reload();
       });
@@ -87,9 +85,9 @@ export class UserService {
 
     this.networkService.callService('UserController', 'login', request)
       .subscribe(response => {
-        response.session.dateExp = new Date(response.session.dateExp);
+        if(response != null && response.rCode == 0){
+          response.session.dateExp = new Date(response.session.dateExp);
 
-        if(response.rCode == 0){
           this.networkService.setCookie('_username-onstage-web', response.session.username, response.session.dateExp);
           this.networkService.setCookie('_token-onstage-web', response.session.codToken, response.session.dateExp);
 
@@ -105,7 +103,7 @@ export class UserService {
 
     this.networkService.callService('UserController', 'signup', request)
       .subscribe(response => {
-        if(response.rCode == 0){
+        if(response != null && response.rCode == 0){
           this.router.navigateByUrl('login');
         }
       });

@@ -38,7 +38,7 @@ export class EventPageComponent implements OnInit, AfterViewInit {
 
     if (idTmp == null)
       this.eventId = -1;
-    else  
+    else
       this.eventId = parseInt(idTmp);
   }
 
@@ -147,8 +147,8 @@ export class EventPageComponent implements OnInit, AfterViewInit {
               Description: response.group.description,
               Avatar: response.group.avatar
             }
-            /*this.avatar.nativeElement.style.backgroundImage = 'url(' + this.group.Avatar + ')';*/
           }
+          /*this.avatar.nativeElement.style.backgroundImage = 'url(' + this.group.Avatar + ')';*/
         }
       });
   }
