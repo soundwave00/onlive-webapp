@@ -22,7 +22,7 @@ export class EventPageComponent implements OnInit, AfterViewInit {
 
   @ViewChild('about') public about!: MatExpansionPanel;
   @ViewChild('chat') public chat!: MatExpansionPanel;
-  @ViewChild('avatar') public avatar!: ElementRef;
+  //@ViewChild('avatar') public avatar!: ElementRef;
 
   constructor(
     private appService: AppService,
@@ -64,15 +64,19 @@ export class EventPageComponent implements OnInit, AfterViewInit {
       Id: 243232,
       Name: 'OMBO Live',
       Running: true
-    }*/
+    }
     this.group = {
       Id: 243232,
       Name: 'OMBO',
       Description: 'Benvenuti nella live',
-      Icon: '/../../../assets/img/pexels-burst-374777.jpg'
     }
 
+    this.group = {
+      Icon: '/../../../assets/img/pexels-burst-374777.jpg'
+    }    */
+
     this.getEvent();
+    this.getGroup();
   }
 
   ngAfterViewInit(): void {
@@ -121,7 +125,29 @@ export class EventPageComponent implements OnInit, AfterViewInit {
               DateSet: response.eventItem.dateSet,
               Running: response.eventItem.running
             }
-            this.avatar.nativeElement.style.backgroundImage = 'url(' + this.group.Icon + ')'; 
+          }
+        }
+      });
+  }
+
+  // Group Methods
+
+  public getGroup(): void {
+    let req = {
+      idEvents: this.eventId
+    }
+
+    this.networkService.callService('GroupController','getGroup',req)
+      .subscribe(response => {
+        if(response != null) {
+          if(response.rCode == 0) {
+            this.group = {
+              Id: response.group.id,
+              Name: response.group.name,
+              Description: response.group.description,
+              Avatar: response.group.avatar
+            }
+            /*this.avatar.nativeElement.style.backgroundImage = 'url(' + this.group.Avatar + ')';*/
           }
         }
       });

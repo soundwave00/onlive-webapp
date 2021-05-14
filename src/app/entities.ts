@@ -12,7 +12,7 @@ export interface Group {
   Id?: number;
   Name?: string;
   Description?: string;
-  Icon?: string;
+  Avatar?: string;
 }
 
 export interface User {

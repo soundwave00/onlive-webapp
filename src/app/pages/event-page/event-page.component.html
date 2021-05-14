@@ -7,7 +7,7 @@
       <app-event-player></app-event-player>
     </div>
     
-    <div *ngIf="event" class="about-container">
+    <div *ngIf="event && group" class="about-container">
       <mat-expansion-panel hideToggle #about
         [disabled]="!isMobile"
         (opened)="onOpeningAbout()"
@@ -18,7 +18,8 @@
           <mat-panel-title>
             <div class="about-header">
               <div class="avatar-container">
-                <div class="avatar" #avatar ></div>
+                <div class="avatar" 
+                  [style]="'background-image: url(' + this.group.Avatar + ')'"></div>
               </div>
               <div class="about-description">
                 <h1 class="about-title">{{event.Name}}</h1>
