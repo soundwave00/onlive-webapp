@@ -45,6 +45,7 @@
 .card-header-image {
   background-image: url('../../assets/img/pexels-burst-374777.jpg');
   background-size: cover;
+  background-position: center;
 }
 
 .mat-card-img {
