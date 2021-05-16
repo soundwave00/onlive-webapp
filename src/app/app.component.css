@@ -41,7 +41,7 @@ mat-sidenav-container {
   z-index: 2;
 
   top: 84px;
-  right: 30px;
+  right: 20px;
   width: 330px;
   height: 480px;
 
@@ -59,15 +59,14 @@ mat-sidenav-container {
 
 .user-home.is-mobile {
   top: inherit;
-  bottom: 79px;
-  left: inherit;
-  right: 30px;
+  bottom: 76px;
+  right: 20px;
   width: 280px;
   height: 450px;
 }
 
 .user-home.is-tablet {
-  bottom: 87px !important;
+  bottom: 84px !important;
 }
 
 .user-home-backdrop {

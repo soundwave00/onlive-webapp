@@ -3,10 +3,10 @@
   *ngIf="user">
   <div class="header">
     <div class="avatar"
-      [style]="'background-image: url(' + this.user.Avatar + ')'"></div>
+      [style]="'background-image: url(' + user.Avatar + ')'"></div>
     <div class="info-container">
-      <span class="username">riddorck</span>
-      <span class="name">Salvatore Anchora</span>
+      <span class="username"> {{ user.Username }} </span>
+      <span class="name"> {{ user.Name + ' ' + user.Surname }} </span>
     </div>
   </div>
   <div class="flex-spacer"></div>
