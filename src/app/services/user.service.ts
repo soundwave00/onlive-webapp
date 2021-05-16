@@ -9,7 +9,7 @@ import { NetworkService } from './network.service';
 })
 export class UserService {
 
-  private user!: User;
+  private user: User = {};
   private isLogged!: boolean;
 
   constructor(
@@ -33,7 +33,18 @@ export class UserService {
                 this.networkService.clearCookie('_token-onstage-web');
               } else {
                 this.isLogged = true;
-                this.user = response.user;
+
+                this.user.Username = response.user.username;
+                this.user.Name = response.user.name;
+                this.user.Surname = response.user.surname;
+                this.user.Email = response.user.email;
+                this.user.Avatar = response.user.avatar;
+
+                if (this.user.Avatar == null)
+                  this.user.Avatar = '../../assets/img/pexels-andrea-piacquadio-761963.jpg';
+                else
+                  this.user.Avatar = '../../assets/img/' + this.user.Avatar + '.jpg';
+
                 this.networkService.setUser(this.user);
               }
             }

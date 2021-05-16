@@ -42,8 +42,8 @@ mat-sidenav-container {
 
   top: 84px;
   right: 30px;
-  width: 350px;
-  height: 500px;
+  width: 330px;
+  height: 480px;
 
   display: none;
 }
@@ -64,6 +64,10 @@ mat-sidenav-container {
   right: 30px;
   width: 280px;
   height: 450px;
+}
+
+.user-home.is-tablet {
+  bottom: 87px !important;
 }
 
 .user-home-backdrop {

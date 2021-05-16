@@ -1,7 +1,18 @@
-<div class="user">
-  <p>Pagina utente!</p>
-  <button mat-button
+<mat-card class="user"
+  color="primary"
+  *ngIf="user">
+  <div class="header">
+    <div class="avatar"
+      [style]="'background-image: url(' + this.user.Avatar + ')'"></div>
+    <div class="info-container">
+      <span class="username">riddorck</span>
+      <span class="name">Salvatore Anchora</span>
+    </div>
+  </div>
+  <div class="flex-spacer"></div>
+  <button mat-raised-button
+    color="accent"
     (click)="logout()" >
     Log out
   </button>
-</div>
+</mat-card>

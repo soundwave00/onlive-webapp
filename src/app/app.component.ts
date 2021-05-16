@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public isLogged!: boolean;
   public isMobile: boolean;
+  public sizeMode: string;
   public userHomeOpened: boolean = true;
 
   @ViewChild('menu') public menu!: MatSidenav;
@@ -31,12 +32,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.title.setTitle('OnStage');
 
     this.isMobile = this.appService.getIsMobileResolution();
+    this.sizeMode = this.appService.getSizeModeResolution();
   }
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: any): void {
     this.appService.setMobileResolution(event.target.innerWidth);
     this.isMobile = this.appService.getIsMobileResolution();
+    this.sizeMode = this.appService.getSizeModeResolution();
 
     if(this.isMobile) {
       this.appService.closeTools();

@@ -32,6 +32,7 @@
 
   <div class="user-home" #userHome
     [class.is-mobile]="isMobile"
+    [class.is-tablet]="sizeMode == 'md'"
     *ngIf="isLogged" >
     <app-user-home></app-user-home>
   </div>
