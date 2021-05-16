@@ -42,3 +42,8 @@
 .flex-spacer {
   flex: 1;
 }
+
+.edit-user {
+  margin-bottom: 10px;
+  width: 100%;
+}
