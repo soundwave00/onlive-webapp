@@ -127,7 +127,7 @@
       </mat-tab>
 
       <mat-tab label="Recupero password" *ngIf="getType() == 2">
-        <form [formGroup]="recoveryForm" >
+        <form [formGroup]="recoveryEmailForm" >
           <div class="tab-container">
 
             <mat-form-field appearance="fill">
@@ -151,7 +151,7 @@
       </mat-tab>
 
       <mat-tab label="Recupero password" *ngIf="getType() == 3">
-        <form [formGroup]="recoveryDueForm" >
+        <form [formGroup]="recoveryForm" >
           <div class="tab-container">
 
             <mat-form-field appearance="fill">

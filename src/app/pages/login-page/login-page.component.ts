@@ -34,7 +34,7 @@ export class LoginPageComponent implements OnInit {
     password: this.loginPassword
   });
 
-  public signupName = new FormControl('', [ Validators.maxLength(32) ]);
+  public signupName = new FormControl('', [ Validators.required, Validators.maxLength(32) ]);
   public signupSurname = new FormControl('', [ Validators.required, Validators.maxLength(32) ]);
   public signupUsername = new FormControl('', [ Validators.required, Validators.maxLength(16) ]);
   public signupEmail = new FormControl('', [ Validators.required, Validators.maxLength(32), Validators.email ]);
@@ -55,11 +55,11 @@ export class LoginPageComponent implements OnInit {
   public recoveryPassword = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
   public recoveryPasswordConfirm = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
 
-  public recoveryForm: FormGroup = this.formBuilder.group({
+  public recoveryEmailForm: FormGroup = this.formBuilder.group({
     email: this.recoveryEmail
   });
 
-  public recoveryDueForm: FormGroup = this.formBuilder.group({
+  public recoveryForm: FormGroup = this.formBuilder.group({
     passwordOld: this.recoveryPasswordOld,
     password: this.recoveryPassword,
     passwordConfirm: this.recoveryPasswordConfirm
