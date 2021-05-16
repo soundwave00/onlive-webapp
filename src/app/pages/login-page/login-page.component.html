@@ -14,17 +14,24 @@
             <mat-form-field appearance="fill">
               <mat-label>Username</mat-label>
               <input matInput
-                [formControl]="loginUsername"
-                required>
+                [formControl]="loginUsername">
               <mat-error> {{ getErrorMessage(loginUsername) }} </mat-error>
+            </mat-form-field>
+
+            <div class="login-or">oppure</div>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput
+                [formControl]="loginEmail">
+              <mat-error> {{ getErrorMessage(loginEmail, ['email']) }} </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
               <mat-label>Password</mat-label>
               <input matInput
                 [formControl]="loginPassword"
-                type="password"
-                required>
+                type="password">
               <mat-hint> {{ getHintMessage(loginPassword, 'minLength') }} </mat-hint>
               <mat-error> {{ getErrorMessage(loginPassword, ['minLength', 'password']) }} </mat-error>
             </mat-form-field>
@@ -56,32 +63,28 @@
             <mat-form-field appearance="fill">
               <mat-label>Nome</mat-label>
               <input matInput
-                [formControl]="signupName"
-                required>
+                [formControl]="signupName">
               <mat-error> {{ getErrorMessage(signupName) }} </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
               <mat-label>Cognome</mat-label>
               <input matInput
-                [formControl]="signupSurname"
-                required>
+                [formControl]="signupSurname">
               <mat-error> {{ getErrorMessage(signupSurname) }} </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
               <mat-label>Username</mat-label>
               <input matInput
-                [formControl]="signupUsername"
-                required>
+                [formControl]="signupUsername">
               <mat-error> {{ getErrorMessage(signupUsername) }} </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
               <mat-label>Email</mat-label>
               <input matInput
-                [formControl]="signupEmail"
-                required>
+                [formControl]="signupEmail">
               <mat-error> {{ getErrorMessage(signupEmail, ['email']) }} </mat-error>
             </mat-form-field>
 
@@ -89,8 +92,7 @@
               <mat-label>Password</mat-label>
               <input matInput
                 type="password"
-                [formControl]="signupPassword"
-                required>
+                [formControl]="signupPassword">
               <mat-hint> {{ getHintMessage(signupPassword, 'minLength') }} </mat-hint>
               <mat-error> {{ getErrorMessage(signupPassword, ['minLength', 'password']) }} </mat-error>
             </mat-form-field>
@@ -99,8 +101,7 @@
               <mat-label>Conferma password</mat-label>
               <input matInput
                 type="password"
-                [formControl]="signupPasswordConfirm"
-                required>
+                [formControl]="signupPasswordConfirm">
               <mat-hint> {{ getHintMessage(signupPasswordConfirm, 'minLength') }} </mat-hint>
               <mat-error> {{ getErrorMessage(signupPasswordConfirm, ['minLength', 'password']) }} </mat-error>
             </mat-form-field>
@@ -132,8 +133,7 @@
             <mat-form-field appearance="fill">
               <mat-label>Email</mat-label>
               <input matInput
-                [formControl]="recoveryEmail"
-                required>
+                [formControl]="recoveryEmail">
                 <mat-error> {{ getErrorMessage(recoveryEmail, ['email']) }} </mat-error>
             </mat-form-field>
 
@@ -158,8 +158,7 @@
               <mat-label>Password vecchia</mat-label>
               <input matInput
                 type="password"
-                [formControl]="recoveryPasswordOld"
-                required>
+                [formControl]="recoveryPasswordOld">
               <mat-hint> {{ getHintMessage(recoveryPasswordOld, 'minLength') }} </mat-hint>
               <mat-error> {{ getErrorMessage(recoveryPasswordOld, ['minLength', 'password']) }} </mat-error>
             </mat-form-field>
@@ -168,8 +167,7 @@
               <mat-label>Password nuova</mat-label>
               <input matInput
                 type="password"
-                [formControl]="recoveryPassword"
-                required>
+                [formControl]="recoveryPassword">
               <mat-hint> {{ getHintMessage(recoveryPassword, 'minLength') }} </mat-hint>
               <mat-error> {{ getErrorMessage(recoveryPassword, ['minLength', 'password']) }} </mat-error>
             </mat-form-field>
@@ -178,8 +176,7 @@
               <mat-label>Conferma password nuova</mat-label>
               <input matInput
                 type="password"
-                [formControl]="recoveryPasswordConfirm"
-                required>
+                [formControl]="recoveryPasswordConfirm">
               <mat-hint> {{ getHintMessage(recoveryPasswordConfirm, 'minLength') }} </mat-hint>
               <mat-error> {{ getErrorMessage(recoveryPasswordConfirm, ['minLength', 'password']) }} </mat-error>
             </mat-form-field>

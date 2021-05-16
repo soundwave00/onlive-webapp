@@ -9,7 +9,7 @@ import { NetworkService } from 'src/app/services/network.service';
 import { User } from '../../entities'
 
 export function passwordValidator(): ValidatorFn {
-  let regex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}/;
+  let regex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9 ])[^\s]{8,}$/;
 
   return (control: AbstractControl): {[key: string]: any} | null => {
     const forbidden = !regex.test(control.value);
@@ -24,18 +24,20 @@ export function passwordValidator(): ValidatorFn {
 })
 export class LoginPageComponent implements OnInit {
 
-  public loginUsername = new FormControl('', [ Validators.required, Validators.maxLength(16) ]);
+  public loginUsername = new FormControl('', [ Validators.maxLength(16) ]);
+  public loginEmail = new FormControl('', [ Validators.maxLength(32), Validators.email ]);
   public loginPassword = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
 
   public loginForm: FormGroup = this.formBuilder.group({
     username: this.loginUsername,
+    email: this.loginEmail,
     password: this.loginPassword
   });
 
-  public signupName = new FormControl('', [Validators.required, Validators.maxLength(32)]);
-  public signupSurname = new FormControl('', [Validators.required, Validators.maxLength(32)]);
-  public signupUsername = new FormControl('', [Validators.required, Validators.maxLength(16)]);
-  public signupEmail = new FormControl('', [Validators.required, Validators.maxLength(32), Validators.email]);
+  public signupName = new FormControl('', [ Validators.maxLength(32) ]);
+  public signupSurname = new FormControl('', [ Validators.required, Validators.maxLength(32) ]);
+  public signupUsername = new FormControl('', [ Validators.required, Validators.maxLength(16) ]);
+  public signupEmail = new FormControl('', [ Validators.required, Validators.maxLength(32), Validators.email ]);
   public signupPassword = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
   public signupPasswordConfirm = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
 
@@ -48,7 +50,7 @@ export class LoginPageComponent implements OnInit {
     passwordConfirm: this.signupPasswordConfirm
   });
 
-  public recoveryEmail = new FormControl('', [Validators.required, Validators.maxLength(32), Validators.email]);
+  public recoveryEmail = new FormControl('', [ Validators.required, Validators.maxLength(32), Validators.email ]);
   public recoveryPasswordOld = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
   public recoveryPassword = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
   public recoveryPasswordConfirm = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
@@ -107,13 +109,17 @@ export class LoginPageComponent implements OnInit {
       };
 
       this.userService.signUp(user);
+    } else {
+      this.networkService.showError('Compilare correttamente tutti i campi');
     }
   }
 
   public login(): void {
-    if(this.loginForm.valid){
+    if(this.loginForm.valid &&
+      (this.loginUsername.value != '' || this.loginEmail.value != '')){
       let user: User = {
         Username: this.loginUsername.value,
+        Email: this.loginEmail.value,
         Password: this.loginPassword.value
       };
 
@@ -165,8 +171,12 @@ export class LoginPageComponent implements OnInit {
     if (type == undefined)
       type = [];
 
-    if (required == undefined && !type.includes("required"))
+    if ((required == undefined || required == true) && !type.includes("required"))
       type.unshift('required');
+
+
+    if (required == false && type.includes("required"))
+      type.shift();
 
     for(let i = 0; i < type.length; i++){
       if(!setError) {

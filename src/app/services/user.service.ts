@@ -34,6 +34,7 @@ export class UserService {
               } else {
                 this.isLogged = true;
                 this.user = response.user;
+                this.networkService.setUser(this.user);
               }
             }
             resolve();

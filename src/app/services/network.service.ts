@@ -13,6 +13,8 @@ import { ErrorDialogComponent } from '../services/error-dialog/error-dialog.comp
 })
 export class NetworkService {
 
+  private user?: User;
+
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -28,11 +30,9 @@ export class NetworkService {
 
     req = req == null ? {} : req;
 
-    let user: User = { }
-
     let ctx = {
       lang: 'it',
-      user: user,
+      user: this.user,
       session: {
         CodToken: this.getCookie('_token-onstage-web'),
         Username: this.getCookie('_username-onstage-web'),
@@ -49,6 +49,10 @@ export class NetworkService {
         }),
         catchError(this.handleError<any>('error: ' + url, undefined))
       )
+  }
+
+  public setUser(user: User): void {
+    this.user = user;
   }
 
   public setCookie(name: string, value: string, dateExp: Date): void {
@@ -76,7 +80,7 @@ export class NetworkService {
   }
 
   public clearCookie(name: string): void {
-    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;SameSite=None;Secure";
   }
 
   private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
