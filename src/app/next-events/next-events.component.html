@@ -20,112 +20,22 @@
 
 <div class="next-events"
   [class.grid]="viewStyle == 'grid'">
-  <div class="card-event-container">
+  <div #idEvent
+    class="card-event-container"
+    *ngFor='let event of events'>
     <mat-card class="card-event">
       <mat-card-header>
-        <div mat-card-avatar class="card-header-image"></div>
-        <mat-card-title>Nome Gruppo</mat-card-title>
-        <mat-card-subtitle>Live at 15:30pm</mat-card-subtitle>
+        <div mat-card-avatar class="avatar"
+          [style]="'background-image: url(' + this.group.Avatar + ')'">
+        </div>
+        <mat-card-title>{{event.Name}}</mat-card-title>
+        <mat-card-subtitle>Live at {{event.DateSet}}</mat-card-subtitle>
+        <!--<mat-card-subtitle>Live at {{event.DateSet?.getHours() + ':' + event.DateSet?.getMinutes()}}</mat-card-subtitle>-->
       </mat-card-header>
-      <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="Photo of a Shiba Inu">
+      <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="eventImg">
       <mat-card-content>
         <p>
-          Descrizione live
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button><mat-icon>thumb_up_alt</mat-icon></button>
-        <button mat-button><mat-icon>share</mat-icon></button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  <div class="card-event-container">
-    <mat-card class="card-event">
-      <mat-card-header>
-        <div mat-card-avatar class="card-header-image"></div>
-        <mat-card-title>Nome Gruppo</mat-card-title>
-        <mat-card-subtitle>Live at 15:30pm</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          Descrizione live
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button><mat-icon>thumb_up_alt</mat-icon></button>
-        <button mat-button><mat-icon>share</mat-icon></button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  <div class="card-event-container">
-    <mat-card class="card-event">
-      <mat-card-header>
-        <div mat-card-avatar class="card-header-image"></div>
-        <mat-card-title>Nome Gruppo</mat-card-title>
-        <mat-card-subtitle>Live at 15:30pm</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          Descrizione live
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button><mat-icon>thumb_up_alt</mat-icon></button>
-        <button mat-button><mat-icon>share</mat-icon></button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  <div class="card-event-container">
-    <mat-card class="card-event">
-      <mat-card-header>
-        <div mat-card-avatar class="card-header-image"></div>
-        <mat-card-title>Nome Gruppo</mat-card-title>
-        <mat-card-subtitle>Live at 15:30pm</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          Descrizione live
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button><mat-icon>thumb_up_alt</mat-icon></button>
-        <button mat-button><mat-icon>share</mat-icon></button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  <div class="card-event-container">
-    <mat-card class="card-event">
-      <mat-card-header>
-        <div mat-card-avatar class="card-header-image"></div>
-        <mat-card-title>Nome Gruppo</mat-card-title>
-        <mat-card-subtitle>Live at 15:30pm</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          Descrizione live
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button><mat-icon>thumb_up_alt</mat-icon></button>
-        <button mat-button><mat-icon>share</mat-icon></button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-  <div class="card-event-container">
-    <mat-card class="card-event">
-      <mat-card-header>
-        <div mat-card-avatar class="card-header-image"></div>
-        <mat-card-title>Nome Gruppo</mat-card-title>
-        <mat-card-subtitle>Live at 15:30pm</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          Descrizione live
+          {{event.Description}}
         </p>
       </mat-card-content>
       <mat-card-actions>

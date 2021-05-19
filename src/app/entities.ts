@@ -6,6 +6,7 @@ export interface Events {
   Description?: string;
   Running?: boolean;
   DateSet?: Date;
+  Genres?: string;
 }
 
 export interface Group {
@@ -25,6 +26,11 @@ export interface User {
 
   CodiceToken?: string;
   CodiceTokenExpiration?: Date;
+}
+
+export interface Genres {
+  Id?: number;
+  Genre?: string;
 }
 
 /* Component Interfaces */
