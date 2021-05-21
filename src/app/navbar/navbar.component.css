@@ -14,3 +14,18 @@
 button {
   margin-left: 8px;
 }
+
+.default-avatar {
+  line-height: 32px !important;
+  height: 32px;
+  width: 32px;
+  font-size: 32px;
+}
+
+.avatar {
+  background-size: cover;
+  background-position: center;
+  min-height: 32px;
+  border-radius: 50%;
+  margin: 0 4px;
+}

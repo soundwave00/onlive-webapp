@@ -30,9 +30,15 @@
 
   <button mat-icon-button
       aria-label="User"
-      *ngIf="isLogged"
+      *ngIf="isLogged && user"
       (click)="openUserHome()" >
-    <mat-icon>account_circle</mat-icon>
+    <mat-icon
+      class="default-avatar"
+      *ngIf="!user.Avatar">
+      account_circle</mat-icon>
+    <div class="avatar"
+      [style]="'background-image: url(' + user.Avatar + ')'"
+      *ngIf="user.Avatar"></div>
   </button>
 
 </mat-toolbar>

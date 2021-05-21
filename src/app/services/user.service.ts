@@ -40,9 +40,7 @@ export class UserService {
                 this.user.Email = response.user.email;
                 this.user.Avatar = response.user.avatar;
 
-                if (this.user.Avatar == null)
-                  this.user.Avatar = '../../assets/img/pexels-andrea-piacquadio-761963.jpg';
-                else
+                if (this.user.Avatar != null)
                   this.user.Avatar = '../../assets/img/' + this.user.Avatar + '.jpg';
 
                 this.networkService.setUser(this.user);

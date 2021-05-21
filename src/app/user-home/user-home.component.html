@@ -1,9 +1,14 @@
 <mat-card class="user"
   color="primary"
-  *ngIf="user">
+  *ngIf="isLogged && user">
   <div class="header">
+    <mat-icon
+      class="default-avatar"
+      *ngIf="!user.Avatar">
+      account_circle</mat-icon>
     <div class="avatar"
-      [style]="'background-image: url(' + user.Avatar + ')'"></div>
+      [style]="'background-image: url(' + user.Avatar + ')'"
+      *ngIf="user.Avatar"></div>
     <div class="info-container">
       <span class="username"> {{ user.Username }} </span>
       <span class="name"> {{ user.Name + ' ' + user.Surname }} </span>

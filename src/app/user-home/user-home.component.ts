@@ -10,12 +10,14 @@ import { UserService } from '../services/user.service';
 })
 export class UserHomeComponent implements OnInit {
 
+  public isLogged: boolean;
   public user?: User;
 
   constructor(
     private userService: UserService
   ) {
     this.user = this.userService.getUser();
+    this.isLogged = this.userService.getIsLogged();
   }
 
   ngOnInit(): void {
