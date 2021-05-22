@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { User } from '../entities';
+import { AppService } from '../services/app.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class UserHomeComponent implements OnInit {
   public user?: User;
 
   constructor(
+    private appService: AppService,
     private userService: UserService
   ) {
     this.user = this.userService.getUser();
@@ -25,6 +27,10 @@ export class UserHomeComponent implements OnInit {
 
   logout(): void {
     this.userService.logout();
+  }
+
+  public close(): void {
+    this.appService.toggleUserHome();
   }
 
 }

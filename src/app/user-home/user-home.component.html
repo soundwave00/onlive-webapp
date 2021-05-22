@@ -16,6 +16,8 @@
   </div>
   <div class="flex-spacer"></div>
   <button mat-stroked-button
+    (click)="close()"
+    [routerLink]="['user', user.Username]"
     class="edit-user">
     Gestione utente
   </button>

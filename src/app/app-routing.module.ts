@@ -7,6 +7,7 @@ import { FaqPageComponent } from './pages/faq-page/faq-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 const routes: Routes = [
   // isLogged == false
@@ -22,6 +23,7 @@ const routes: Routes = [
 
   // isLogged == true
   { path: 'home', component: HomePageComponent },
+  { path: 'user/:user', component: UserPageComponent },
   { path: 'event/:id', component: EventPageComponent},
 
   // redirect error path
