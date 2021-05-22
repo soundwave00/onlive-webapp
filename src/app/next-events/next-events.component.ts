@@ -47,26 +47,23 @@ export class NextEventsComponent implements OnInit {
         //genres: this.genres,
         dateFrom: this.dateFrom
       }
-  
+
       this.networkService.callService('EventController','getEvents',req)
         .subscribe(response => {
           if(response != null) {
             if(response.rCode == 0) {
-              if(response.rCode == 0) {
-                for (let eventItem of response.eventsList) {
-                  this.events.push({
-                    Id: eventItem.id,
-                    Name: eventItem.name,
-                    Description: eventItem.description,
-                    DateSet: eventItem.dateSet,
-                    Running: eventItem.running,
-                    //Genres: eventItem.EventsGenres
-                  })
-                }
+              for (let eventItem of response.eventsList) {
+                this.events.push({
+                  Id: eventItem.id,
+                  Name: eventItem.name,
+                  Description: eventItem.description,
+                  DateSet: eventItem.dateSet,
+                  Running: eventItem.running,
+                  //Genres: eventItem.EventsGenres
+                })
               }
             }
           }
         });
     }
 }
-  

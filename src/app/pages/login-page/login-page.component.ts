@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { AppService } from '../../services/app.service';
 import { UserService } from 'src/app/services/user.service';
 import { NetworkService } from 'src/app/services/network.service';
-import { User } from '../../entities'
+import { User, Genres } from '../../entities'
 
 export function passwordValidator(): ValidatorFn {
   let regex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9 ])[^\s]{8,}$/;
@@ -40,6 +40,7 @@ export class LoginPageComponent implements OnInit {
   public signupEmail = new FormControl('', [ Validators.required, Validators.maxLength(32), Validators.email ]);
   public signupPassword = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
   public signupPasswordConfirm = new FormControl('', [ Validators.required, Validators.minLength(8), passwordValidator() ]);
+  public signupGenres = new FormControl();
 
   public signupForm: FormGroup = this.formBuilder.group({
     name: this.signupName,
@@ -47,7 +48,8 @@ export class LoginPageComponent implements OnInit {
     username: this.signupUsername,
     email: this.signupEmail,
     password: this.signupPassword,
-    passwordConfirm: this.signupPasswordConfirm
+    passwordConfirm: this.signupPasswordConfirm,
+    signupGenres: this.signupGenres
   });
 
   public recoveryEmail = new FormControl('', [ Validators.required, Validators.maxLength(32), Validators.email ]);
@@ -65,7 +67,7 @@ export class LoginPageComponent implements OnInit {
     passwordConfirm: this.recoveryPasswordConfirm
   });
 
-  public toppingList: string[] = ['Rap', 'Rock', 'Jazz', 'Blues', 'R&B', 'Funk'];
+  public genres: Genres[] = [];
   public isMobile: boolean;
   public sizeMode: string;
   public mode: string;
@@ -94,7 +96,9 @@ export class LoginPageComponent implements OnInit {
     this.sizeMode = this.appService.getSizeModeResolution();
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getGenres();
+  }
 
   public signUp(): void {
     if(this.signupPassword.value != this.signupPasswordConfirm.value) {
@@ -108,7 +112,7 @@ export class LoginPageComponent implements OnInit {
         Password: this.signupPassword.value
       };
 
-      this.userService.signUp(user);
+      this.userService.signUp(user, this.signupGenres.value);
     } else {
       this.networkService.showError('Compilare correttamente tutti i campi');
     }
@@ -199,4 +203,19 @@ export class LoginPageComponent implements OnInit {
     return message;
   }
 
+  public getGenres(): void {
+    this.networkService.callService('HomeController','getGenres')
+      .subscribe(response => {
+        if(response != null) {
+          if(response.rCode == 0) {
+            for (let genre of response.genres) {
+              this.genres.push({
+                Id: genre.id,
+                Genre: genre.genre
+              })
+            }
+          }
+        }
+      });
+  }
 }

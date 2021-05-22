@@ -106,9 +106,10 @@ export class UserService {
       });
   }
 
-  public signUp(user: User): void {
+  public signUp(user: User, userGenres: string[]): void {
     let request = {
-      user: user
+      user: user,
+      userGenres: userGenres
     };
 
     this.networkService.callService('UserController', 'signup', request)

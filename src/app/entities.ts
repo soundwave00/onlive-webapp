@@ -23,9 +23,6 @@ export interface User {
   Surname?: string;
   Email?: string;
   Avatar?: string;
-
-  CodiceToken?: string;
-  CodiceTokenExpiration?: Date;
 }
 
 export interface Genres {

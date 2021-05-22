@@ -45,7 +45,7 @@ export class NetworkService {
       .pipe(
         tap(response => {
           if(response.rCode < 0)
-            this.showError(response.rMessage)
+            this.showError(response.rMessage, response.rTitle)
         }),
         catchError(this.handleError<any>('error: ' + url, undefined))
       )
