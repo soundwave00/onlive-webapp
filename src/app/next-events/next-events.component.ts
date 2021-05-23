@@ -11,11 +11,14 @@ import { NetworkService } from '../services/network.service';
 export class NextEventsComponent implements OnInit {
 
   public viewStyle: string = 'list';
-  public events: Events[] = [];
+  public eventsList: Events[] = [];
   public group!: Group;
   //public genres!: Genres;
   public dateFrom = new Date();
-
+  public monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+  
   @ViewChild('idEvent') public idEvent!: ElementRef;
 /*
   public minutes: number | undefined = this.event[0].DateSet?.getMinutes();
@@ -53,11 +56,11 @@ export class NextEventsComponent implements OnInit {
           if(response != null) {
             if(response.rCode == 0) {
               for (let eventItem of response.eventsList) {
-                this.events.push({
+                this.eventsList.push({
                   Id: eventItem.id,
                   Name: eventItem.name,
                   Description: eventItem.description,
-                  DateSet: eventItem.dateSet,
+                  DateSet: new Date(eventItem.dateSet),
                   Running: eventItem.running,
                   //Genres: eventItem.EventsGenres
                 })
