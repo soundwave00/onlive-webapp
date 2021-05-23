@@ -18,7 +18,7 @@ export class NextEventsComponent implements OnInit {
   public monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
   ];
-  
+
   @ViewChild('idEvent') public idEvent!: ElementRef;
 /*
   public minutes: number | undefined = this.event[0].DateSet?.getMinutes();
@@ -53,18 +53,16 @@ export class NextEventsComponent implements OnInit {
 
       this.networkService.callService('EventController','getEvents',req)
         .subscribe(response => {
-          if(response != null) {
-            if(response.rCode == 0) {
-              for (let eventItem of response.eventsList) {
-                this.eventsList.push({
-                  Id: eventItem.id,
-                  Name: eventItem.name,
-                  Description: eventItem.description,
-                  DateSet: new Date(eventItem.dateSet),
-                  Running: eventItem.running,
-                  //Genres: eventItem.EventsGenres
-                })
-              }
+          if(response != null && response.rCode == 0) {
+            for (let eventItem of response.eventsList) {
+              this.eventsList.push({
+                Id: eventItem.id,
+                Name: eventItem.name,
+                Description: eventItem.description,
+                DateSet: new Date(eventItem.dateSet),
+                Running: eventItem.running,
+                //Genres: eventItem.EventsGenres
+              })
             }
           }
         });

@@ -35,7 +35,8 @@ mat-card.is-mobile {
 .tab-container {
   margin: 25px auto 15px auto;
   width: 75%;
-  max-height: calc(100vh - 350px);
+  max-height: calc(100vh - 275px);
+  min-height: 150px;
   overflow-y: auto;
   padding-right: 5px;
 }

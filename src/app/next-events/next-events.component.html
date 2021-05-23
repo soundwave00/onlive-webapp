@@ -26,7 +26,8 @@
     <mat-card class="card-event">
       <mat-card-header>
         <div mat-card-avatar class="avatar"
-          [style]="'background-image: url(' + this.group.Avatar + ')'">
+          [style]="'background-image: url(' + this.group.Avatar + ')'"
+          *ngIf="this.group.Avatar">
         </div>
         <mat-card-title>{{event.Name}}</mat-card-title>
         <mat-card-subtitle>Live on {{event.DateSet?.getDate()}} {{monthNames[event.DateSet!.getMonth()]}} {{event.DateSet?.getFullYear()}} at {{event.DateSet?.getHours() + ':' + event.DateSet?.getMinutes()}}</mat-card-subtitle>

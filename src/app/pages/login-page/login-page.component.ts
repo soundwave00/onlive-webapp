@@ -72,7 +72,6 @@ export class LoginPageComponent implements OnInit {
   public sizeMode: string;
   public mode: string;
   public token: string | null;
-  public isChecked: boolean = true;
 
   constructor(
     private location: Location,
@@ -131,6 +130,20 @@ export class LoginPageComponent implements OnInit {
     } else {
       this.networkService.showError('Compilare correttamente tutti i campi');
     }
+  }
+
+  public getGenres(): void {
+    this.networkService.callService('HomeController','getGenres')
+      .subscribe(response => {
+        if(response != null && response.rCode == 0) {
+          for (let genre of response.genres) {
+            this.genres.push({
+              Id: genre.id,
+              Genre: genre.genre
+            })
+          }
+        }
+      });
   }
 
   public changeTab(index: number): void {
@@ -201,21 +214,5 @@ export class LoginPageComponent implements OnInit {
     }
 
     return message;
-  }
-
-  public getGenres(): void {
-    this.networkService.callService('HomeController','getGenres')
-      .subscribe(response => {
-        if(response != null) {
-          if(response.rCode == 0) {
-            for (let genre of response.genres) {
-              this.genres.push({
-                Id: genre.id,
-                Genre: genre.genre
-              })
-            }
-          }
-        }
-      });
   }
 }

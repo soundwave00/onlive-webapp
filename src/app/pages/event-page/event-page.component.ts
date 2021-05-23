@@ -22,7 +22,6 @@ export class EventPageComponent implements OnInit, AfterViewInit {
 
   @ViewChild('about') public about!: MatExpansionPanel;
   @ViewChild('chat') public chat!: MatExpansionPanel;
-  //@ViewChild('avatar') public avatar!: ElementRef;
 
   constructor(
     private appService: AppService,
@@ -116,15 +115,13 @@ export class EventPageComponent implements OnInit, AfterViewInit {
 
     this.networkService.callService('EventController','getEvent',req)
       .subscribe(response => {
-        if(response != null) {
-          if(response.rCode == 0) {
-            this.event = {
-              Id: response.eventItem.id,
-              Name: response.eventItem.name,
-              Description: response.eventItem.description,
-              DateSet: response.eventItem.dateSet,
-              Running: response.eventItem.running
-            }
+        if(response != null && response.rCode == 0) {
+          this.event = {
+            Id: response.eventItem.id,
+            Name: response.eventItem.name,
+            Description: response.eventItem.description,
+            DateSet: response.eventItem.dateSet,
+            Running: response.eventItem.running
           }
         }
       });
@@ -139,16 +136,13 @@ export class EventPageComponent implements OnInit, AfterViewInit {
 
     this.networkService.callService('GroupController','getGroup',req)
       .subscribe(response => {
-        if(response != null) {
-          if(response.rCode == 0) {
-            this.group = {
-              Id: response.group.id,
-              Name: response.group.name,
-              Description: response.group.description,
-              Avatar: response.group.avatar
-            }
+        if(response != null && response.rCode == 0) {
+          this.group = {
+            Id: response.group.id,
+            Name: response.group.name,
+            Description: response.group.description,
+            Avatar: response.group.avatar
           }
-          /*this.avatar.nativeElement.style.backgroundImage = 'url(' + this.group.Avatar + ')';*/
         }
       });
   }
