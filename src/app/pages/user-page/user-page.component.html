@@ -1,1 +1,51 @@
-<p>user-page works!</p>
+<div class="user-container"
+  [class.is-mobile]="isMobile">
+  <mat-card
+    [class.is-mobile]="isMobile"
+    [class.is-tablet]="sizeMode == 'md'">
+    <span class="title">Modifica utente</span>
+    <form [formGroup]="editUserForm" >
+      <div class="form-container">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput
+            [formControl]="editUserName">
+          <mat-error> {{ getErrorMessage(editUserName) }} </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Cognome</mat-label>
+          <input matInput
+            [formControl]="editUserSurname">
+          <mat-error> {{ getErrorMessage(editUserSurname) }} </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput
+            [formControl]="editUserEmail">
+          <mat-error> {{ getErrorMessage(editUserEmail, ['email']) }} </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Generi preferiti</mat-label>
+          <mat-select
+            [formControl]="editUserGenres"
+            multiple>
+            <mat-option *ngFor="let genre of genres" [value]="genre.Id"> {{ genre.Genre }} </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="buttons">
+
+        <button mat-raised-button
+          color="primary"
+          (click)="editUser()">
+          Salva
+        </button>
+
+      </div>
+    </form>
+  </mat-card>
+</div>
