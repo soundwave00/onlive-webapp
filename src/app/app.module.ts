@@ -27,6 +27,7 @@ import { EventPlayerComponent } from './event-player/event-player.component'
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { ErrorDialogComponent } from './services/error-dialog/error-dialog.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
+import { GroupPageComponent } from './pages/group-page/group-page.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
     EventPlayerComponent,
     ErrorDialogComponent,
     UserPageComponent,
+    GroupPageComponent,
   ],
   imports: [
     BrowserModule,
