@@ -1,6 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Group } from 'src/app/entities';
+import { ActivatedRoute } from '@angular/router';
 
 import { AppService } from '../../services/app.service';
+import { NetworkService } from '../../services/network.service';
 
 @Component({
   selector: 'app-group-page',
@@ -11,12 +14,23 @@ export class GroupPageComponent implements OnInit {
 
   public isMobile: boolean;  
   public sizeMode: string;
+  public groupId: number | null;
+  public group!: Group;
 
   constructor(
-    private appService: AppService
+    private appService: AppService,
+    private route: ActivatedRoute,
+    private networkService: NetworkService
   ) { 
     this.isMobile = this.appService.getIsMobileResolution();
     this.sizeMode = this.appService.getSizeModeResolution();
+
+    let groupTmp = this.route.snapshot.paramMap.get('id');
+
+    if (groupTmp == null)
+      this.groupId = -1;
+    else
+      this.groupId = parseInt(groupTmp);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -26,6 +40,27 @@ export class GroupPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getMyGroup()
+  }
+
+  // Group Methods
+
+  public getMyGroup(): void {
+    let req = {
+      groupId: this.groupId
+    }
+
+    this.networkService.callService('GroupController','getMyGroup',req)
+      .subscribe(response => {
+        if(response != null && response.rCode == 0) {
+          this.group = {
+            Id: response.group.id,
+            Name: response.group.name,
+            Description: response.group.description,
+            Avatar: response.group.avatar
+          }
+        }
+      });
   }
 
 }

@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'user/:user', component: UserPageComponent },
   { path: 'event/:id', component: EventPageComponent},
-  { path: 'group', component: GroupPageComponent},
+  { path: 'group/:id', component: GroupPageComponent},
 
   // redirect error path
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
