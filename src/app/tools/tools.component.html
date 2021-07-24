@@ -14,9 +14,22 @@
     aria-label="Artisti preferiti">
     <mat-icon>favorite</mat-icon>
   </button>
-  <button mat-icon-button aria-label="Pagina gruppo"
-  [routerLink]="['group']">
+  <button mat-icon-button aria-label="Pagina gruppo" matTooltip="Gruppi"
+  [matMenuTriggerFor]="menu">
     <mat-icon>groups</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item color="accent" 
+      [routerLink]="['create-group']">
+      <mat-icon>add</mat-icon>
+      Crea gruppo
+    </button>
+      <button mat-menu-item 
+        *ngFor="let group of myGroup" 
+        [value]="group.Id"
+        [routerLink]="['group', group.Id]">
+          {{group.Name}}
+      </button>
+  </mat-menu>  
   <div class="flex-spacer"></div>
 </div>

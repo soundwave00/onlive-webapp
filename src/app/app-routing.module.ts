@@ -9,6 +9,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GroupPageComponent } from './pages/group-page/group-page.component';
+import { CreateGroupPageComponent } from './pages/create-group-page/create-group-page.component';
 
 const routes: Routes = [
   // isLogged == false
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'signup', component: LoginPageComponent },
   { path: 'recovery', component: LoginPageComponent },
   { path: 'recovery/:token', component: LoginPageComponent },
+  { path: 'create-group', component: CreateGroupPageComponent },
 
   // TMP
   { path: 'contact', component: ContactPageComponent },

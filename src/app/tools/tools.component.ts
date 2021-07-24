@@ -1,6 +1,11 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Group } from 'src/app/entities';
+import { ActivatedRoute } from '@angular/router';
+
 
 import { AppService } from '../services/app.service';
+import { NetworkService } from '../services/network.service';
+
 
 @Component({
   selector: 'app-tools',
@@ -10,9 +15,13 @@ import { AppService } from '../services/app.service';
 export class ToolsComponent implements OnInit {
 
   public isMobile: boolean;
+  public myGroup: Group[] = [];
+  public userGroup: Group[] = [];
 
   constructor(
-    private appService: AppService
+    private appService: AppService,
+    private route: ActivatedRoute,
+    private networkService: NetworkService
   ) {
     this.isMobile = this.appService.getIsMobileResolution();
   }
@@ -23,6 +32,39 @@ export class ToolsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUserGroup();
   }
 
+  public getUserGroup(): void {
+    this.networkService.callService('GroupController','getUserGroup')
+      .subscribe(response => {
+        if(response != null && response.rCode == 0) {
+          for (let group of response.userGroup) {
+            this.userGroup.push({
+              Id: group
+            })
+          }
+
+          for (let id of this.userGroup){
+            let req = {
+              groupId: id.Id
+            }
+        
+            this.networkService.callService('GroupController','getMyGroup',req)
+              .subscribe(response => {
+                if(response != null && response.rCode == 0) {
+                  this.myGroup.push({
+                    Id: response.group.id,
+                    Name: response.group.name,
+                    Description: response.group.description,
+                    Avatar: response.group.avatar
+                  })
+                }
+              });
+          } 
+        }
+      });
+
+      
+  }
 }

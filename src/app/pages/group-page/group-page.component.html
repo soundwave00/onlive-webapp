@@ -1,1 +1,35 @@
-<p>group-page works!</p>
+<div class="group-container"
+    *ngIf="group && group">
+
+    <div class="group-header">
+        <div class="avatar-container">
+            <div class="avatar"
+            [style]="'background-image: url(' + group.Avatar + ')'"
+            *ngIf="group.Avatar"></div>
+        </div>
+    </div>
+
+    <div class="group-title-container">
+        <div class="group-title">
+            <h1 class="group-name">{{group.Name}}</h1>
+        </div>
+        <div class="group-title-button">
+            <button mat-icon-button color="warn" aria-label="Mi piace">
+                <mat-icon>favorite</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="about"
+        [class.is-mobile]="isMobile"
+        [class.is-tablet]="sizeMode == 'md'"
+        *ngIf="group">
+        <!--<div style="width: 100%; height: 1200px; background-color: #f44336;"></div>-->
+        {{group.Description}}
+    </div>
+
+    <div class="live">
+        <button mat-raised-button color="primary">Crea Live</button>
+    </div>
+
+</div>

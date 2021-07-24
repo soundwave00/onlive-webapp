@@ -1,0 +1,53 @@
+<div class="group-container"
+  [class.is-mobile]="isMobile">
+  <mat-card
+    [class.is-mobile]="isMobile"
+    [class.is-tablet]="sizeMode == 'md'">
+    <span class="title">Crea Gruppo</span>
+    <form>
+      <div class="form-container">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nome gruppo</mat-label>
+          <input matInput>
+          <mat-error> Errore </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Descrizione</mat-label>
+            <textarea matInput placeholder="Scrivi una descrizione del gruppo"></textarea>
+        </mat-form-field>
+
+        <div class="avatar-import">
+            <div class="avatar-import-label">
+                <mat-label>Seleziona immagine: </mat-label>
+            </div>
+            <div class="avatar-import-button">
+                <input 
+                    hidden 
+                    type="file" 
+                    #fileinput
+                    (change)="selectedFile($event)"
+                />
+                <button mat-button (click)="fileinput.click()">
+                    Seleziona file
+                </button>
+                <div class="avatar-import-label" *ngIf="avatar">
+                    <mat-label>{{avatar}}</mat-label>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+      <div class="buttons">
+
+        <button mat-raised-button
+            color="primary">
+            <!--(click)="editUser()"-->
+          Salva
+        </button>
+
+      </div>
+    </form>
+  </mat-card>
+</div>

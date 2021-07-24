@@ -1,0 +1,79 @@
+.group-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.group-container.is-mobile {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+mat-card {
+  width: 90%;
+  text-align: center;
+  padding-top: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+mat-card.is-mobile {
+  height: 68%;
+  width: 100%;
+  margin: 60px 10px;
+}
+
+.is-tablet .form-container {
+  height: calc(100vh - 227px) !important;
+}
+
+.title {
+  font-size: 30px;
+  opacity: 0.7;
+}
+
+.form-container {
+  margin: 25px auto 15px auto;
+  width: 75%;
+  max-height: calc(100vh - 275px);
+  min-height: 150px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.form-container > mat-form-field {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.avatar-import{
+    display: flex;
+}
+
+.avatar-import-label{
+    margin-top: 9px;
+}
+
+.avatar-import-button{
+    margin-left: 5%;
+}
+
+.buttons {
+  width: calc(75% + 5px);
+  margin: 5px auto 10px auto;
+}
+
+.buttons > button:first-child {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.buttons > span {
+  margin-right: 5px;
+}
+
+.buttons > .pwd-button {
+  padding: 0 5px;
+}
