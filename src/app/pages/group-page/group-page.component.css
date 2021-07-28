@@ -77,6 +77,10 @@
     flex: 1;
   }
 
+  .group-title-button button {
+    float: right;
+  }
+
   .live{
     margin-left: 3px;
   }

@@ -3,6 +3,8 @@ import { Group } from 'src/app/entities';
 import { ActivatedRoute } from '@angular/router';
 
 import { AppService } from '../../services/app.service';
+import { UserService } from '../../services/user.service';
+
 import { NetworkService } from '../../services/network.service';
 
 @Component({
@@ -13,16 +15,19 @@ import { NetworkService } from '../../services/network.service';
 export class GroupPageComponent implements OnInit {
 
   public isMobile: boolean;  
+  public isLogged: boolean;
   public sizeMode: string;
   public groupId: number | null;
   public group!: Group;
 
   constructor(
     private appService: AppService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private networkService: NetworkService
   ) { 
     this.isMobile = this.appService.getIsMobileResolution();
+    this.isLogged = this.userService.getIsLogged();
     this.sizeMode = this.appService.getSizeModeResolution();
 
     let groupTmp = this.route.snapshot.paramMap.get('id');

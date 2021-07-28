@@ -64,7 +64,5 @@ export class ToolsComponent implements OnInit {
           } 
         }
       });
-
-      
   }
 }

@@ -1,11 +1,9 @@
-<div class="group-container"
-    *ngIf="group && group">
+<div class="group-container" *ngIf="group && isLogged">
 
     <div class="group-header">
         <div class="avatar-container">
             <div class="avatar"
-            [style]="'background-image: url(' + group.Avatar + ')'"
-            *ngIf="group.Avatar"></div>
+            [style]="'background-image: url(' + group.Avatar + ')'"></div>
         </div>
     </div>
 
@@ -17,13 +15,18 @@
             <button mat-icon-button color="warn" aria-label="Mi piace">
                 <mat-icon>favorite</mat-icon>
             </button>
+            <button 
+                mat-icon-button 
+                [value]="group.Id"
+                [routerLink]="['/modify-group', group.Id]">
+                <mat-icon>settings</mat-icon>
+            </button>
         </div>
     </div>
 
     <div class="about"
         [class.is-mobile]="isMobile"
-        [class.is-tablet]="sizeMode == 'md'"
-        *ngIf="group">
+        [class.is-tablet]="sizeMode == 'md'">
         <!--<div style="width: 100%; height: 1200px; background-color: #f44336;"></div>-->
         {{group.Description}}
     </div>

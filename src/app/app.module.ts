@@ -29,6 +29,9 @@ import { ErrorDialogComponent } from './services/error-dialog/error-dialog.compo
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GroupPageComponent } from './pages/group-page/group-page.component';
 import { CreateGroupPageComponent } from './pages/create-group-page/create-group-page.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ModifyGroupPageComponent } from './pages/modify-group-page/modify-group-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,7 @@ import { CreateGroupPageComponent } from './pages/create-group-page/create-group
     UserPageComponent,
     GroupPageComponent,
     CreateGroupPageComponent,
+    ModifyGroupPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import { CreateGroupPageComponent } from './pages/create-group-page/create-group
 	  MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxAudioPlayerModule
+    NgxAudioPlayerModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   providers: [
     UserService,
