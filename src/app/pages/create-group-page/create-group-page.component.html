@@ -18,6 +18,41 @@
             <textarea matInput placeholder="Scrivi una descrizione del gruppo"></textarea>
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+          <mat-label>Generi</mat-label>
+          <mat-select multiple>
+            <mat-option *ngFor="let genre of genres" [value]="genre.Id"> {{ genre.Genre }} </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-chip-list" appearance="fill">
+          <mat-label>Componenti gruppo</mat-label>
+          <mat-chip-list #chipList aria-label="Username selection">
+            <mat-chip
+              *ngFor="let user of users"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(user)">
+              {{user}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input
+              placeholder="New user..."
+              #userInput
+              [formControl]="userCtrl"
+              [matAutocomplete]="auto"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+              {{user}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        
+
         <div class="avatar-import">
             <div class="avatar-import-label">
                 <mat-label>Seleziona immagine: </mat-label>

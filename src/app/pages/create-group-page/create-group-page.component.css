@@ -22,11 +22,11 @@ mat-card {
 mat-card.is-mobile {
   height: 68%;
   width: 100%;
-  margin: 60px 10px;
+  margin: 10px 10px;
 }
 
 .is-tablet .form-container {
-  height: calc(100vh - 227px) !important;
+  height: calc(100vh - 250px) !important;
 }
 
 .title {
@@ -37,7 +37,7 @@ mat-card.is-mobile {
 .form-container {
   margin: 25px auto 15px auto;
   width: 75%;
-  max-height: calc(100vh - 275px);
+  max-height: calc(100vh - 142px);
   min-height: 150px;
   overflow-y: auto;
   padding-right: 5px;
