@@ -2,9 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 import { AppService } from '../../services/app.service';
-import { UserService } from 'src/app/services/user.service';
 import { NetworkService } from 'src/app/services/network.service';
-import { User, Genres } from '../../entities'
+import { User, Genres, Group } from '../../entities'
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -28,8 +27,11 @@ export class ModifyGroupPageComponent implements OnInit {
   public avatar: string;
   public event: any;
   public genres: Genres[] = [];
+  public genreDefault: string[] = [];
+  public genreCategory!: FormGroup;
   public groupUser: User[] = [];
   public groupId: number | null;
+  public group!: Group;
 
   //FOR CHIPS
   selectable = true;
@@ -37,7 +39,7 @@ export class ModifyGroupPageComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   userCtrl = new FormControl();
   filteredUsers: Observable<string[]>;
-  users: string[] = []; //da mettere l'username dell'utente collegato
+  users: string[] = [];
   allUsers: string[] = [];
 
   @ViewChild('userInput') userInput!: ElementRef<HTMLInputElement>;
@@ -45,7 +47,8 @@ export class ModifyGroupPageComponent implements OnInit {
   constructor(
     private appService: AppService,
     private networkService: NetworkService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
   ) {  
     this.isMobile = this.appService.getIsMobileResolution();
     this.sizeMode = this.appService.getSizeModeResolution();
@@ -73,9 +76,15 @@ export class ModifyGroupPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsers();
-    //this.getUser();
     this.getGenres();
     this.getMembersGroup();
+    this.getMyGroup();
+    this.getGroupGenres();
+
+    this.genreCategory = this.fb.group({
+      genreName: [null, Validators.required]
+    });
+    this.genreCategory.get('genreName')!.setValue(this.genreDefault);
   }
 
   selectedFile($event: any): void {
@@ -109,7 +118,7 @@ export class ModifyGroupPageComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    let index =   this.users.indexOf(event.option.viewValue);
+    let index = this.users.indexOf(event.option.viewValue);
      if(index == -1){
         this.users.push(event.option.viewValue);
       }
@@ -167,6 +176,39 @@ export class ModifyGroupPageComponent implements OnInit {
         if(response != null && response.rCode == 0) {
           for (let members of response.membersGroup) {
             this.users.push(members.username)
+          }
+        }
+      });
+  }
+
+  public getMyGroup(): void {
+    let req = {
+      groupId: this.groupId
+    }
+
+    this.networkService.callService('GroupController','getMyGroup',req)
+      .subscribe(response => {
+        if(response != null && response.rCode == 0) {
+          this.group = {
+            Id: response.group.id,
+            Name: response.group.name,
+            Description: response.group.description,
+            Avatar: response.group.avatar
+          }
+        }
+      });
+  }
+
+  public getGroupGenres(): void {
+    let req = {
+      groupId: this.groupId
+    }
+
+    this.networkService.callService('GroupController','getGroupGenres',req)
+      .subscribe(response => {
+        if(response != null && response.rCode == 0) {
+          for (let genre of response.genres) {
+            this.genreDefault.push(genre.genre)
           }
         }
       });

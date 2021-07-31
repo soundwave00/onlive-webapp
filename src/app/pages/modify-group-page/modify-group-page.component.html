@@ -2,29 +2,34 @@
   [class.is-mobile]="isMobile">
   <mat-card
     [class.is-mobile]="isMobile"
-    [class.is-tablet]="sizeMode == 'md'">
+    [class.is-tablet]="sizeMode == 'md'"
+    *ngIf="group">
     <span class="title">Modifica Gruppo</span>
-    <form>
+    <form [formGroup]="genreCategory">
       <div class="form-container">
 
-        <mat-form-field appearance="fill">
+        <mat-form-field>
           <mat-label>Nome gruppo</mat-label>
-          <input matInput>
+          <input matInput [value]="group.Name">
           <mat-error> Errore </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Descrizione</mat-label>
-            <textarea matInput placeholder="Scrivi una descrizione del gruppo"></textarea>
+            <textarea matInput placeholder="Scrivi una descrizione del gruppo">{{group.Description}}</textarea>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Generi</mat-label>
-          <mat-select multiple>
-            <mat-option *ngFor="let genre of genres" [value]="genre.Id"> {{ genre.Genre }} </mat-option>
-          </mat-select>
+            <mat-select multiple formControlName="genreName">
+                <mat-option *ngFor="let genre of genres" [value]="genre.Genre">
+                    {{genre.Genre}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
-
+  
+        <p>{{genreCategory.get('genreName')!.value | json}}</p>
+    
         <mat-form-field class="example-chip-list" appearance="fill">
           <mat-label>Componenti gruppo</mat-label>
           <mat-chip-list #chipList aria-label="Username selection">
@@ -84,5 +89,6 @@
 
       </div>
     </form>
+
   </mat-card>
 </div>
