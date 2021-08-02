@@ -1,0 +1,42 @@
+.header-container {
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  .flex-spacer {
+    flex: 1;
+  }
+
+  .group-events {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .card-event-container {
+    padding: 15px 0;
+    min-width: 300px;
+    width: 300px;
+    margin: 0 10px;
+  }
+
+  .group-events.grid {
+    flex-flow: wrap;
+  }
+
+  .avatar {
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  
+  .mat-card-img {
+    min-width: calc(100% + 32px);
+  }
+
+  .mat-button-toggle-group {
+    height: 32px;
+    align-items: center;
+  }
+  
+  

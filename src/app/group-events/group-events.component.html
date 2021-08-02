@@ -1,0 +1,46 @@
+<div class="header-container">
+    <div class="flex-spacer"></div>
+    <mat-button-toggle-group
+      name="viewStyle"
+      aria-label="View Style"
+      value="list"
+      (change)="viewStyle = $event.value">
+      <mat-button-toggle value="list">
+        <mat-icon aria-hidden="false" aria-label="List Style">view_list</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="grid">
+        <mat-icon aria-hidden="false" aria-label="Grid Style">grid_view</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  
+  
+  <div class="group-events"
+    [class.grid]="viewStyle == 'grid'">
+    <div #idEvent
+      class="card-event-container"
+      *ngFor='let event of eventsList'>
+      <mat-card class="card-event">
+        <mat-card-header>
+          <div mat-card-avatar class="avatar"
+            [style]="'background-image: url(' + this.group.Avatar + ')'"
+            *ngIf="this.group.Avatar">
+          </div>
+          <mat-card-title>{{event.Name}}</mat-card-title>
+          <mat-card-subtitle>Live on {{event.DateSet?.getDate()}} {{monthNames[event.DateSet!.getMonth()]}} {{event.DateSet?.getFullYear()}} at {{event.DateSet?.getHours() + ':' + event.DateSet?.getMinutes()}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="eventImg">
+        <mat-card-content>
+          <p>
+            {{event.Description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button><mat-icon>thumb_up_alt</mat-icon></button>
+          <button mat-button><mat-icon>share</mat-icon></button>
+          <button mat-button [routerLink]="['/event', event.Id]"><mat-icon>live_tv</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  

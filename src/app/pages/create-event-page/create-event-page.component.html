@@ -1,0 +1,46 @@
+<div class="event-container"
+  [class.is-mobile]="isMobile">
+  <mat-card
+    [class.is-mobile]="isMobile"
+    [class.is-tablet]="sizeMode == 'md'">
+    <span class="title">Crea Evento</span>
+    <form>
+        <div class="form-container">
+
+            <mat-form-field appearance="fill">
+            <mat-label>Nome Evento</mat-label>
+            <input matInput>
+            <mat-error> Errore </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Descrizione Evento</mat-label>
+                <textarea matInput placeholder="Scrivi una descrizione dell'evento"></textarea>
+            </mat-form-field>
+
+            
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Scegli una data</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Specificare AM o PM</mat-label>
+                <input matInput type="time" [value]="time">
+            </mat-form-field>
+            
+        </div>
+
+        <div class="buttons">
+
+            <button mat-raised-button
+                color="primary">
+                Crea
+            </button>
+
+        </div>
+    </form>
+  </mat-card>
+</div>
