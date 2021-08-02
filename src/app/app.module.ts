@@ -32,6 +32,8 @@ import { CreateGroupPageComponent } from './pages/create-group-page/create-group
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ModifyGroupPageComponent } from './pages/modify-group-page/modify-group-page.component';
+import { CreateEventPageComponent } from './pages/create-event-page/create-event-page.component';
+import { GroupEventsComponent } from './group-events/group-events.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { ModifyGroupPageComponent } from './pages/modify-group-page/modify-group
     GroupPageComponent,
     CreateGroupPageComponent,
     ModifyGroupPageComponent,
+    CreateEventPageComponent,
+    GroupEventsComponent,
   ],
   imports: [
     BrowserModule,

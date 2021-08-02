@@ -2,28 +2,23 @@
   
 .about {
     overflow: auto;
-    margin-bottom: -6px;
-    padding-left: 10px;
-  
-    max-height: calc(100vh - 64px - 128px);
-    min-height: calc(100vh - 64px - 300px);
+    padding: 8px 8px 0 8px;
+
+    min-height: calc(100vh - 64px - 317px);
   }
   
+  
   .about.is-mobile {
-    margin-right: -14px;
-    padding-left: 0px;
-    width: 100%;
+    padding-bottom: 8px;
 
-    max-height: calc(100vh - 56px - 169px);
-    min-height: calc(100vh - 56px - 300px);
+    min-height: calc(100vh - 56px - 326px);
   }
   
   .about.is-tablet {
     margin-left: 0;
     margin-right: 0;
-  
-    max-height: calc(100vh - 64px - 169px);
-    min-height: calc(100vh - 64px - 300px);
+
+    min-height: calc(100vh - 64px - 326px);
   }
   
   .group-container {
@@ -82,5 +77,24 @@
   }
 
   .live{
-    margin-left: 3px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+  }
+
+  .events-container {
+    width: 100%;
+  }
+
+  .mat-expansion-panel-header-title,
+  .mat-expansion-panel-header-description {
+    flex-grow: 0;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .example-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
   }

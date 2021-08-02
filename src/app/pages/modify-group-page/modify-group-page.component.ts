@@ -80,7 +80,9 @@ export class ModifyGroupPageComponent implements OnInit {
     this.getMembersGroup();
     this.getMyGroup();
     this.getGroupGenres();
+  }
 
+  ngAfterContentInit(): void {
     this.genreCategory = this.fb.group({
       genreName: [null, Validators.required]
     });

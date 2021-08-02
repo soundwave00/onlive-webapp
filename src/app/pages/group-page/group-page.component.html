@@ -23,16 +23,67 @@
             </button>
         </div>
     </div>
-
     <div class="about"
         [class.is-mobile]="isMobile"
         [class.is-tablet]="sizeMode == 'md'">
-        <!--<div style="width: 100%; height: 1200px; background-color: #f44336;"></div>-->
-        {{group.Description}}
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                    Descrizione gruppo
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    <mat-icon>groups</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+          
+                    <div>
+                        <!--<div style="width: 100%; height: 1200px; background-color: #f44336;"></div>-->
+                        {{group.Description}}
+                    </div>
+              
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                    Eventi del gruppo
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    <mat-icon>event_available</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+          
+                <div class="events-container">
+                    <app-group-events></app-group-events>
+                </div>
+          
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+          
+        </mat-accordion>
     </div>
+    
+      
 
+    <!-- da creare un component simile a next event in cui ci saranno gli eventi del gruppo 
+    <div>
+        <app-next-events></app-next-events>
+    </div>
+    -->
     <div class="live">
-        <button mat-raised-button color="primary">Crea Live</button>
+        <button 
+            mat-raised-button 
+            color="primary"
+            [value]="group.Id"
+            [routerLink]="['/create-event', group.Id]">
+            Crea Evento
+        </button>
     </div>
 
 </div>

@@ -11,6 +11,7 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
 import { GroupPageComponent } from './pages/group-page/group-page.component';
 import { CreateGroupPageComponent } from './pages/create-group-page/create-group-page.component';
 import { ModifyGroupPageComponent } from './pages/modify-group-page/modify-group-page.component';
+import { CreateEventPageComponent } from './pages/create-event-page/create-event-page.component';
 
 const routes: Routes = [
   // isLogged == false
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'event/:id', component: EventPageComponent},
   { path: 'group/:id', component: GroupPageComponent},
   { path: 'create-group', component: CreateGroupPageComponent },
+  { path: 'create-event/:id', component: CreateEventPageComponent },
   { path: 'modify-group/:id', component: ModifyGroupPageComponent },
 
   // redirect error path

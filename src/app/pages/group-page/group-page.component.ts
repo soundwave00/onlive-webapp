@@ -19,6 +19,7 @@ export class GroupPageComponent implements OnInit {
   public sizeMode: string;
   public groupId: number | null;
   public group!: Group;
+  public step = 0;
 
   constructor(
     private appService: AppService,
@@ -49,6 +50,18 @@ export class GroupPageComponent implements OnInit {
   }
 
   // Group Methods
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 
   public getMyGroup(): void {
     let req = {
