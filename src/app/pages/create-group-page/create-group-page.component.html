@@ -4,18 +4,23 @@
     [class.is-mobile]="isMobile"
     [class.is-tablet]="sizeMode == 'md'">
     <span class="title">Crea Gruppo</span>
-    <form>
+    <form [formGroup]="groupForm">
       <div class="form-container">
 
         <mat-form-field appearance="fill">
           <mat-label>Nome gruppo</mat-label>
-          <input matInput>
+          <input 
+            matInput 
+            [formControl]="groupName">
           <mat-error> Errore </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Descrizione</mat-label>
-            <textarea matInput placeholder="Scrivi una descrizione del gruppo"></textarea>
+            <textarea 
+              matInput 
+              [formControl]="groupDescription" 
+              placeholder="Scrivi una descrizione del gruppo"></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -25,10 +30,10 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="example-chip-list" appearance="fill">
+        <mat-form-field appearance="fill">
           <mat-label>Componenti gruppo</mat-label>
           <mat-chip-list #chipList aria-label="Username selection">
-            <mat-chip
+            <mat-chip 
               *ngFor="let user of users"
               [selectable]="selectable"
               [removable]="removable"
@@ -51,6 +56,8 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
+
+        <pre>{{users|json}}</pre>
         
 
         <div class="avatar-import">
@@ -77,8 +84,8 @@
       <div class="buttons">
 
         <button mat-raised-button
-            color="primary">
-            <!--(click)="editUser()"-->
+            color="primary"
+            (click)="createGroup()">
           Salva
         </button>
 

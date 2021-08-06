@@ -4,14 +4,14 @@
     overflow: auto;
     padding: 8px 8px 0 8px;
 
-    min-height: calc(100vh - 64px - 317px);
+    min-height: calc(100vh - 64px - 325px);
   }
   
   
   .about.is-mobile {
     padding-bottom: 8px;
 
-    min-height: calc(100vh - 56px - 326px);
+    min-height: calc(100vh - 56px - 333px);
   }
   
   .about.is-tablet {
@@ -65,7 +65,7 @@
     font-family: 'Raleway', cursive;
     font-weight: 100;
     font-size: 40px;
-    width: min-content;
+    width: auto;
   }
 
   .group-title-button {
@@ -79,6 +79,7 @@
   .live{
     margin-left: 8px;
     margin-bottom: 8px;
+    margin-top: 8px;
   }
 
   .events-container {
