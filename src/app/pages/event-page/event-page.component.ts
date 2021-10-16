@@ -19,6 +19,7 @@ export class EventPageComponent implements OnInit, AfterViewInit {
   public eventId: number | null;
   public isMobile: boolean;
   public sizeMode: string;
+  public status: boolean;
 
   @ViewChild('about') public about!: MatExpansionPanel;
   @ViewChild('chat') public chat!: MatExpansionPanel;
@@ -32,6 +33,7 @@ export class EventPageComponent implements OnInit, AfterViewInit {
 
     this.isMobile = this.appService.getIsMobileResolution();
     this.sizeMode = this.appService.getSizeModeResolution();
+    this.status = false;
 
     let idTmp = this.route.snapshot.paramMap.get('id');
 
@@ -127,6 +129,36 @@ export class EventPageComponent implements OnInit, AfterViewInit {
       });
   }
 
+  
+  public startEvent(): void {
+    let req = {
+      id: this.eventId
+    }
+
+    this.networkService.callService('EventController','startEvent',req)
+      .subscribe(response => {
+        if(response != null && response.rCode == 0) {
+          console.log(response.rMessage)
+          this.status = true;
+        } else {
+          this.status = false;
+        }
+      });
+  }
+
+  public stopEvent(): void {
+    let req = {
+      id: this.eventId
+    }
+
+    this.networkService.callService('EventController','stopEvent',req)
+      .subscribe(response => {
+        if(response != null && response.rCode == 0) {
+          console.log(response.rMessage)
+          this.status = false;
+        }
+      });
+  }
   // Group Methods
 
   public getGroup(): void {

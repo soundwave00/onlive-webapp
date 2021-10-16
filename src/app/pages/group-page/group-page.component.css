@@ -2,15 +2,13 @@
   
 .about {
     overflow: auto;
-    padding: 8px 8px 0 8px;
+    padding: 0 8px 0 8px;
 
     min-height: calc(100vh - 64px - 325px);
   }
   
   
   .about.is-mobile {
-    padding-bottom: 8px;
-
     min-height: calc(100vh - 56px - 333px);
   }
   

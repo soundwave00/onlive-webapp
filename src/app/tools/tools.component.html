@@ -27,7 +27,7 @@
       <button mat-menu-item 
         *ngFor="let group of myGroup" 
         [value]="group.Id"
-        [routerLink]="['group', group.Id]">
+        (click)="changePage(group.Id!)">
           {{group.Name}}
       </button>
   </mat-menu>  

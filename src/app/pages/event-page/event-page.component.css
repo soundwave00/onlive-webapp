@@ -105,6 +105,16 @@
   min-width: 230px;
 }
 
+.about-start{
+  position:relative;
+  padding-top: 15px;
+}
+
+.about-stop{
+  position:relative;
+  padding-top: 15px;
+}
+
 .about-title {
   margin: 0;
 }
@@ -119,6 +129,7 @@ mat-panel-title {
   margin-right: 0;
 }
 
-mat-expansion-panel-header {
+mat-expansion-panel-header[aria-disabled=true]{
   padding: 0 10px;
+  color: white;
 }

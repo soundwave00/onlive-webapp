@@ -7,6 +7,7 @@ export interface Events {
   Running?: boolean;
   DateSet?: Date;
   Genres?: string;
+  IdGroups?: number;
 }
 
 export interface Group {

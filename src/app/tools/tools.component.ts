@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Group } from 'src/app/entities';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 import { AppService } from '../services/app.service';
@@ -20,7 +20,7 @@ export class ToolsComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private route: ActivatedRoute,
+    private router: Router,
     private networkService: NetworkService
   ) {
     this.isMobile = this.appService.getIsMobileResolution();
@@ -64,5 +64,15 @@ export class ToolsComponent implements OnInit {
           } 
         }
       });
+  }
+
+  public changePage(id: number): void {
+    let path = this.router.url;
+    var mySubString = path.substring(1, path.lastIndexOf("/"));
+    if (mySubString == "group"){
+      this.router.navigate(['/groups', id]);
+    } else {
+      this.router.navigate(['/group', id]);
+    }
   }
 }
