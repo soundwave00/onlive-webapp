@@ -20,7 +20,7 @@ export class EventPlayerComponent implements OnInit {
   public msaapPlaylist: Track[] = [
     {
       title: 'lofi hip hop radio',
-      link: '/../../assets/audio.mp3',
+      link: 'http://localhost:8000/onStage',
       artist: 'Lofi Artist',
       duration: 1
     }

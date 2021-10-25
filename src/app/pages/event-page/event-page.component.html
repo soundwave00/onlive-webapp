@@ -30,7 +30,7 @@
             </div>
           </mat-panel-title>
           <div class="about-start">
-            <button mat-button [disabled]="status" (click)="startEvent()" ><mat-icon>live_tv</mat-icon></button>
+            <button mat-button [disabled]="status" (click)="startEvent()" [disabled]="status"><mat-icon>live_tv</mat-icon></button>
           </div>
           <div class="about-stop">
             <button mat-button (click)="stopEvent()" [disabled]="!status"><mat-icon>stop</mat-icon></button>

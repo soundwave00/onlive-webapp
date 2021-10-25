@@ -125,10 +125,18 @@ export class EventPageComponent implements OnInit, AfterViewInit {
             DateSet: response.eventItem.dateSet,
             Running: response.eventItem.running
           }
+          if (this.event.Running) {
+            this.status = true;
+          }else if(!this.event.Running){
+            this.status = false;
+          }
         }
       });
   }
 
+  reloadCurrentPage() {
+    window.location.reload();
+  }
   
   public startEvent(): void {
     let req = {
@@ -140,9 +148,8 @@ export class EventPageComponent implements OnInit, AfterViewInit {
         if(response != null && response.rCode == 0) {
           console.log(response.rMessage)
           this.status = true;
-        } else {
-          this.status = false;
         }
+        this.reloadCurrentPage()
       });
   }
 
