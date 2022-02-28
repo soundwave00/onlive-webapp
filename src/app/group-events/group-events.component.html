@@ -27,7 +27,7 @@
             *ngIf="this.group.Avatar">
           </div>
           <mat-card-title>{{event.Name}}</mat-card-title>
-          <mat-card-subtitle>Live on {{event.DateSet?.getDate()}} {{monthNames[event.DateSet!.getMonth()]}} {{event.DateSet?.getFullYear()}} at {{event.DateSet?.getHours() + ':' + event.DateSet?.getMinutes()}}</mat-card-subtitle>
+          <mat-card-subtitle>Live on {{event.DateSet?.getDate()}} {{monthNames[event.DateSet!.getMonth()]}} {{event.DateSet?.getFullYear()}} {{event.DateSet?.getHours() + ':' + event.DateSet?.getMinutes() + 0}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="eventImg">
         <mat-card-content>

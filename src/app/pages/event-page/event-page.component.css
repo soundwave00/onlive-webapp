@@ -33,6 +33,7 @@
 .about.is-mobile {
   margin-left: -14px;
   margin-right: -14px;
+  margin-top: 14px;
 
   max-height: calc(100vh - 56px - 169px);
   min-height: calc(100vh - 56px - 169px);
@@ -102,7 +103,7 @@
 
 .about-description {
   height: 50px;
-  min-width: 230px;
+  min-width: 145px;
 }
 
 .about-start{

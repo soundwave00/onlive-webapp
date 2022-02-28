@@ -84,7 +84,7 @@ export class CreateEventPageComponent implements OnInit {
     if(this.eventForm.valid) {
       let eventDate = this.eventDate.value;
       let hours = this.eventTime.value.substring(0,2);
-      let y: number = +hours + 2;
+      let y: number = + hours + 1;
       let minutes = this.eventTime.value.substring(3);
       eventDate.setHours(y);
       eventDate.setMinutes(minutes);

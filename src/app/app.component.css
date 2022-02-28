@@ -80,5 +80,6 @@ mat-sidenav-container {
 
 .user-home-backdrop.user-home-backdrop-opened {
   background-color: rgba(189,189,189,.6);
-  visibility: visible
+  visibility: visible;
+  position: fixed;
 }

@@ -18,8 +18,14 @@
   </mat-button-toggle-group>
 </div>
 
+<!-- <div *ngIfElse="eventsList.length == 0;else show_events">
+  <span>Nessun Evento in Programma</span> 
+</div> -->
+
 <div class="next-events"
-  [class.grid]="viewStyle == 'grid'">
+  [class.grid]="viewStyle == 'grid'"
+  #show_events>
+  <div *ngIf="eventsList.length == 0">Nessun Evento in programma</div>
   <div #idEvent
     class="card-event-container"
     *ngFor='let event of eventsList'>
@@ -30,7 +36,7 @@
           *ngIf="this.group.Avatar">
         </div>
         <mat-card-title>{{event.Name}}</mat-card-title>
-        <mat-card-subtitle>Live on {{event.DateSet?.getDate()}} {{monthNames[event.DateSet!.getMonth()]}} {{event.DateSet?.getFullYear()}} at {{event.DateSet?.getHours() + ':' + event.DateSet?.getMinutes()}}</mat-card-subtitle>
+        <mat-card-subtitle>Live on {{event.DateSet?.getDate()}} {{monthNames[event.DateSet!.getMonth()]}} {{event.DateSet?.getFullYear()}} {{event.DateSet?.getHours() + ':' + event.DateSet?.getMinutes() + 0}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image class="mat-card-img" src="./assets/img/pexels-snapwire-6966.jpg" alt="eventImg">
       <mat-card-content>
